@@ -1,0 +1,14 @@
+{
+    "name": "it-expo/services",
+    "description": "IT Expo Web Service",
+    "type": "composer",
+    "require": {
+        "slim/slim": "^3.0"
+    },
+    "authors": [
+        {
+            "name": "insanrizky",
+            "email": "insansan9@gmail.com"
+        }
+    ]
+}
