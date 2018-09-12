@@ -36,4 +36,32 @@ class AuthController{
         ]);
 
     }
+
+    public function register($request,$response, $args){
+        $db = Database::connect();
+        
+        
+
+             $email= $request->getParsedBody()['email'];
+             $pw= $request->getParsedBody()['password'];
+             $password = password_hash($pw, PASSWORD_DEFAULT);
+             $nama= $request->getParsedBody()['nama'];
+             $sekolah= $request->getParsedBody()['sekolah'];
+             $jurusan= $request->getParsedBody()['jurusan'];
+             $tanggal_lahir= $request->getParsedBody()['tanggal_lahir'];
+             $payment= $request->getParsedBody()['payment'];
+
+
+             $data = [$email, $password, $nama, $sekolah, $jurusan, $tanggal_lahir, $payment];
+
+             $sql = "INSERT INTO userx (email, password, nama, sekolah, jurusan, tanggal_lahir, payment) VALUES (?,?,?,?,?,?,?)";
+             $stmt= $db->prepare($sql);
+             $stmt->execute($data);
+
+
+         return $response->withJson([
+            "message" => "register sukses",
+         ], 200);
+        
+    }
 }
