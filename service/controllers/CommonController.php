@@ -2,12 +2,13 @@
 
 class CommonController{
     public function home($request, $response, $args) {
-        // $db = Database::connect();
         $data = [
             'name' => $args['name'],
             'age' => 40
         ];
+
         return $response->withJson($data);
+       
 
     }
     public function save($request, $response, $args) {
@@ -16,7 +17,7 @@ class CommonController{
     }
     public function getUsers($request, $response, $args){
         $db = Database::connect();
-        $query = $db->prepare("SELECT * FROM users");
+        $query = $db->prepare("SELECT * FROM userx");
         $query->execute();
         $data = $query->fetchAll(\PDO::FETCH_OBJ);
         return $response->withJson($data);
