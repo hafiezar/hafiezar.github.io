@@ -11,6 +11,7 @@ require './config/database.php';
 
 require './controllers/CommonController.php';
 require './controllers/AuthController.php';
+require './middleware/Auth.php';
 
 require './routes.php';
 

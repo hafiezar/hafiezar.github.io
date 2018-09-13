@@ -8,16 +8,16 @@ class AuthController{
 
         $query = $db->prepare("SELECT * FROM userx WHERE email=:email");
        
-          $query->execute([
+        $query->execute([
                 "email" => $email,
-            ]);
+        ]);
        
-          $user = $query->fetch(\PDO::FETCH_OBJ);
+        $user = $query->fetch(\PDO::FETCH_OBJ);
         if(!$user){
        
 
              return $response->withJson([
-            'message'=> 'Data Not Found'
+                'message'=> 'Data Not Found'
 
              ], 404);
         }
