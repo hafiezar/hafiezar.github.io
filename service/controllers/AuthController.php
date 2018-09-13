@@ -38,6 +38,7 @@ class AuthController{
             "token" => $token
         ]);
 
+
         
             return $response->withJson([
                 "message" => "Authentication Success",
@@ -46,8 +47,7 @@ class AuthController{
                 ]
             ],200);
 
-         
-
+        
     }
 
     public function register($request,$response, $args){
