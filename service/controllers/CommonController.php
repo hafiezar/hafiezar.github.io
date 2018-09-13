@@ -2,18 +2,13 @@
 
 class CommonController{
     public function home($request, $response, $args) {
-        // $db = Database::connect();
-       
-
-
         $data = [
             'name' => $args['name'],
             'age' => 40
         ];
 
         return $response->withJson($data);
-       // return $response->withJson($data);
-       // return $headerValueArray;
+       
 
     }
     public function save($request, $response, $args) {
