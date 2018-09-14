@@ -8,7 +8,7 @@ class CommonController{
         ];
 
         return $response->withJson($data);
-       
+        
 
     }
     public function save($request, $response, $args) {
