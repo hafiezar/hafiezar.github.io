@@ -2373,3 +2373,22 @@ fieldset[disabled] .s-btn {
 .s-swiper__pagination-v1--dark .swiper-pagination-bullet-active {
   background: #13b1cd;
 }
+
+
+.customForm::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #000000!important;
+}
+
+.customForm:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #000000!important;
+}
+
+.customForm::-ms-input-placeholder { /* Microsoft Edge */
+  color: #000000!important;
+}
+
+.customForm, input[type=text] {
+    border: none;
+    border-bottom: 1px solid #333333 !important;
+    color: #000!important;
+}
