@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 12, 2018 at 03:53 PM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.1.18
+-- Host: localhost
+-- Waktu pembuatan: 13 Sep 2018 pada 17.00
+-- Versi server: 10.1.32-MariaDB
+-- Versi PHP: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,19 +25,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `moviex`
+-- Struktur dari tabel `eventx`
 --
 
-CREATE TABLE `moviex` (
-  `userx_id` int(11) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+CREATE TABLE `eventx` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `eventx`
+--
+
+INSERT INTO `eventx` (`id`, `name`) VALUES
+(1, 'Expo'),
+(2, 'Seminar'),
+(3, 'Web Design'),
+(4, 'Networking');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `networkx`
+-- Struktur dari tabel `networkx`
 --
 
 CREATE TABLE `networkx` (
@@ -51,7 +60,7 @@ CREATE TABLE `networkx` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `network_optionx`
+-- Struktur dari tabel `network_optionx`
 --
 
 CREATE TABLE `network_optionx` (
@@ -64,7 +73,7 @@ CREATE TABLE `network_optionx` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `network_questionx`
+-- Struktur dari tabel `network_questionx`
 --
 
 CREATE TABLE `network_questionx` (
@@ -78,56 +87,48 @@ CREATE TABLE `network_questionx` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posterx`
+-- Struktur dari tabel `submitx`
 --
 
-CREATE TABLE `posterx` (
+CREATE TABLE `submitx` (
+  `id` int(11) NOT NULL,
   `userx_id` int(11) NOT NULL,
+  `eventx_id` int(11) NOT NULL,
   `file` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `userx`
+-- Struktur dari tabel `userx`
 --
 
 CREATE TABLE `userx` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `token` varchar(255) DEFAULT NULL,
+  `token` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
-  `sekolah` varchar(255) NOT NULL,
-  `jurusan` varchar(255) NOT NULL,
-  `tanggal_lahir` date DEFAULT NULL,
-  `payment` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `tanggal_lahir` date NOT NULL,
+  `instansi` varchar(255) NOT NULL,
+  `kontak` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `userx`
---
-
-INSERT INTO `userx` (`id`, `email`, `password`, `token`, `nama`, `sekolah`, `jurusan`, `tanggal_lahir`, `payment`, `created_at`) VALUES
-(1, 'aku@gmail.com', 'secret', NULL, 'aan', 'sma13', 'IPA', NULL, 'cash', '2018-09-12 13:32:37'),
-(2, 'aku2@gmail.com', 'secret', NULL, 'aan2', 'sma13', 'IPA', '2018-09-10', 'cash', '2018-09-12 13:33:46'),
-(3, 'aku3@gmail.com', '$2y$10$JCb1B1RGXPCvAKdL2h5jSOOSo72ecdVtP71wIrUA9/FLQE2yFHvwG', NULL, 'aan3', 'sma13', 'IPA', '2018-09-10', 'cash', '2018-09-12 13:35:30'),
-(4, 'aku4@gmail.com', '$2y$10$rQ.FX3p/dyjsEy0n96FtaOrIkgmisIJuTERyxYLHeaD8T7Hfx0dgq', NULL, 'aan4', 'sma13', 'IPA', '2018-09-10', 'cash', '2018-09-12 13:36:44'),
-(8, 'aku5@gmail.com', '$2y$10$dBedtF3puEAnWO4Ourq8kea4IBCqkNnFSUy7rqq6xoOs.aDlSTmk.', NULL, 'aan5', 'sma13', 'IPA', '2018-09-10', 'cash', '2018-09-12 13:44:16'),
-(10, 'aku6@gmail.com', '$2y$10$dZPEzspKZgml11F2A05wd.L62KPAAPn6yCb.wJWUrYBdJ2ceWHA8G', NULL, 'aan5', 'sma13', 'IPA', '2018-09-10', 'cash', '2018-09-12 13:48:47');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `webx`
+-- Struktur dari tabel `userx_eventx`
 --
 
-CREATE TABLE `webx` (
+CREATE TABLE `userx_eventx` (
+  `id` int(11) NOT NULL,
   `userx_id` int(11) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `eventx_id` int(11) NOT NULL,
+  `bukti_bayar` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -135,69 +136,87 @@ CREATE TABLE `webx` (
 --
 
 --
--- Indexes for table `moviex`
+-- Indeks untuk tabel `eventx`
 --
-ALTER TABLE `moviex`
-  ADD PRIMARY KEY (`userx_id`);
+ALTER TABLE `eventx`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `networkx`
+-- Indeks untuk tabel `networkx`
 --
 ALTER TABLE `networkx`
   ADD PRIMARY KEY (`userx_id`,`questionx_id`) USING BTREE;
 
 --
--- Indexes for table `network_optionx`
+-- Indeks untuk tabel `network_optionx`
 --
 ALTER TABLE `network_optionx`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `network_questionx`
+-- Indeks untuk tabel `network_questionx`
 --
 ALTER TABLE `network_questionx`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `posterx`
+-- Indeks untuk tabel `submitx`
 --
-ALTER TABLE `posterx`
-  ADD PRIMARY KEY (`userx_id`);
+ALTER TABLE `submitx`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `userx`
+-- Indeks untuk tabel `userx`
 --
 ALTER TABLE `userx`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`) USING BTREE;
 
 --
--- Indexes for table `webx`
+-- Indeks untuk tabel `userx_eventx`
 --
-ALTER TABLE `webx`
-  ADD PRIMARY KEY (`userx_id`);
+ALTER TABLE `userx_eventx`
+  ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `network_optionx`
+-- AUTO_INCREMENT untuk tabel `eventx`
+--
+ALTER TABLE `eventx`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `network_optionx`
 --
 ALTER TABLE `network_optionx`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `network_questionx`
+-- AUTO_INCREMENT untuk tabel `network_questionx`
 --
 ALTER TABLE `network_questionx`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `userx`
+-- AUTO_INCREMENT untuk tabel `submitx`
+--
+ALTER TABLE `submitx`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `userx`
 --
 ALTER TABLE `userx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `userx_eventx`
+--
+ALTER TABLE `userx_eventx`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
