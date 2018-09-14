@@ -1,7 +1,7 @@
 <?php
 class Database {
 	private static $host 	    = "localhost";
-	private static $db 		    = "it_expo";
+	private static $db 		    = "it_expo2";
 	private static $username	= "root";
     private static $password 	= "";
     private static $driver 	= "mysql";

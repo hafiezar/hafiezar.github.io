@@ -10,7 +10,7 @@ require './config/database.php';
 //$app = new \Slim\App();
 
 require './controllers/CommonController.php';
-require './controllers/AuthController.php';
+require './controllers/UserController.php';
 require './middleware/Auth.php';
 
 require './routes.php';
