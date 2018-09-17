@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 17 Sep 2018 pada 07.50
+-- Waktu pembuatan: 17 Sep 2018 pada 08.11
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -30,20 +30,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `eventx` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `name` varchar(255) NOT NULL,
+  `mahasiswa_po` int(11) NOT NULL,
+  `mahasiswa_ots` int(11) NOT NULL,
+  `umum_po` int(11) NOT NULL,
+  `umum_ots` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `eventx`
 --
 
-INSERT INTO `eventx` (`id`, `name`) VALUES
-(1, 'Networking'),
-(2, 'Web Design'),
-(3, 'Poster'),
-(4, 'Short Movie'),
-(5, 'E-Sport'),
-(6, 'Seminar');
+INSERT INTO `eventx` (`id`, `name`, `mahasiswa_po`, `mahasiswa_ots`, `umum_po`, `umum_ots`) VALUES
+(1, 'Networking', 30000, 80000, 30000, 80000),
+(2, 'Web Design', 100000, 0, 100000, 0),
+(3, 'Poster', 50000, 0, 50000, 0),
+(4, 'Short Movie', 100000, 0, 100000, 0),
+(5, 'E-Sport', 200000, 0, 200000, 0),
+(6, 'Seminar', 40000, 45000, 45000, 50000),
+(7, 'Workshop UI/UX', 200000, 0, 200000, 0);
 
 -- --------------------------------------------------------
 
@@ -195,7 +200,7 @@ ALTER TABLE `userx_eventx`
 -- AUTO_INCREMENT untuk tabel `eventx`
 --
 ALTER TABLE `eventx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `network_optionx`
