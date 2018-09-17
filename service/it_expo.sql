@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 17 Sep 2018 pada 08.11
+-- Waktu pembuatan: 17 Sep 2018 pada 19.04
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -34,21 +34,23 @@ CREATE TABLE `eventx` (
   `mahasiswa_po` int(11) NOT NULL,
   `mahasiswa_ots` int(11) NOT NULL,
   `umum_po` int(11) NOT NULL,
-  `umum_ots` int(11) NOT NULL
+  `umum_ots` int(11) NOT NULL,
+  `phase_1` datetime NOT NULL,
+  `phase_2` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `eventx`
 --
 
-INSERT INTO `eventx` (`id`, `name`, `mahasiswa_po`, `mahasiswa_ots`, `umum_po`, `umum_ots`) VALUES
-(1, 'Networking', 30000, 80000, 30000, 80000),
-(2, 'Web Design', 100000, 0, 100000, 0),
-(3, 'Poster', 50000, 0, 50000, 0),
-(4, 'Short Movie', 100000, 0, 100000, 0),
-(5, 'E-Sport', 200000, 0, 200000, 0),
-(6, 'Seminar', 40000, 45000, 45000, 50000),
-(7, 'Workshop UI/UX', 200000, 0, 200000, 0);
+INSERT INTO `eventx` (`id`, `name`, `mahasiswa_po`, `mahasiswa_ots`, `umum_po`, `umum_ots`, `phase_1`, `phase_2`) VALUES
+(1, 'Networking', 30000, 80000, 30000, 80000, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, 'Web Design', 100000, 0, 100000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(3, 'Poster', 50000, 0, 50000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, 'Short Movie', 100000, 0, 100000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, 'E-Sport', 200000, 0, 200000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Seminar', 40000, 45000, 45000, 50000, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(7, 'Workshop UI/UX', 200000, 0, 200000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -57,9 +59,9 @@ INSERT INTO `eventx` (`id`, `name`, `mahasiswa_po`, `mahasiswa_ots`, `umum_po`, 
 --
 
 CREATE TABLE `networkx` (
-  `userx_id` int(11) NOT NULL,
+  `userx_eventx_id` int(11) NOT NULL,
   `questionx_id` int(11) NOT NULL,
-  `answer` varchar(255) NOT NULL,
+  `answer` text NOT NULL,
   `file` varchar(255) NOT NULL,
   `updated_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -73,7 +75,7 @@ CREATE TABLE `networkx` (
 CREATE TABLE `network_optionx` (
   `id` int(11) NOT NULL,
   `questionx_id` int(11) NOT NULL,
-  `answer` varchar(255) NOT NULL,
+  `options` varchar(255) NOT NULL,
   `is_true` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -98,9 +100,7 @@ CREATE TABLE `network_questionx` (
 --
 
 CREATE TABLE `submitx` (
-  `id` int(11) NOT NULL,
-  `userx_id` int(11) NOT NULL,
-  `eventx_id` int(11) NOT NULL,
+  `userx_eventx_id` int(11) NOT NULL,
   `file` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -114,16 +114,16 @@ CREATE TABLE `submitx` (
 
 CREATE TABLE `userx` (
   `id` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `tanggal_lahir` date NOT NULL,
   `is_mahasiswa` int(11) NOT NULL,
-  `file_ktm` varchar(255) NOT NULL,
   `instansi` varchar(255) NOT NULL,
   `kontak` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `is_verified` int(11) NOT NULL,
+  `file_ktm` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `verified_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -138,11 +138,17 @@ CREATE TABLE `userx_eventx` (
   `id` int(11) NOT NULL,
   `userx_id` int(11) NOT NULL,
   `eventx_id` int(11) NOT NULL,
-  `bukti_bayar` varchar(255) NOT NULL,
   `is_team` int(11) NOT NULL,
-  `leader` varchar(255) NOT NULL,
+  `team_name` varchar(255) NOT NULL,
+  `team_member_1` varchar(255) NOT NULL,
+  `team_member_2` varchar(255) NOT NULL,
+  `team_member_3` varchar(255) NOT NULL,
+  `team_member_4` varchar(255) NOT NULL,
   `ign` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL
+  `bukti_bayar` varchar(255) NOT NULL,
+  `payment_status` enum('not_paid','wait_verified','paid') NOT NULL,
+  `created_at` datetime NOT NULL,
+  `paid_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -159,7 +165,7 @@ ALTER TABLE `eventx`
 -- Indeks untuk tabel `networkx`
 --
 ALTER TABLE `networkx`
-  ADD PRIMARY KEY (`userx_id`,`questionx_id`) USING BTREE;
+  ADD PRIMARY KEY (`userx_eventx_id`,`questionx_id`) USING BTREE;
 
 --
 -- Indeks untuk tabel `network_optionx`
@@ -177,7 +183,7 @@ ALTER TABLE `network_questionx`
 -- Indeks untuk tabel `submitx`
 --
 ALTER TABLE `submitx`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`userx_eventx_id`);
 
 --
 -- Indeks untuk tabel `userx`
@@ -218,7 +224,7 @@ ALTER TABLE `network_questionx`
 -- AUTO_INCREMENT untuk tabel `submitx`
 --
 ALTER TABLE `submitx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `userx_eventx_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `userx`
