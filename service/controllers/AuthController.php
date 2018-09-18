@@ -1,6 +1,8 @@
 <?php
 
 use Respect\Validation\Validator as v;
+use Slim\Http\UploadedFile;
+
 //
 //
 // $publicHost di function register ganti dengan host yg dipakai
@@ -256,4 +258,105 @@ class AuthController{
         
          
     }
+
+    public function uploadKtm($request, $response, $args){     
+        $db = Database::connect();       
+        
+        $headerValueArray = $request->getHeader('Authorization');
+        $apiToken = explode(' ', $headerValueArray[0]);
+        $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+        $query1->execute(["token" => $apiToken[1], ]);
+        $user = $query1->fetch(PDO::FETCH_OBJ);
+
+        //move to folder
+        $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\ktm';
+
+        $uploadedFiles = $request->getUploadedFiles();
+
+        // handle single input with single file upload
+        $uploadedFile = $uploadedFiles['file_ktm'];     
+        
+
+        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+
+        $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
+
+        //return $filename;
+
+        
+        $response->write('uploaded ' . $filename . '<br/>');
+
+        $loc_file_ktm = $directory.'\\'.$filename;
+        //update db
+        $query2 = $db->prepare("UPDATE userx SET file_ktm=:loc_file_ktm WHERE email=:email");
+        $status= $query2->execute([
+            "email" => $user->email,
+            "loc_file_ktm" => $loc_file_ktm
+        ]);
+        if($status){
+            return $response->withJson([
+            "message" => "Upload Success", 
+            "data" => $loc_file_ktm          
+        ],200);
+        }else{
+            return $response->withJson([
+            "message" => "Upload Gagal",           
+        ],400);
+        }     
+
+    }
+
+    public function uploadFoto($request, $response, $args){     
+        $db = Database::connect();       
+        
+        $headerValueArray = $request->getHeader('Authorization');
+        $apiToken = explode(' ', $headerValueArray[0]);
+        $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+        $query1->execute(["token" => $apiToken[1], ]);
+        $user = $query1->fetch(PDO::FETCH_OBJ);
+
+        //move to folder
+        $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\foto';
+
+        $uploadedFiles = $request->getUploadedFiles();
+
+        // handle single input with single file upload
+        $uploadedFile = $uploadedFiles['foto'];     
+        
+
+        $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+        $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
+        $filename = sprintf('%s.%0.8s', $basename, $extension);
+
+        $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
+
+        //return $filename;
+
+        
+        $response->write('uploaded ' . $filename . '<br/>');
+
+        $loc_file_foto = $directory.'\\'.$filename;
+        //update db
+        $query2 = $db->prepare("UPDATE userx SET foto=:loc_file_foto WHERE email=:email");
+        $status= $query2->execute([
+            "email" => $user->email,
+            "loc_file_foto" => $loc_file_foto
+        ]);
+        if($status){
+            return $response->withJson([
+            "message" => "Upload Success", 
+            "data" => $loc_file_foto          
+        ],200);
+        }else{
+            return $response->withJson([
+            "message" => "Upload Gagal",           
+        ],400);
+        }     
+
+    }
+
+        
+    
 }
