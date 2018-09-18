@@ -23,6 +23,7 @@
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
     <link href="vendor/swiper/swiper.min.css" rel="stylesheet" type="text/css" />
     <link href="vendor/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="vendor/swal/sweetalert2.min.css">
 
     <!-- Theme Styles -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -89,7 +90,7 @@
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_events.html">Kegiatan</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="about.html">Tentang Kami</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Kontak Kami</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">Masuk / Daftar</a></li>
+                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="#" id="logout">Keluar</a></li>
                     </ul>
                     <!-- End Menu List -->
                 </div>
@@ -682,7 +683,7 @@
                     <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-webdesain">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-movie">
                         <input type="hidden" class="form-control s-form-v4__input" name="is_team" value="1"/>
                         <div class="g-margin-b-30--xs">
                             <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
@@ -1057,7 +1058,13 @@
     <script type="text/javascript" src="js/components/parallax.min.js"></script>
     <script type="text/javascript" src="js/components/portfolio-3-col.min.js"></script>
     <script type="text/javascript" src="js/components/wow.min.js"></script>
+    <script src="vendor/swal/sweetalert2.all.min.js"></script>
     <!--========== END JAVASCRIPTS ==========-->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/api/auth.js"></script>
+    <script type="text/javascript">
+        checkAuth('inside');
+    </script>
 
 </body>
 <!-- End Body -->

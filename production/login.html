@@ -21,7 +21,8 @@
         <link href="vendor/scrollbar/scrollbar.min.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/swiper/swiper.min.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css"/>
-
+        <link rel="stylesheet" href="vendor/swal/sweetalert2.min.css">
+        
         <!-- Theme Styles -->
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/global/global.css" rel="stylesheet" type="text/css"/>
@@ -118,18 +119,18 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-4 col-sm-4 g-hor-centered-row__col">
                         <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
-                            <form class="center-block g-width-350--xs g-bg-color--white-opacity-lightest g-box-shadow__blueviolet-v1 g-padding-x-40--xs g-padding-y-60--xs g-radius--4">
+                            <form id="form-login" class="center-block g-width-350--xs g-bg-color--white-opacity-lightest g-box-shadow__blueviolet-v1 g-padding-x-40--xs g-padding-y-60--xs g-radius--4">
                                 <div class="g-text-center--xs g-margin-b-40--xs">
-                                    <h2 class="g-font-size-30--xs g-color--white">Login</h2>
+                                    <h2 class="g-font-size-30--xs g-color--white">Masuk</h2>
                                 </div>
                                 <div class="g-margin-b-30--xs">
-                                    <input type="email" class="form-control s-form-v3__input" placeholder="* Email">
+                                    <input type="email" class="form-control s-form-v3__input" placeholder="* Email" name="email">
                                 </div>
                                 <div class="g-margin-b-30--xs">
-                                    <input type="password" class="form-control s-form-v3__input" placeholder="* Password">
+                                    <input type="password" class="form-control s-form-v3__input" placeholder="* Kata Sandi" name="password">
                                 </div>
                                 <div class="g-text-center--xs">
-                                    <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Login</button>
+                                    <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Masuk</button>
                                 </div>
                             </form>
                         </div>
@@ -273,10 +274,10 @@
                     </div>
                     <div class="row g-margin-b-50--xs">
                         <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-                            <input type="password" class="form-control s-form-v3__input" placeholder="* Password" name="password">
+                            <input type="password" class="form-control s-form-v3__input" placeholder="* Kata Sandi" name="password">
                         </div>
                         <div class="col-sm-6">
-                            <input type="password" class="form-control s-form-v3__input" placeholder="* Konfirmasi Password" name="password_confirm">
+                            <input type="password" class="form-control s-form-v3__input" placeholder="* Konfirmasi Kata Sandi" name="password_confirm">
                         </div>
                     </div>
                     <div class="g-text-center--xs">
@@ -358,7 +359,13 @@
         <script type="text/javascript" src="js/components/swiper.min.js"></script>
         <script type="text/javascript" src="js/components/portfolio-4-col-slider.min.js"></script>
         <script type="text/javascript" src="js/components/wow.min.js"></script>
+        <script src="vendor/swal/sweetalert2.all.min.js"></script>
         <!--========== END JAVASCRIPTS ==========-->
+		<script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/api/auth.js"></script>
+        <script type="text/javascript">
+            checkAuth('outside');
+        </script>
 
     </body>
     <!-- End Body -->

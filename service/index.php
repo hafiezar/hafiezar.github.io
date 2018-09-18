@@ -9,8 +9,6 @@ require './config/database.php';
 
  $app = new \Slim\App(['settings' => $config]);
 
-//$app = new \Slim\App();
-
 require './controllers/CommonController.php';
 require './controllers/AuthController.php';
 require './controllers/EventController.php';
