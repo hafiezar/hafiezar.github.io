@@ -11,7 +11,7 @@ $(function(){
         e.preventDefault();
         $("#submit-registrasi").html('Loading...');
         $.ajax({
-            url: `${DEV_API}/register`,
+            url: `${PROD_API}/register`,
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
@@ -30,7 +30,7 @@ $(function(){
     $('#form-login').submit(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/login`,
+            url: `${PROD_API}/login`,
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
@@ -48,7 +48,7 @@ $(function(){
     $("#logout").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/logout`,
+            url: `${PROD_API}/logout`,
             method: 'POST',
             success: function(response){
                 localStorage.removeItem(KEY);
