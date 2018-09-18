@@ -498,7 +498,6 @@ fieldset[disabled] .s-btn {
   box-shadow: none;
   border-radius: 0;
   letter-spacing: .1rem;
-  text-transform: uppercase;
   padding: 0 1.25rem 0 0;
   transition-duration: 300ms;
   transition-property: all;
@@ -507,18 +506,22 @@ fieldset[disabled] .s-btn {
 
 .s-form-v3__input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input::placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input:focus {
@@ -2373,3 +2376,4 @@ fieldset[disabled] .s-btn {
 .s-swiper__pagination-v1--dark .swiper-pagination-bullet-active {
   background: #13b1cd;
 }
+

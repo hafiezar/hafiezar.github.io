@@ -117,6 +117,7 @@
     </header>
     <!--========== END HEADER ==========-->
 
+    <!--========== PAGE CONTENT ==========-->
     <!--========== PROMO BLOCK ==========-->
     <div class="js__parallax-window" style="background: url(img/1920x1080/06.jpg) 50% 0 no-repeat fixed;">
         <div class="g-container--md g-text-center--xs g-padding-y-150--xs">
@@ -124,16 +125,17 @@
                 <div class="col-sm-2">
                     <img class="img-responsive" id="foto-profil" src="img/400x400/01.jpg" style="width: 200px; margin: auto; border-radius: 50%;" alt="Default Image">
                 </div>
-                <div class="col-sm-8 g-text-left--md">
+                <div class="col-sm-7 g-text-left--md">
                     <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Username</h1>
                     <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="nama-instansi">Asal Instansi</p>
                     <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email">email_user@itexpo.co.id</p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="">Kegiatan Anda : </p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="">Menunggu Verifikasi : </p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="">Selesai Verifikasi : </p>
+
                 </div>
-                <div class="col-sm-2 g-text-right--md g-text-right--xs  ">
-                    <a><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-brd g-radius--50 g-padding-x-3--xs g-margin-b-5--xs g-margin-t-10--md g-margin-t-15--lg">Edit Profile</button></a>
+                <div class="col-sm-3 g-text-left--md g-text-center--xs g-margin-t-20--xs g-margin-t-0--md">
+                    <p class="g-font-size-12--xs g-font-size-12--md g-font-size-14--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id=""><span class="g-font-size-26--xs" id="kegiatan-user">0</span> Kegiatan Diikuti</p>
+                    <p class="g-font-size-12--xs g-font-size-12--md g-font-size-14--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id=""><span class="g-font-size-26--xs" id="not-verified">0</span> Menunggu Verifikasi</p>
+                    <p class="g-font-size-12--xs g-font-size-12--md g-font-size-14--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id=""><span class="g-font-size-26--xs" id="verivied">0</span> Selesai Verifikasi</p>
+
                 </div>
             </div>
 
@@ -142,23 +144,36 @@
     </div>
     <!--========== END PROMO BLOCK ==========-->
 
-    <!--========== PAGE CONTENT ==========-->
     <!-- Mockup -->
     <div class="g-hor-divider__dashed--sky-light">
         <div id="js__scroll-to-section" class="container g-padding-y-80--xs g-padding-y-125--xsm">
             <div class="g-text-center--xs g-margin-b-100--xs">
-                <h3 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Verifikasi Pembayaran</h3>
+                <h3 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Edit Profil</h3>
             </div>
             <form class="center-block g-width-450--xs g-bg-color--white-opacity-lightest g-box-shadow__blueviolet-v1 g-padding-x-40--xs g-padding-y-60--xs g-radius--4">
                 <div class="g-margin-b-30--xs">
-                    <input type="text" class="form-control s-form-v3__input customForm" placeholder="* Kode Pendaftaran">
+                    <input type="text" class="form-control s-form-v3__input customForm" id="nama" name="nama" placeholder="* Nama Lengkap">
                 </div>
                 <div class="g-margin-b-30--xs">
-                    <input type="file" class="form-control s-form-v3__input customForm" placeholder="* Unggah Bukti Pembayaran">
+                    <input type="text" class="form-control s-form-v3__input customForm" id="email" name="email" placeholder="* Email">
                 </div>
+                <div class="g-margin-b-30--xs">
+                    <input type="text" class="form-control s-form-v3__input customForm" id="hp" name="hp" placeholder="* Handphone">
+                </div>
+                <div class="g-margin-b-30--xs">
+                    <input type="text" class="form-control s-form-v3__input customForm" id="instansi" name="instansi" placeholder="* Instansi">
+                </div>
+                <div class="g-margin-b-30--xs">
+                    <input type="password" class="form-control s-form-v3__input customForm" id="password" name="password" placeholder="* Password*">
+                </div>
+                <div class="g-margin-b-30--xs">
+                    <input type="password" class="form-control s-form-v3__input customForm" id="konfirmasi" name="konfirmasi" placeholder="* Konfirmasi Password*">
+                </div>
+                <p>Kosongkan field password jika tidak ingin ada perubahan.</p>
                 <div class="g-text-center--xs">
                     <a><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Submit</button></a>
                 </div>
+
             </form>
         </div>
     </div>
@@ -233,8 +248,9 @@
                     </div>
                     <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
                     </div>
-                    <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-                        <img src="img/logo-itexpo-white.png" alt="logo_itexpo_2018" height="150">
+                    <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 text-right">
+                        <!-- <img src="img/logo-itexpo-white.png" alt="logo_itexpo_2018" height="150"> -->
+                        <img src="img/general.png" style="max-width:150px" />
                     </div>
                 </div>
             </div>

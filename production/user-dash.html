@@ -23,6 +23,7 @@
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
     <link href="vendor/swiper/swiper.min.css" rel="stylesheet" type="text/css" />
     <link href="vendor/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="vendor/swal/sweetalert2.min.css">
 
     <!-- Theme Styles -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -32,7 +33,7 @@
     <!-- <link href="css/theme/red.css" rel="stylesheet" type="text/css" /> -->
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo-itexpo-white.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -83,20 +84,13 @@
             <!-- Nav -->
             <nav class="s-header__nav js__scrollbar">
                 <div class="container-fluid">
-                    <!-- Menu List -->
+                    <!-- Menu List -->                                
                     <ul class="list-unstyled s-header__nav-menu">
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="index.html">Beranda</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_events.html">Kegiatan</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="about.html">Tentang Kami</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Kontak Kami</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">SignIn/SignUp</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">SignOut</a></li>
-                    </ul>
-                    <!-- End Menu List -->
-                    <!-- Menu List -->                                
-                    <ul class="list-unstyled s-header__nav-menu">
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="user-dash.html">Kegiatan dan Pendaftaran</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="verifikasi.html">Verifikasi Pembayaran</a></li>
+                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="#" id="logout">Keluar</a></li>
                     </ul>
                     <!-- End Menu List -->
                 </div>
@@ -106,19 +100,13 @@
             <!-- Action -->
             <ul class="list-inline s-header__action s-header__action--rb">
                 <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="#">
-                        <i class="g-padding-r-5--xs ti-facebook"></i>
-                        <span class="g-display-none--xs g-display-inline-block--sm">Facebook</span>
-                    </a>
-                </li>
-                <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="#">
+                    <a class="s-header__action-link" href="mailto:it.fest.unj@gmail.com">
                         <i class="g-padding-r-5--xs ti-twitter"></i>
-                        <span class="g-display-none--xs g-display-inline-block--sm">Twitter</span>
+                        <span class="g-display-none--xs g-display-inline-block--sm">it.fest.unj@gmail.com</span>
                     </a>
                 </li>
                 <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="#">
+                    <a class="s-header__action-link" href="https://instagram.com/itexpo_unj">
                         <i class="g-padding-r-5--xs ti-instagram"></i>
                         <span class="g-display-none--xs g-display-inline-block--sm">Instagram</span>
                     </a>
@@ -137,16 +125,18 @@
                 <div class="col-sm-2">
                     <img class="img-responsive" id="foto-profil" src="img/400x400/01.jpg" style="width: 200px; margin: auto; border-radius: 50%;" alt="Default Image">
                 </div>
-                <div class="col-sm-8 g-text-left--md">
-                    <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Username</h1>
-                    <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="nama-instansi">Asal Instansi</p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email">email_user@itexpo.co.id</p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="">Kegiatan Anda : </p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="">Menunggu Verifikasi : </p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="">Selesai Verifikasi : </p>
+                <div class="col-sm-7 g-text-left--md">
+                    <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Nama Pengguna</h1>
+                    <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="instansi-user">Asal Instansi</p>
+                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email-user">email_user@itexpo.co.id</p>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Profil" data-toggle="modal" data-target="#modal-profil" id="edit-profil">Edit Profil</button>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="KTM" data-toggle="modal" data-target="#modal-ktm" id="unggah-ktm">Unggah KTM</button>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Foto Profil" data-toggle="modal" data-target="#modal-foto" id="unggah-foto">Unggah Foto</button>
                 </div>
-                <div class="col-sm-2 g-text-right--md g-text-right--xs  ">
-                    <a><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-brd g-radius--50 g-padding-x-3--xs g-margin-b-5--xs g-margin-t-10--md g-margin-t-15--lg">Edit Profile</button></a>
+                <div class="col-sm-3 g-text-left--md g-text-center--xs g-margin-t-20--xs g-margin-t-0--md">
+                    <p class="g-font-size-12--xs g-font-size-12--md g-font-size-14--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id=""><span class="g-font-size-26--xs" id="kegiatan-user">0</span> Kegiatan Diikuti</p>
+                    <p class="g-font-size-12--xs g-font-size-12--md g-font-size-14--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id=""><span class="g-font-size-26--xs" id="not-verified">0</span> Menunggu Verifikasi</p>
+                    <p class="g-font-size-12--xs g-font-size-12--md g-font-size-14--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id=""><span class="g-font-size-26--xs" id="verivied">0</span> Selesai Verifikasi</p>
                 </div>
             </div>
 
@@ -157,16 +147,16 @@
 
     <!--========== PAGE CONTENT ==========-->
     <!-- Masonry -->
-    <div class="g-hor-divider__dashed--sky-light">
+    <!-- <div class="g-hor-divider__dashed--sky-light">
         <div class="container g-padding-y-30--xs">
-            
+
         </div>
-    </div>
+    </div> -->
     <!-- End Masonry -->
 
     <!-- Mockup -->
     <div class="g-hor-divider__dashed--sky-light">
-        <div id="js__scroll-to-section" class="container g-padding-y-80--xs g-padding-y-125--xsm">
+        <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
             <div class="g-text-center--xs g-margin-b-80--xs">
                 <h3 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Kegiatan Yang Saya Ikuti</h3>
             </div>
@@ -176,11 +166,11 @@
                     <div class="g-margin-b-40--xs">
                         <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Deskripsi</p>
                         <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-30--xs">IT-EXPO</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <p>Belum ada agenda? Lihat di sini!</p>
-                        <a><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Kegiatan IT EXPO</button></a>
+                        <p>Rangkaian beberapa kegiatan yang terdiri dari lomba, workshop, seminar dan expo. Lomba dalam rangkaian ini terdapat lomba akademik dan lomba umum. Workshop dalam rangkaian ini terdapat dua yaitu workshop guru tik dan workshop ui/ux.
+                            expo yang akan menyajikan pameran terhadap karya/produk IT yang diciptakan oleh mahasiswa Pendidikan Informatika UNJ serta dari beberapa perusahan yang bergerak dibidang IT, dan juga ditambah dengan seminar yang akan membahas
+                            mengenai informasi IT terkini diikuti dengan tema yang akan diangkat.</p>
+                        <p>Belum ada agenda? Lihat kegiatan IT Expo di sini!</p>
+                        <a href="#js__scroll-to-section"><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Kegiatan IT EXPO</button></a>
                     </div>
                 </div>
 
@@ -246,7 +236,7 @@
 
 
             <!-- Kompetisi -->
-            <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+            <div class="container g-padding-y-80--xs g-padding-y-125--xsm" id="js__scroll-to-section">
                 <div class="row g-margin-b-30--xs">
                     <div class="col-sm-4">
                         <div class="g-margin-t-20--md g-margin-b-40--xs">
@@ -261,47 +251,37 @@
                         <div id="js__grid-portfolio-gallery" class="s-portfolio__paginations-v1 cbp">
                             <!-- Item -->
                             <div class="s-portfolio__item cbp-item motion graphic">
-                                <div class="s-portfolio__img-effect">
-                                    <img src="img/970x647/04.jpg" alt="Portfolio Image">
+                                <div class="s-portfolio__img-effect g-bg-color--sky-light">
+                                    <img src="img/web-desain-1.gif" style="max-height: 250px; width: auto; margin: auto" alt="Portfolio Image">
                                 </div>
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
-                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Web Desain</h3>
-                                        <p class="g-color--white-opacity">Rp.50.000,00</p>
+                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Web</h3>
+                                        <p class="g-color--white-opacity">Rp.50.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" id="r-wd">
+                                            <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" data-toggle="modal" data-target="#modal-web" id="r-wd">
                                                 Registrasi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" id="r-wd">
-                                                Informasi
-                                            </a>
+                                            </button>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Item -->
                             <div class="s-portfolio__item cbp-item logos graphic">
-                                <div class="s-portfolio__img-effect">
-                                    <img src="img/970x647/09.jpg" alt="Portfolio Image">
+                                <div class="s-portfolio__img-effect g-bg-color--sky-light">
+                                    <img src="img/jaringan-1.gif" style="max-height: 250px; width: auto; margin: auto" alt="Portfolio Image">
                                 </div>
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
                                         <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Jaringan</h3>
-                                        <p class="g-color--white-opacity">Rp.75.000,00</p>
+                                        <p class="g-color--white-opacity">Rp.75.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Jaringan" id="r-jar">
+                                            <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Jaringan" data-toggle="modal" data-target="#modal-jaringan" id="r-jar">
                                                 Registrasi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" id="r-wd">
-                                                Informasi
                                             </a>
                                         </li>
                                     </ul>
@@ -309,47 +289,38 @@
                             </div>
                             <!-- Item -->
                             <div class="s-portfolio__item cbp-item logos motion">
-                                <div class="s-portfolio__img-effect">
-                                    <img src="img/970x647/05.jpg" alt="Portfolio Image">
+                                <div class="s-portfolio__img-effect g-bg-color--sky-light">
+                                    <img src="img/MM-1.gif" style="max-height: 250px; width: auto; margin: auto" alt="Portfolio Image">
                                 </div>
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
                                         <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Short Movie</h3>
-                                        <p class="g-color--white-opacity">Rp.50.000,00</p>
+                                        <p class="g-color--white-opacity">Rp.50.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Short Movie" id="r-sm">
+                                            <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Short Movie" data-toggle="modal" data-target="#modal-movie" id="r-sm">
                                                 Registrasi
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" id="r-wd">
-                                                Informasi
-                                            </a>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- Item -->
-                            <div class="s-portfolio__item cbp-item graphic">
+                            <div class="s-portfolio__item cbp-item graphic g-bg-color--sky-light">
                                 <div class="s-portfolio__img-effect">
-                                    <img src="img/970x647/06.jpg" alt="Portfolio Image">
+                                    <img src="img/desain-grafis-1.gif" style="max-height: 250px; width: auto; margin: 0 auto" alt="Portfolio Image">
                                 </div>
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
-                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Poster</h3>
-                                        <p class="g-color--white-opacity">Rp.50.000,00</p>
+                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Poster</h3>
+                                        <p class="g-color--white-opacity">Rp.50.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Poster" id="r-po">
+                                            <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Poster" data-toggle="modal" data-target="#modal-poster" id="r-po">
                                                 Registrasi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" id="r-wd">
-                                                Informasi
                                             </a>
                                         </li>
                                     </ul>
@@ -379,7 +350,7 @@
                 <div class="col-md-4 g-margin-b-10--xs g-margin-b-0--lg">
                     <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
                         <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
-                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-archive"></i>
+                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-layout"></i>
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">UI/UX</h3>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>Workshop</li>
@@ -387,14 +358,11 @@
                             </ul>
                             <div class="g-margin-b-40--xs">
                                 <span class="s-plan-v1__price-mark">Rp.</span>
-                                <span class="s-plan-v1__price-tag">50.000,00</span>
+                                <span class="s-plan-v1__price-tag">50.000</span>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
-                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" id="r-gu">Informasi</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" id="r-gu">Registrasi</button>
+                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" data-toggle="modal" data-target="#modal-uiux" id="r-gu">Registrasi</button>
                                 </li>
                             </ul>
                         </div>
@@ -406,7 +374,7 @@
                 <div class="col-md-4 g-margin-b-10--xs g-margin-b-0--lg">
                     <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".2s">
                         <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
-                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-package"></i>
+                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-pencil-alt"></i>
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Guru TIK</h3>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>Workshop</li>
@@ -414,14 +382,11 @@
                             </ul>
                             <div class="g-margin-b-40--xs">
                                 <span class="s-plan-v1__price-mark">Rp.</span>
-                                <span class="s-plan-v1__price-tag">50.000,00</span>
+                                <span class="s-plan-v1__price-tag">50.000</span>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
-                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" id="r-gu">Informasi</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" id="r-gu">Registrasi</button>
+                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" data-toggle="modal" data-target="#modal-guru" id="r-gu">Registrasi</button>
                                 </li>
                             </ul>
                         </div>
@@ -433,7 +398,7 @@
                 <div class="col-md-4">
                     <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".3s">
                         <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
-                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-gift"></i>
+                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-microphone"></i>
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Teknologi</h3>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>Seminar</li>
@@ -441,14 +406,11 @@
                             </ul>
                             <div class="g-margin-b-40--xs">
                                 <span class="s-plan-v1__price-mark">Rp.</span>
-                                <span class="s-plan-v1__price-tag">50.000,00</span>
+                                <span class="s-plan-v1__price-tag">50.000</span>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
-                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" id="r-gu">Informasi</button>
-                                </li>
-                                <li>
-                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" id="r-gu">Registrasi</button>
+                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" data-toggle="modal" data-target="#modal-seminar" id="r-sem">Registrasi</button>
                                 </li>
                             </ul>
                         </div>
@@ -461,13 +423,15 @@
     <!-- End Plan -->
 
     <!-- Parallax -->
-    <div class="js__parallax-window" style="background: url(img/ml.jpg) 50% 0 no-repeat fixed;">
+    <div class="js__parallax-window" style="background: linear-gradient(
+        rgba(0, 220, 255, 0.45), 
+        rgba(0, 220, 255, 0.45)
+      ), url(img/mobile_legends.jpg) repeat; background-size: 300px 150px">
         <div class="container g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
             <div class="g-margin-b-80--xs">
                 <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white">e-Sports - Mobile Legends</h2>
             </div>
-            <a href="http://keenthemes.com/" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50" id="r-ml">Registrasi</a>
-            <a href="http://keenthemes.com/" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50" id="r-ml">Informasi</a>
+            <a class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50" data-toggle="modal" data-target="#modal-esport" id="r-ml">Registrasi</a>
         </div>
     </div>
     <!-- End Parallax -->
@@ -535,16 +499,14 @@
                     </div>
                     <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
                         <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Twitter</a></li>
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Facebook</a></li>
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Instagram</a></li>
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">YouTube</a></li>
+                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="mailto:it.fest.unj@gmail.com">it.fest.unj@gmail.com</a></li>
+                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="https://instagram.com/itexpo_unj">Instagram</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
                     </div>
-                    <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-                        <h3 class="g-font-size-18--xs g-color--white">Kasi Icon IT EXPO</h3>
+                    <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 text-right">
+                        <img src="img/logo-itexpo-white.png" alt="logo_itexpo_2018" height="150">
                     </div>
                 </div>
             </div>
@@ -567,6 +529,518 @@
         <!-- End Copyright -->
     </footer>
     <!--========== END FOOTER ==========-->
+
+    <!-- Modal Area -->
+    <!-- Modal Lomba Web Desain -->
+    <div class="modal fade bs-example-modal-lg" id="modal-web" tabindex="-1" role="dialog" aria-labelledby="modalWebLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Kompetisi</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Desain Web</h2>
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini diadakan untuk meningkatkan kreativitas generasi muda dalam bidang web dengan menggunakan
+                                metode studi kasus.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/web-desain-1.gif" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegWeb" id="reg-web">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Lomba Web Desain -->
+    <div class="modal fade" id="modalRegWeb" tabindex="-1" role="dialog" aria-labelledby="modalWebLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Daftar Desain Web</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-webdesain">
+                        <div class="g-margin-b-30--xs">
+                            <select class="form-control s-form-v4__input" name="is_team">
+                                <option value="" selected disabled>-- Tim/Individu --</option>
+                                <option value="1">Tim</option>
+                                <option value="0">Individu</option>
+                            </select>
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 1" name="team_member_1">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 2" name="team_member_2">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 3" name="team_member_3">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-web">Batal</button>
+                    <button type="submit" form="form-register-webdesain" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-web">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lomba Jaringan -->
+    <div class="modal fade bs-example-modal-lg" id="modal-jaringan" tabindex="-1" role="dialog" aria-labelledby="modalJaringanLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Kompetisi</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Jaringan</h2>
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini mengujikan kemampuan peserta dalam melakukan analisis, perancangan dan instalasi jaringan
+                                dengan standar CCNA R&S, CCNA Security dan LPIC Linux System Administration. Peserta akan diberikan permasalahan untuk diselesaikan menggunakan teknologi dan metode yang tepat serta membangun layanan jaringan sesuai kebutuhan.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/jaringan-1.gif" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegJaringan" id="reg-jaringan">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Lomba Jaringan -->
+    <div class="modal fade" id="modalRegJaringan" tabindex="-1" role="dialog" aria-labelledby="modalJaringanLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi Networking?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-jaringan">Batal</button>
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-jaringan">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lomba Short Movie -->
+    <div class="modal fade bs-example-modal-lg" id="modal-movie" tabindex="-1" role="dialog" aria-labelledby="modalMovieLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Kompetisi</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Short Movie</h2>
+                            <p class="g-font-size-14--sm">Not Yet Described.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/MM-1.gif" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegMovie" id="reg-movie">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Lomba Short Movie -->
+    <div class="modal fade" id="modalRegMovie" tabindex="-1" role="dialog" aria-labelledby="modalMovieLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-movie">
+                        <input type="hidden" class="form-control s-form-v4__input" name="is_team" value="1"/>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 1" name="team_member_1">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 2" name="team_member_2">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 3" name="team_member_3">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-movie">Batal</button>
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-movie">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lomba Poster -->
+    <div class="modal fade bs-example-modal-lg" id="modal-poster" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Kompetisi</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Desain Poster</h2>
+                            <p class="g-font-size-14--sm">Not Yet Described.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/desain-grafis-1.gif" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegPoster" id="reg-poster">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Lomba Desain Poster -->
+    <div class="modal fade" id="modalRegPoster" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi Desain Poster?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-poster">Batal</button>
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-poster">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Lomba e-Sport -->
+    <div class="modal fade bs-example-modal-lg" id="modal-esport" tabindex="-1" role="dialog" aria-labelledby="modalEsportLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Kompetisi</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">E-Sports - Mobile Legends</h2>
+                            <p class="g-font-size-14--sm">Not Yet Described.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/esport-1.gif" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegEsport" id="reg-esport">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Lomba esport -->
+    <div class="modal fade" id="modalRegEsport" tabindex="-1" role="dialog" aria-labelledby="modalEsportLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-esports">
+                        <input type="hidden" class="form-control s-form-v4__input" name="is_team" value="1"/>                        
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 1" name="team_member_1">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 2" name="team_member_2">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 3" name="team_member_3">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 4" name="team_member_4">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-esport">Batal</button>
+                    <button type="submit" form="form-register-esports" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-esport">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Workshop UI/UX -->
+    <div class="modal fade bs-example-modal-lg" id="modal-uiux" tabindex="-1" role="dialog" aria-labelledby="modalUiuxLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Workshop</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">UI/UX</h2>
+                            <p class="g-font-size-14--sm">Sebuah kegiatan pelatihan yang memperkenalkan user experience / user interface yang merupakan bagian dari rangkain IT EXPO UNJ 2018. Pelatihan ini untuk meningkatkan kemampuan dalam merancang user interface dan juga user experience,
+                                pelatihan ini di buka untuk umum yang tertarik dibidang tersebut.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/general.png" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegUiux" id="reg-uiux">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Workshop UI/UX -->
+    <div class="modal fade" id="modalRegUiux" tabindex="-1" role="dialog" aria-labelledby="modalUiuxLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <p>Apakah Anda yakin ingin melanjutkan registrasi Workshop UI/UX?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-uiux">Batal</button>
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-uiux">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Workshop Guru -->
+    <div class="modal fade bs-example-modal-lg" id="modal-guru" tabindex="-1" role="dialog" aria-labelledby="modalGuruLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Workshop</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Guru TIK</h2>
+                            <p class="g-font-size-14--sm">Sebuah kegiatan pelatihan guru TIK SMA/ SMK/ MA sederajat yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Pelatihan ini bertujuan untuk meningkatkan kemampuan guru TIK dalam proses pembelajaran untuk menghadapi
+                                kemajuan teknologi di era revolusi industri 4.0.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/general.png" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegGuru" id="reg-guru">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Workshop Guru TIK -->
+    <div class="modal fade" id="modalRegGuru" tabindex="-1" role="dialog" aria-labelledby="modalGuruLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <p>Apakah Anda yakin ingin melanjutkan registrasi Workshop Guru TIK?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-guru">Batal</button>
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-guru">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Seminar -->
+    <div class="modal fade bs-example-modal-lg" id="modal-seminar" tabindex="-1" role="dialog" aria-labelledby="modalSeminarLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Seminar</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
+                        <div class="col-sm-5 g-hor-centered-row__col">
+
+                            <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Guru TIK</h2>
+                            <p class="g-font-size-14--sm">Kegiatan puncak yang membahas perihal Teknologi Informasi serta pendidikan yang saling berkaitan untuk membantu dan meningkatkan kualitas pendidikan di Indonesia. Dengan menghadirkan pembicara yang mumpuni dibidangnya dengan
+                                harapan peserta seminar dapat melihat kondisi pendidikan saat ini dan dapat bersiap-siap menghadapi revolusi industri 4.0.</p>
+                        </div>
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-5 g-hor-centered-row__col">
+                            <img class="img-responsive" src="img/general.png" alt="Mockup Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegSeminar" id="reg-seminar">Registrasi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Registrasi Seminar -->
+    <div class="modal fade" id="modalRegSeminar" tabindex="-1" role="dialog" aria-labelledby="modalSeminarLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <p>Apakah Anda yakin ingin melanjutkan registrasi Seminar?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-seminar">Batal</button>
+                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-seminar">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Profil -->
+    <div class="modal fade" id="modal-profil" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Ubah Profil</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-profil">
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Lengkap" name="nama" required>
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="date" style="text-transform: uppercase" class="form-control s-form-v4__input" placeholder="* Tanggal Lahir" name="tanggal_lahir" required>
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nomor Telepon" name="kontak" required>
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Instansi/Universitas" name="instansi" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-profil" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal KTM -->
+    <div class="modal fade" id="modal-ktm" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah KTM</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="KTM Image">
+                    <hr/>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-ktm" enctype="multipart/form-data">
+                        <div class="g-margin-b-30--xs">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah KTM" name="file_ktm">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-ktm" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Foto Profil -->
+    <div class="modal fade" id="modal-foto" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah Foto Profil</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="Foto Profil">
+                    <hr/>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-foto">
+                        <div class="g-margin-b-30--xs">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah Foto Profil" name="file">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-foto" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Back To Top -->
     <a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
@@ -594,7 +1068,14 @@
     <script type="text/javascript" src="js/components/parallax.min.js"></script>
     <script type="text/javascript" src="js/components/portfolio-3-col.min.js"></script>
     <script type="text/javascript" src="js/components/wow.min.js"></script>
+    <script src="vendor/swal/sweetalert2.all.min.js"></script>
     <!--========== END JAVASCRIPTS ==========-->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/api/auth.js"></script>
+    <script type="text/javascript" src="js/handler/user-dash.js"></script>
+    <script type="text/javascript">
+        checkAuth('inside');
+    </script>
 
 </body>
 <!-- End Body -->
