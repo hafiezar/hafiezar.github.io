@@ -5,7 +5,7 @@ $(function(){
         }
     }
     const bindData = (user) => {
-        $("#foto-profil").html(`${DEV_API}/${user.foto}`);
+        $("#foto-profil").html(`${PROD_API}/${user.foto}`);
         $("#nama-user").html(user.nama);
         $("#email-user").html(user.email);
         $("#instansi-user").html(user.instansi);
@@ -27,7 +27,7 @@ $(function(){
     $("#form-profil").submit(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/edit/profile`,
+            url: `${PROD_API}/edit/profile`,
             method: 'POST',
             data: $(this).serialize(),
             headers: {
@@ -49,7 +49,7 @@ $(function(){
         let data = new FormData();
         data.append('file_ktm', $('#form-ktm [name="file_ktm"]')[0].files[0]);
         $.ajax({
-            url: `${DEV_API}/upload/ktm`,
+            url: `${PROD_API}/upload/ktm`,
             method: 'POST',
             data,
             headers: {

@@ -24,7 +24,7 @@ const checkAuth = (scope) => {
 const getUser = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `${DEV_API}/users`,
+            url: `${PROD_API}/users`,
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer '+localStorage.getItem(KEY),
