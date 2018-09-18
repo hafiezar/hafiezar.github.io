@@ -7,8 +7,7 @@ require './vendor/autoload.php';
 require './config/config.php';
 require './config/database.php';
 
- $app = new \Slim\App(['settings' => $config]);
-
+$app = new \Slim\App(['settings' => $config]);
 require './controllers/CommonController.php';
 require './controllers/AuthController.php';
 require './controllers/EventController.php';
