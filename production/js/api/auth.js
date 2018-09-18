@@ -10,7 +10,11 @@ $(function(){
     $('#form-register').submit(function(e){
         e.preventDefault();
         $.ajax({
+<<<<<<< HEAD
             url: `${PROD_API}/register`,
+=======
+            url: `${DEV_API}/register`,
+>>>>>>> 1b4a2c867ec2316aa385675563f2d426b3724d7e
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
@@ -27,7 +31,11 @@ $(function(){
     $('#form-login').submit(function(e){
         e.preventDefault();
         $.ajax({
+<<<<<<< HEAD
             url: `${PROD_API}/login`,
+=======
+            url: `${DEV_API}/login`,
+>>>>>>> 1b4a2c867ec2316aa385675563f2d426b3724d7e
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
@@ -45,7 +53,11 @@ $(function(){
     $("#logout").click(function(e){
         e.preventDefault();
         $.ajax({
+<<<<<<< HEAD
             url: `${PROD_API}/logout`,
+=======
+            url: `${DEV_API}/logout`,
+>>>>>>> 1b4a2c867ec2316aa385675563f2d426b3724d7e
             method: 'POST',
             success: function(response){
                 localStorage.removeItem(KEY);

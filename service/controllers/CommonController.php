@@ -3,13 +3,10 @@
 class CommonController{
     public function home($request, $response, $args) {
         $data = [
-            'name' => $args['name'],
+            'name' => 'Sample',
             'age' => 40
         ];
-
         return $response->withJson($data);
-        
-
     }
     public function save($request, $response, $args) {
         $data = $request->getParsedBody();
