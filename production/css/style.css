@@ -498,7 +498,6 @@ fieldset[disabled] .s-btn {
   box-shadow: none;
   border-radius: 0;
   letter-spacing: .1rem;
-  text-transform: uppercase;
   padding: 0 1.25rem 0 0;
   transition-duration: 300ms;
   transition-property: all;
@@ -507,18 +506,22 @@ fieldset[disabled] .s-btn {
 
 .s-form-v3__input::-webkit-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input::-moz-placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input:-ms-input-placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input::placeholder {
   color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
 }
 
 .s-form-v3__input:focus {
@@ -2374,23 +2377,3 @@ fieldset[disabled] .s-btn {
   background: #13b1cd;
 }
 
-
-.customForm::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #000000!important;
-}
-
-.customForm:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #000000!important;
-}
-
-.customForm::-ms-input-placeholder { /* Microsoft Edge */
-  color: #000000!important;
-}
-
-.customForm, input[type=text] {
-    border: none;
-    border-bottom: 1px solid #333333 !important;
-    color: #000!important;
-}
-
-/* Own Custom */

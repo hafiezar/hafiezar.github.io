@@ -9,16 +9,19 @@ $(function(){
 
     $('#form-register').submit(function(e){
         e.preventDefault();
+        $("#submit-registrasi").html('Loading...');
         $.ajax({
             url: `${PROD_API}/register`,
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
+                $("#submit-registrasi").html('Submit');
                 notification('success', response.message)
                 setTimeout(() => {
                     location.reload()
                 }, 2000);
             }, error: function(err){
+                $("#submit-registrasi").html('Submit');
                 notification('error', err.responseJSON.message);
             }
         })

@@ -1,244 +1,154 @@
--- phpMyAdmin SQL Dump
--- version 4.8.0.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Waktu pembuatan: 17 Sep 2018 pada 19.04
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 7.2.5
+/*
+ Navicat Premium Data Transfer
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+ Source Server         : localhost_3306
+ Source Server Type    : MySQL
+ Source Server Version : 100133
+ Source Host           : localhost:3306
+ Source Schema         : it_expo4
 
+ Target Server Type    : MySQL
+ Target Server Version : 100133
+ File Encoding         : 65001
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+ Date: 18/09/2018 22:22:07
+*/
 
---
--- Database: `it_expo`
---
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
 
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `eventx`
---
-
-CREATE TABLE `eventx` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+-- ----------------------------
+-- Table structure for eventx
+-- ----------------------------
+DROP TABLE IF EXISTS `eventx`;
+CREATE TABLE `eventx`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `mahasiswa_po` int(11) NOT NULL,
   `mahasiswa_ots` int(11) NOT NULL,
   `umum_po` int(11) NOT NULL,
   `umum_ots` int(11) NOT NULL,
-  `phase_1` datetime NOT NULL,
-  `phase_2` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `phase_1` datetime(0) NOT NULL,
+  `phase_2` datetime(0) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
---
--- Dumping data untuk tabel `eventx`
---
+-- ----------------------------
+-- Records of eventx
+-- ----------------------------
+INSERT INTO `eventx` VALUES (1, 'Networking', 30000, 80000, 30000, 80000, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `eventx` VALUES (2, 'Web Design', 100000, 0, 100000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `eventx` VALUES (3, 'Poster', 50000, 0, 50000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `eventx` VALUES (4, 'Short Movie', 100000, 0, 100000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `eventx` VALUES (5, 'E-Sport', 200000, 0, 200000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `eventx` VALUES (6, 'Seminar', 40000, 45000, 45000, 50000, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `eventx` VALUES (7, 'Workshop UI/UX', 200000, 0, 200000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
-INSERT INTO `eventx` (`id`, `name`, `mahasiswa_po`, `mahasiswa_ots`, `umum_po`, `umum_ots`, `phase_1`, `phase_2`) VALUES
-(1, 'Networking', 30000, 80000, 30000, 80000, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, 'Web Design', 100000, 0, 100000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(3, 'Poster', 50000, 0, 50000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 'Short Movie', 100000, 0, 100000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(5, 'E-Sport', 200000, 0, 200000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Seminar', 40000, 45000, 45000, 50000, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(7, 'Workshop UI/UX', 200000, 0, 200000, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `networkx`
---
-
-CREATE TABLE `networkx` (
-  `userx_eventx_id` int(11) NOT NULL,
+-- ----------------------------
+-- Table structure for network_optionx
+-- ----------------------------
+DROP TABLE IF EXISTS `network_optionx`;
+CREATE TABLE `network_optionx`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `questionx_id` int(11) NOT NULL,
-  `answer` text NOT NULL,
-  `file` varchar(255) NOT NULL,
-  `updated_at` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `options` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `is_true` int(11) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `network_optionx`
---
-
-CREATE TABLE `network_optionx` (
-  `id` int(11) NOT NULL,
-  `questionx_id` int(11) NOT NULL,
-  `options` varchar(255) NOT NULL,
-  `is_true` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `network_questionx`
---
-
-CREATE TABLE `network_questionx` (
-  `id` int(11) NOT NULL,
-  `type` enum('options','essay','file') NOT NULL,
-  `question` varchar(255) NOT NULL,
+-- ----------------------------
+-- Table structure for network_questionx
+-- ----------------------------
+DROP TABLE IF EXISTS `network_questionx`;
+CREATE TABLE `network_questionx`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` enum('options','essay','file') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `question` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `weight` int(11) NOT NULL,
-  `download_file` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `download_file` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `submitx`
---
-
-CREATE TABLE `submitx` (
+-- ----------------------------
+-- Table structure for networkx
+-- ----------------------------
+DROP TABLE IF EXISTS `networkx`;
+CREATE TABLE `networkx`  (
   `userx_eventx_id` int(11) NOT NULL,
-  `file` varchar(255) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `questionx_id` int(11) NOT NULL,
+  `answer` text CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `file` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `updated_at` date NOT NULL,
+  PRIMARY KEY (`userx_eventx_id`, `questionx_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Table structure for submitx
+-- ----------------------------
+DROP TABLE IF EXISTS `submitx`;
+CREATE TABLE `submitx`  (
+  `userx_eventx_id` int(11) NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `link` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  PRIMARY KEY (`userx_eventx_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
---
--- Struktur dari tabel `userx`
---
-
-CREATE TABLE `userx` (
-  `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
+-- ----------------------------
+-- Table structure for userx
+-- ----------------------------
+DROP TABLE IF EXISTS `userx`;
+CREATE TABLE `userx`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `tanggal_lahir` date NOT NULL,
   `is_mahasiswa` int(11) NOT NULL,
-  `instansi` varchar(255) NOT NULL,
-  `kontak` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
+  `instansi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `kontak` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_verified` int(11) NOT NULL,
-  `file_ktm` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL,
-  `verified_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `file_ktm` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `token_verifikasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `created_at` datetime(0) NOT NULL,
+  `verified_at` datetime(0) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE INDEX `email`(`email`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
--- --------------------------------------------------------
+-- ----------------------------
+-- Records of userx
+-- ----------------------------
+INSERT INTO `userx` VALUES (7, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'moctarafendi@gmail.com', '$2y$10$2FV6ZqyiAbWq6TjlPb3CrexYN6bp/n9VVFAWSbI6lJGneJ6T.cgTu', 1, 'D:\\xampp\\htdocs\\aan_dev\\service\\uploads\\ktm\\47d2438022942a57.jpeg', 'D:\\xampp\\htdocs\\aan_dev\\service\\uploads\\foto\\e5fc3b8efddad65e.jpeg', 'bW9jdGFyYWZlbmRpQGdtYWlsLmNvbWl0M3hwbzIwMTg=', '', '2018-09-18 06:52:21', '0000-00-00 00:00:00');
+INSERT INTO `userx` VALUES (18, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'aangohan2@gmail.com', '$2y$10$Hc3rkwaBh8/.M1Bvu9sfgeIOyX9L40TZvzWRX9C1rbaYLFi0TFvJu', 1, 'sffdsgdsg', '', '', '', '2018-09-18 01:46:39', '2018-09-18 01:46:54');
 
---
--- Struktur dari tabel `userx_eventx`
---
-
-CREATE TABLE `userx_eventx` (
-  `id` int(11) NOT NULL,
+-- ----------------------------
+-- Table structure for userx_eventx
+-- ----------------------------
+DROP TABLE IF EXISTS `userx_eventx`;
+CREATE TABLE `userx_eventx`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `userx_id` int(11) NOT NULL,
   `eventx_id` int(11) NOT NULL,
   `is_team` int(11) NOT NULL,
-  `team_name` varchar(255) NOT NULL,
-  `team_member_1` varchar(255) NOT NULL,
-  `team_member_2` varchar(255) NOT NULL,
-  `team_member_3` varchar(255) NOT NULL,
-  `team_member_4` varchar(255) NOT NULL,
-  `ign` varchar(255) NOT NULL,
-  `bukti_bayar` varchar(255) NOT NULL,
-  `payment_status` enum('not_paid','wait_verified','paid') NOT NULL,
-  `created_at` datetime NOT NULL,
-  `paid_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `team_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `team_member_1` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `team_member_2` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `team_member_3` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `team_member_4` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `ign` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `bukti_bayar` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `payment_status` enum('not_paid','wait_verified','paid') CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `created_at` datetime(0) NOT NULL,
+  `paid_at` datetime(0) NOT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
---
--- Indexes for dumped tables
---
+-- ----------------------------
+-- Records of userx_eventx
+-- ----------------------------
+INSERT INTO `userx_eventx` VALUES (13, 7, 7, 0, '', '', '', '', '', '', '', 'not_paid', '2018-09-18 01:44:14', '0000-00-00 00:00:00');
 
---
--- Indeks untuk tabel `eventx`
---
-ALTER TABLE `eventx`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `networkx`
---
-ALTER TABLE `networkx`
-  ADD PRIMARY KEY (`userx_eventx_id`,`questionx_id`) USING BTREE;
-
---
--- Indeks untuk tabel `network_optionx`
---
-ALTER TABLE `network_optionx`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `network_questionx`
---
-ALTER TABLE `network_questionx`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `submitx`
---
-ALTER TABLE `submitx`
-  ADD PRIMARY KEY (`userx_eventx_id`);
-
---
--- Indeks untuk tabel `userx`
---
-ALTER TABLE `userx`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`) USING BTREE;
-
---
--- Indeks untuk tabel `userx_eventx`
---
-ALTER TABLE `userx_eventx`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `eventx`
---
-ALTER TABLE `eventx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT untuk tabel `network_optionx`
---
-ALTER TABLE `network_optionx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `network_questionx`
---
-ALTER TABLE `network_questionx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `submitx`
---
-ALTER TABLE `submitx`
-  MODIFY `userx_eventx_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `userx`
---
-ALTER TABLE `userx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `userx_eventx`
---
-ALTER TABLE `userx_eventx`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET FOREIGN_KEY_CHECKS = 1;

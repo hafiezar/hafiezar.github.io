@@ -3,7 +3,9 @@
     "description": "IT Expo Web Service",
     "type": "composer",
     "require": {
-        "slim/slim": "^3.0"
+        "slim/slim": "^3.0",
+        "respect/validation": "^1.1",
+        "swiftmailer/swiftmailer": "^6.0"
     },
     "authors": [
         {
