@@ -20,3 +20,18 @@ const checkAuth = (scope) => {
         window.location = './login.html';
     }
 }
+
+const getUser = () => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${DEV_API}/users`,
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer '+localStorage.getItem(KEY),
+            },
+            success: function(res) {
+                resolve(res);
+            }
+        });
+    });
+}

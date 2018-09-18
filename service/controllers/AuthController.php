@@ -357,6 +357,13 @@ class AuthController{
 
     }
 
-        
-    
+    public function getUserByToken($request, $response, $args){
+        $db = Database::connect();
+        $headerValueArray = $request->getHeader('Authorization');
+        $apiToken = explode(' ', $headerValueArray[0]);
+        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
+        $query1->execute(["token" => $apiToken[1], ]);
+        $user = $query1->fetch(PDO::FETCH_OBJ);
+        return $response->withJson($user);
+    }
 }
