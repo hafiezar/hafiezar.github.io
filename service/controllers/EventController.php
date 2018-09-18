@@ -228,9 +228,15 @@ class EventController{
 
 
         public function getEvent($request, $response, $args){
-            $db = Database::connect();
-             // Find event based on user id
-                $id = $args['id'];
+                $db = Database::connect();
+                // Find event based on user token
+                $headerValueArray = $request->getHeader('Authorization');
+                $apiToken = explode(' ', $headerValueArray[0]);
+                $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+                $query1->execute(["token" => $apiToken[1], ]);
+                $user = $query1->fetch(PDO::FETCH_OBJ);
+
+                $id = $user->id;
                 $query = $db->prepare("SELECT u.*, e.* FROM userx_eventx u JOIN eventx e ON u.eventx_id = e.id WHERE u.userx_id=:id");
                 $status = $query->execute([
                     "id" => $id,
@@ -250,29 +256,94 @@ class EventController{
         }
 
         public function submitEvent($request, $response, $args){
-            // $db = Database::connect();
+                $db = Database::connect();
 
-            //  // Find event based on user id
-            //     $id = $args['id'];
-            //     $query = $db->prepare("SELECT u.*, e.name as event_name FROM userx_eventx u JOIN eventx e ON u.eventx_id = e.id WHERE userx_id=:id");
-            //     $status = $query->execute([
-            //         "id" => $id,
-            //     ]);
+                $headerValueArray = $request->getHeader('Authorization');
+                $apiToken = explode(' ', $headerValueArray[0]);
+                $query1 = $db->prepare("SELECT u.*, ue.id as id_userx_eventx, ue.eventx_id FROM userx u JOIN userx_eventx ue ON u.id = ue.userx_id WHERE u.token=:token");
+                $query1->execute(["token" => $apiToken[1], ]);
+                $user = $query1->fetch(PDO::FETCH_OBJ);
 
-            //     $user = $query->fetch(PDO::FETCH_OBJ);
+                $userx_eventx_id = $user->eventx_id;
+                $id_userx_eventx = $user->id_userx_eventx;
+                $file = "";
+                $link = "";
 
-            //     if($user){
-            //         return $response->withJson([
-            //             "message" => "Data Ditemukan",
-            //             "data" => $user
-            //         ],200);
-
-            //     }else{
-            //          return $response->withJson([
-            //             "message" => "Data Tidak Ditemukan"
-            //         ],400);
-            //     }   
                 
+
+                if($userx_eventx_id == 2 || $userx_eventx_id == 3){
+                   
+                     //move to folder
+                    $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\file';
+
+                    $uploadedFiles = $request->getUploadedFiles();
+
+                    // handle single input with single file upload
+                    $uploadedFile = $uploadedFiles['file'];     
+                    
+
+                    $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+                    $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
+                    $filename = sprintf('%s.%0.8s', $basename, $extension);
+
+                    $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
+
+                    //return $filename;
+
+                    
+                    $response->write('uploaded ' . $filename . '<br/>');
+
+                    $loc_file = $directory.'\\'.$filename;
+                    $data = [$id_userx_eventx, $loc_file];
+                    $sql = "INSERT INTO submitx (userx_eventx_id, file) VALUES (?,?)";
+                    $stmt= $db->prepare($sql);
+                    $status = $stmt->execute($data); 
+
+                     if($status){
+                        return $response->withJson([
+                                "message" => "Submit sukses",
+                            ],200);
+
+                     }else{
+                             return $response->withJson([
+                                "message" => "Submit gagal"
+                            ],400);
+                     }   
+
+                }else if($userx_eventx_id == 4){
+                     //move to folder
+
+                    $link = $request->getParsedBody()['link'];
+                    $linkValidator = v::url();
+                    $statusLink = $linkValidator->validate( $link);
+                     if(!$statusLink){
+                        return $response->withJson([
+                            "message" => "Format Url salah"
+                        ],400);
+                     }
+                    $data = [$id_userx_eventx, $link];
+                    $sql = "INSERT INTO submitx (userx_eventx_id, link) VALUES (?,?)";
+                    $stmt= $db->prepare($sql);
+                    $status = $stmt->execute($data); 
+
+                    if($status){
+                        return $response->withJson([
+                                "message" => "Submit sukses",
+                            ],200);
+
+                     }else{
+                             return $response->withJson([
+                                "message" => "Submit gagal"
+                            ],400);
+                     }   
+
+                }else{
+                         return $response->withJson([
+                                "message" => "Submit gagal, event tidak memerlukan data submit",
+                              
+                            ],400);
+
+                }
 
         }
 
