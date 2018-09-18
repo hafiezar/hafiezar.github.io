@@ -23,6 +23,7 @@
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
     <link href="vendor/swiper/swiper.min.css" rel="stylesheet" type="text/css" />
     <link href="vendor/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="vendor/swal/sweetalert2.min.css">
 
     <!-- Theme Styles -->
     <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -32,7 +33,7 @@
     <!-- <link href="css/theme/red.css" rel="stylesheet" type="text/css" /> -->
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="img/logo-itexpo-white.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -85,18 +86,11 @@
                 <div class="container-fluid">
                     <!-- Menu List -->
                     <ul class="list-unstyled s-header__nav-menu">
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index.html">Beranda</a></li>
+                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="index.html">Beranda</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_events.html">Kegiatan</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="about.html">Tentang Kami</a></li>
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Kontak Kami</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">SignIn/SignUp</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">SignOut</a></li>
-                    </ul>
-                    <!-- End Menu List -->
-                    <!-- Menu List -->
-                    <ul class="list-unstyled s-header__nav-menu">
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="user-dash.html">Kegiatan dan Pendaftaran</a></li>
-                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="verifikasi.html">Verifikasi Pembayaran</a></li>
+                        <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="#" id="logout">Keluar</a></li>
                     </ul>
                     <!-- End Menu List -->
                 </div>
@@ -106,19 +100,13 @@
             <!-- Action -->
             <ul class="list-inline s-header__action s-header__action--rb">
                 <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="#">
-                        <i class="g-padding-r-5--xs ti-facebook"></i>
-                        <span class="g-display-none--xs g-display-inline-block--sm">Facebook</span>
-                    </a>
-                </li>
-                <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="#">
+                    <a class="s-header__action-link" href="mailto:it.fest.unj@gmail.com">
                         <i class="g-padding-r-5--xs ti-twitter"></i>
-                        <span class="g-display-none--xs g-display-inline-block--sm">Twitter</span>
+                        <span class="g-display-none--xs g-display-inline-block--sm">it.fest.unj@gmail.com</span>
                     </a>
                 </li>
                 <li class="s-header__action-item">
-                    <a class="s-header__action-link" href="#">
+                    <a class="s-header__action-link" href="https://instagram.com/itexpo_unj">
                         <i class="g-padding-r-5--xs ti-instagram"></i>
                         <span class="g-display-none--xs g-display-inline-block--sm">Instagram</span>
                     </a>
@@ -141,9 +129,8 @@
                     <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Username</h1>
                     <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="nama-instansi">Asal Instansi</p>
                     <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email">email_user@itexpo.co.id</p>
-                    <a href="" class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Poster" data-toggle="modal" data-target="#modal-poster" id="r-po">
-                            Edit Profil
-                        </a>
+                    <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Profil" data-toggle="modal" data-target="#modal-profil" id="r-po">Edit Profil</a>
+                    <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="KTM" data-toggle="modal" data-target="#modal-ktm" id="r-po">Unggah KTM</a>
                 </div>
                 <div class="col-sm-3 g-text-left--xs g-margin-t-20--xs g-margin-t-0--md">
                     <table style="margin: 0 auto; width: 180px">
@@ -277,99 +264,205 @@
                     <!-- End Masonry Grid -->
                 </div>
             </div>
+
+
+
+            <!-- Kompetisi -->
+            <div class="container g-padding-y-80--xs g-padding-y-125--xsm" id="js__scroll-to-section">
+                <div class="row g-margin-b-30--xs">
+                    <div class="col-sm-4">
+                        <div class="g-margin-t-20--md g-margin-b-40--xs">
+                            <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">IT EXPO</p>
+                            <h2 class="g-font-size-32--xs g-font-size-36--md">Kompetisi</h2>
+                            <p>Are you masters of most current technologies?<br>Lets enjoy things that you know you're good at.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <!-- Kompetisi Gallery -->
+                        <div id="js__grid-portfolio-gallery" class="s-portfolio__paginations-v1 cbp">
+                            <!-- Item -->
+                            <div class="s-portfolio__item cbp-item motion graphic">
+                                <div class="s-portfolio__img-effect g-bg-color--sky-light">
+                                    <img src="img/web-desain-1.gif" style="max-height: 250px; width: auto; margin: auto" alt="Portfolio Image">
+                                </div>
+                                <div class="s-portfolio__caption-hover--cc">
+                                    <div class="g-margin-b-25--xs">
+                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Web</h3>
+                                        <p class="g-color--white-opacity">Rp.50.000</p>
+                                    </div>
+                                    <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
+                                        <li>
+                                            <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Web Desain" data-toggle="modal" data-target="#modal-web" id="r-wd">
+                                                Registrasi
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div class="s-portfolio__item cbp-item logos graphic">
+                                <div class="s-portfolio__img-effect g-bg-color--sky-light">
+                                    <img src="img/jaringan-1.gif" style="max-height: 250px; width: auto; margin: auto" alt="Portfolio Image">
+                                </div>
+                                <div class="s-portfolio__caption-hover--cc">
+                                    <div class="g-margin-b-25--xs">
+                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Jaringan</h3>
+                                        <p class="g-color--white-opacity">Rp.75.000</p>
+                                    </div>
+                                    <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
+                                        <li>
+                                            <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Jaringan" data-toggle="modal" data-target="#modal-jaringan" id="r-jar">
+                                                Registrasi
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div class="s-portfolio__item cbp-item logos motion">
+                                <div class="s-portfolio__img-effect g-bg-color--sky-light">
+                                    <img src="img/MM-1.gif" style="max-height: 250px; width: auto; margin: auto" alt="Portfolio Image">
+                                </div>
+                                <div class="s-portfolio__caption-hover--cc">
+                                    <div class="g-margin-b-25--xs">
+                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Short Movie</h3>
+                                        <p class="g-color--white-opacity">Rp.50.000</p>
+                                    </div>
+                                    <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
+                                        <li>
+                                            <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Short Movie" data-toggle="modal" data-target="#modal-movie" id="r-sm">
+                                                Registrasi
+                                            </a>
+                                        </li>
+                                        <li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Item -->
+                            <div class="s-portfolio__item cbp-item graphic g-bg-color--sky-light">
+                                <div class="s-portfolio__img-effect">
+                                    <img src="img/desain-grafis-1.gif" style="max-height: 250px; width: auto; margin: 0 auto" alt="Portfolio Image">
+                                </div>
+                                <div class="s-portfolio__caption-hover--cc">
+                                    <div class="g-margin-b-25--xs">
+                                        <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Poster</h3>
+                                        <p class="g-color--white-opacity">Rp.50.000</p>
+                                    </div>
+                                    <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
+                                        <li>
+                                            <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-padding-x-10--xs g-margin-b-5--xs" data-title="Poster" data-toggle="modal" data-target="#modal-poster" id="r-po">
+                                                Registrasi
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- End Item -->
+                        </div>
+                        <!-- End Kompetisi Gallery -->
+                    </div>
+                </div>
+            </div>
+            <!-- End Kompetisi -->
         </div>
     </div>
     <!-- End Mockup -->
 
-    <!-- Mockup -->
-    <div class="g-hor-divider__dashed--sky-light">
-        <div id="js__scroll-to-section" class="container g-padding-y-80--xs g-padding-y-125--xsm">
-            <div class="g-text-center--xs g-margin-b-100--xs">
-                <h3 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Registrasi</h3>
+    <!-- Plan -->
+    <div class="g-bg-color--sky-light">
+        <div class="container g-padding-y-80--xs g-padding-y-125--xsm">
+            <div class="g-text-center--xs g-margin-b-80--xs">
+                <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Seminar dan Workshop</p>
+                <h2 class="g-font-size-32--xs g-font-size-36--md">Expand Your Knowledge</h2>
             </div>
-            <div class="col-md-4 g-text-center--xs g-bg-color--white">
-                <h5 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Kompetisi</h5>
-                <form method="POST" action="">
-                    <div class="g-margin-b-30--xs">
-                        <select class="form-control s-form-v3__input customForm" name="jenis-lomba" placeholder="* Jenis Lomba">
-                            <option class="g-margin-b-10--xs" value="">Pilih Lomba</option>
-                            <option class="g-margin-b-10--xs" value="101">Desain Web</option>
-                            <option class="g-margin-b-10--xs" value="102">Jaringan</option>
-                            <option class="g-margin-b-10--xs" value="103">Short Movie</option>
-                            <option class="g-margin-b-10--xs" value="104">Desain Poster</option>
-                        </select>
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="asal-sekolah" placeholder="* Asal Sekolah">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <select class="form-control s-form-v3__input customForm" name="peserta" placeholder="* Pilih Tim/Individu">
-                            <option class="g-margin-b-10--xs" value="">Pilih Tim/Individu</option>
-                            <option class="g-margin-b-10--xs" value="TIM">Tim</option>
-                            <option class="g-margin-b-10--xs" value="INDIVIDU">Individu</option>
-                        </select>
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="nama" placeholder="* Nama">
-                        <small><i>Jika tim, masukkan nama ketua</i></small>
-                    </div>
 
-                    <div class="g-margin-b-30--xs">
-                        <input type="file" class="form-control s-form-v3__input customForm" name="kapel" placeholder="* Unggah Kartu Pelajar">
-                        <small><i>Unggah Kartu Pelajar</i></small>
+            <div class="row g-row-col--5">
+                <!-- Plan -->
+                <div class="col-md-4 g-margin-b-10--xs g-margin-b-0--lg">
+                    <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
+                        <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
+                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-layout"></i>
+                            <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">UI/UX</h3>
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                <li>Workshop</li>
+                                <li>Oleh : Hafiezar</li>
+                            </ul>
+                            <div class="g-margin-b-40--xs">
+                                <span class="s-plan-v1__price-mark">Rp.</span>
+                                <span class="s-plan-v1__price-tag">50.000</span>
+                            </div>
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                <li>
+                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" data-toggle="modal" data-target="#modal-uiux" id="r-gu">Registrasi</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="g-text-center--xs">
-                        <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Submit</button>
+                </div>
+                <!-- End Plan -->
+
+                <!-- Plan -->
+                <div class="col-md-4 g-margin-b-10--xs g-margin-b-0--lg">
+                    <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".2s">
+                        <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
+                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-pencil-alt"></i>
+                            <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Guru TIK</h3>
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                <li>Workshop</li>
+                                <li>Oleh : Hafiezar</li>
+                            </ul>
+                            <div class="g-margin-b-40--xs">
+                                <span class="s-plan-v1__price-mark">Rp.</span>
+                                <span class="s-plan-v1__price-tag">50.000</span>
+                            </div>
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                <li>
+                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" data-toggle="modal" data-target="#modal-guru" id="r-gu">Registrasi</button>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </form>
+                </div>
+                <!-- End Plan -->
+
+                <!-- Plan -->
+                <div class="col-md-4">
+                    <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".3s">
+                        <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
+                            <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-microphone"></i>
+                            <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Teknologi</h3>
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                <li>Seminar</li>
+                                <li>Oleh : Hafiezar</li>
+                            </ul>
+                            <div class="g-margin-b-40--xs">
+                                <span class="s-plan-v1__price-mark">Rp.</span>
+                                <span class="s-plan-v1__price-tag">50.000</span>
+                            </div>
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                                <li>
+                                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs" data-toggle="modal" data-target="#modal-seminar" id="r-sem">Registrasi</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Plan -->
             </div>
-            <div class="col-md-4 g-text-center--xs g-bg-color--white">
-                <h5 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">Seminar/Workshop</h5>
-                <form method="POST" action="">
-                    <div class="g-margin-b-30--xs">
-                        <select class="form-control s-form-v3__input customForm" name="jenis-lomba" placeholder="* Jenis Lomba">
-                                <option class="g-margin-b-10--xs" value="">Pilih Seminar/Workshop</option>
-                                <option class="g-margin-b-10--xs" value="201">Workshop UI/UX</option>
-                                <option class="g-margin-b-10--xs" value="202">Workshop Guru TIK</option>
-                                <option class="g-margin-b-10--xs" value="301">Seminar</option>
-                            </select>
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="nama" placeholder="* Nama">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="email" placeholder="* Email">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="hp" placeholder="* Nomor HP">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="instansi" placeholder="* Instansi">
-                    </div>
-                    <div class="g-text-center--xs">
-                        <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Submit</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-4 g-text-center--xs g-bg-color--white">
-                <h5 class="text-uppercase g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">e-Sport</h5>
-                <form method="POST" action="">
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="nama-ketua" placeholder="* Nama Ketua Tim">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="email" placeholder="* Email">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="hp" placeholder="* Nomor HP">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input customForm" name="ign" placeholder="* IGN / ID.Number">
-                    </div>
-                    <div class="g-text-center--xs">
-                        <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Submit</button>
-                    </div>
-                </form>
+        </div>
+    </div>
+    <!-- End Plan -->
+
+
+    <!-- Parallax -->
+    <div class="js__parallax-window" style="background: linear-gradient(
+        rgba(0, 220, 255, 0.45), 
+        rgba(0, 220, 255, 0.45)
+      ), url(img/mobile_legends.jpg) repeat; background-size: 300px 150px">
+        <div class="container g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
+            <div class="g-margin-b-80--xs">
+                <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white">e-Sports - Mobile Legends</h2>
             </div>
         </div>
     </div>
@@ -438,17 +531,14 @@
                     </div>
                     <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
                         <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Twitter</a></li>
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Facebook</a></li>
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Instagram</a></li>
-                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">YouTube</a></li>
+                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="mailto:it.fest.unj@gmail.com">it.fest.unj@gmail.com</a></li>
+                            <li><a class="g-font-size-15--xs g-color--white-opacity" href="https://instagram.com/itexpo_unj">Instagram</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
                     </div>
                     <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 text-right">
-                        <!-- <h3 class="g-font-size-18--xs g-color--white">Kasi Icon IT EXPO</h3> -->
-                        <img src="img/logo-itexpo-white.png" style="max-width:150px" />
+                        <img src="img/logo-itexpo-white.png" alt="logo_itexpo_2018" height="150">
                     </div>
                 </div>
             </div>
@@ -508,14 +598,34 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
+                    <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Daftar Desain Web</h4>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi Desain Web?</p>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-webdesain">
+                        <div class="g-margin-b-30--xs">
+                            <select class="form-control s-form-v4__input" name="is_team">
+                                <option value="" selected disabled>-- Tim/Individu --</option>
+                                <option value="1">Tim</option>
+                                <option value="0">Individu</option>
+                            </select>
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 1" name="team_member_1">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 2" name="team_member_2">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 3" name="team_member_3">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-web">Batal</button>
-                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-web">Submit</button>
+                    <button type="submit" form="form-register-webdesain" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-web">Submit</button>
                 </div>
             </div>
         </div>
@@ -559,7 +669,7 @@
                     <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi Jaringan?</p>
+                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi Networking?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-jaringan">Batal</button>
@@ -606,7 +716,21 @@
                     <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi Short Movie?</p>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-movie">
+                        <input type="hidden" class="form-control s-form-v4__input" name="is_team" value="1" />
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 1" name="team_member_1">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 2" name="team_member_2">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 3" name="team_member_3">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-movie">Batal</button>
@@ -700,11 +824,28 @@
                     <h4 class="text-uppercase g-font-size-20--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi</h4>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <p>Apakah Anda yakin ingin melanjutkan registrasi kompetisi e-Sports - Mobile Legends?</p>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-register-esports">
+                        <input type="hidden" class="form-control s-form-v4__input" name="is_team" value="1" />
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Tim" name="team_name">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 1" name="team_member_1">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 2" name="team_member_2">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 3" name="team_member_3">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Anggota Tim 4" name="team_member_4">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modal-esport">Batal</button>
-                    <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-esport">Submit</button>
+                    <button type="submit" form="form-register-esports" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-esport">Submit</button>
                 </div>
             </div>
         </div>
@@ -854,30 +995,72 @@
         </div>
     </div>
 
-    <!-- Modal Konfirmasi Pembayaran -->
-    <div class="modal fade" id="modal-konfirmasi" tabindex="-1" role="dialog" aria-labelledby="modalKonfirmasi">
+    <!-- Modal Profil -->
+    <div class="modal fade" id="modal-profil" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Konfirmasi Pembayaran</h4>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Ubah Profil</p>
                 </div>
-                <form method="POST" action="">
-                    <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-profil">
                         <div class="g-margin-b-30--xs">
-                            <input type="text" class="form-control s-form-v3__input customForm" placeholder="* Kode Pendaftaran">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Lengkap" name="nama">
                         </div>
                         <div class="g-margin-b-30--xs">
-                            <input type="file" class="form-control s-form-v3__input customForm" placeholder="* Unggah Bukti Pembayaran">
+                            <input type="email" class="form-control s-form-v4__input" placeholder="* Email" name="email">
                         </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nomor Telepon" name="kontak">
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <select class="form-control s-form-v4__input" name="is_mahasiswa">
+                                <option value="" selected disabled>-- Status --</option>
+                                <option value="1">Mahasiswa</option>
+                                <option value="0">Umum</option>
+                            </select>
+                        </div>
+                        <div class="g-margin-b-30--xs">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Instansi/Universitas" name="instansi">
+                        </div>
+                        <div class="row g-margin-b-50--xs">
+                            <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
+                                <input type="password" class="form-control s-form-v4__input" placeholder="* Password" name="password">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="password" class="form-control s-form-v4__input" placeholder="* Konfirmasi Password" name="password_confirm">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-profil" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--white-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal">Batal</button>
-                        <button type="submit" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" id="submit-konfirmasi">Submit</button>
-                    </div>
-                </form>
+    <!-- Modal KTM -->
+    <div class="modal fade" id="modal-ktm" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah KTM</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="KTM Image">
+                    <hr/>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-ktm">
+                        <div class="g-margin-b-30--xs">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah KTM" name="file">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-ktm" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
+                </div>
             </div>
         </div>
     </div>
@@ -908,7 +1091,13 @@
     <script type="text/javascript" src="js/components/parallax.min.js"></script>
     <script type="text/javascript" src="js/components/portfolio-3-col.min.js"></script>
     <script type="text/javascript" src="js/components/wow.min.js"></script>
+    <script src="vendor/swal/sweetalert2.all.min.js"></script>
     <!--========== END JAVASCRIPTS ==========-->
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/api/auth.js"></script>
+    <script type="text/javascript">
+        checkAuth('inside');
+    </script>
 
 </body>
 <!-- End Body -->

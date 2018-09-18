@@ -3,26 +3,35 @@
 class AuthController{
     public function login($request, $response, $args){
         $db = Database::connect();
+
+        // Find user based on Email
         $email = $request->getParsedBody()['email'];
         $query = $db->prepare("SELECT * FROM userx WHERE email=:email");
         $query->execute([
             "email" => $email,
         ]);
        
+        // Fetch the result of query before 
         $user = $query->fetch(\PDO::FETCH_OBJ);
+
+        // If user not exist in DB, return response
         if(!$user){
             return $response->withJson([
-                'message'=> 'Data Not Found'
+                'message'=> 'Data tidak ditemukan'
             ], 404);
         }
 
+        // If user exist, next step check the password of user input
         $passwordCheck = password_verify($request->getParsedBody()['password'], $user->password);
+
+        // If password doesn't match with any of record, return response
          if (!$passwordCheck) {
             return $response->withJson([
                 "message" => "Password Mismatched"
             ])->withStatus(401);
         }
         
+        // If password match, make generate TOKEN with base64 encode
         $token = base64_encode($user->email);
         $query2 = $db->prepare("UPDATE userx SET token=:token WHERE email=:email");
         $query2->execute([
@@ -31,7 +40,7 @@ class AuthController{
         ]);
 
         return $response->withJson([
-            "message" => "Authentication Success",
+            "message" => "Berhasil Masuk!",
             "data" => [
                 "token" => $token
             ]
@@ -46,25 +55,57 @@ class AuthController{
         $password = password_hash($pw, PASSWORD_DEFAULT);
         $nama= $request->getParsedBody()['nama'];
         $tanggal_lahir= $request->getParsedBody()['tanggal_lahir'];
+        $is_mahasiswa= $request->getParsedBody()['is_mahasiswa'];
         $instansi= $request->getParsedBody()['instansi'];
         $kontak= $request->getParsedBody()['kontak'];
+        $created_at= date('Y-m-d h:i:s');
 
-        $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak];
+        $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $is_mahasiswa, $created_at];
 
-        $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir,instansi, kontak, is_mahasiswa, created_at) VALUES (?,?,?,?,?,?,?,?)";
         $stmt= $db->prepare($sql);
-        $stmt->execute($data);
-
-        $status = $stmt->fetch(\PDO::FETCH_OBJ);
+        $status = $stmt->execute($data);  
 
         if($status){
             return $response->withJson([
-                "message" => "register sukses",
+                "message" => "Pendaftaran Berhasil",
             ], 201);
         }else{
             return $response->withJson([
-                "message" => "register gagal",
+                "message" => "Terjadi Kesalahan",
+                "data" => $status
             ], 400);
         }
+    }
+
+
+
+    public function logout($request, $response, $args){
+        $db = Database::connect();
+         // Get user based on token
+        $headerValueArray = $request->getHeader('Authorization');
+        $apiToken = explode(' ', $headerValueArray[0]);
+        $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+        $query1->execute(["token" => $apiToken[1], ]);
+        $user = $query1->fetch(PDO::FETCH_OBJ);
+       
+        $query2 = $db->prepare("UPDATE userx SET token=:token WHERE email=:email");
+        $status= $query2->execute([
+            "email" => $user->email,
+            "token" => ""
+        ]);
+
+        if($status){
+            return $response->withJson([
+            "message" => "Berhasil Keluar!",
+           
+        ],200);
+        }else{
+            return $response->withJson([
+            "message" => "Terjadi Kesalahan",
+           
+        ],400);
+        }
+        
     }
 }
