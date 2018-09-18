@@ -11,7 +11,7 @@
  Target Server Version : 100133
  File Encoding         : 65001
 
- Date: 18/09/2018 18:47:19
+ Date: 18/09/2018 22:22:07
 */
 
 SET NAMES utf8mb4;
@@ -109,6 +109,7 @@ CREATE TABLE `userx`  (
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `is_verified` int(11) NOT NULL,
   `file_ktm` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
+  `foto` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `token_verifikasi` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `created_at` datetime(0) NOT NULL,
@@ -120,8 +121,8 @@ CREATE TABLE `userx`  (
 -- ----------------------------
 -- Records of userx
 -- ----------------------------
-INSERT INTO `userx` VALUES (7, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'moctarafendi@gmail.com', '$2y$10$2FV6ZqyiAbWq6TjlPb3CrexYN6bp/n9VVFAWSbI6lJGneJ6T.cgTu', 1, '', 'bW9jdGFyYWZlbmRpQGdtYWlsLmNvbWl0M3hwbzIwMTg=', '', '2018-09-18 06:52:21', '0000-00-00 00:00:00');
-INSERT INTO `userx` VALUES (18, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'aangohan2@gmail.com', '$2y$10$Hc3rkwaBh8/.M1Bvu9sfgeIOyX9L40TZvzWRX9C1rbaYLFi0TFvJu', 1, 'sffdsgdsg', '', '', '2018-09-18 01:46:39', '2018-09-18 01:46:54');
+INSERT INTO `userx` VALUES (7, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'moctarafendi@gmail.com', '$2y$10$2FV6ZqyiAbWq6TjlPb3CrexYN6bp/n9VVFAWSbI6lJGneJ6T.cgTu', 1, 'D:\\xampp\\htdocs\\aan_dev\\service\\uploads\\ktm\\47d2438022942a57.jpeg', 'D:\\xampp\\htdocs\\aan_dev\\service\\uploads\\foto\\e5fc3b8efddad65e.jpeg', 'bW9jdGFyYWZlbmRpQGdtYWlsLmNvbWl0M3hwbzIwMTg=', '', '2018-09-18 06:52:21', '0000-00-00 00:00:00');
+INSERT INTO `userx` VALUES (18, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'aangohan2@gmail.com', '$2y$10$Hc3rkwaBh8/.M1Bvu9sfgeIOyX9L40TZvzWRX9C1rbaYLFi0TFvJu', 1, 'sffdsgdsg', '', '', '', '2018-09-18 01:46:39', '2018-09-18 01:46:54');
 
 -- ----------------------------
 -- Table structure for userx_eventx
