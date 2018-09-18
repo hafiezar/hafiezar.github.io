@@ -17,7 +17,7 @@ class AuthController{
         // If user not exist in DB, return response
         if(!$user){
             return $response->withJson([
-                'message'=> 'Data Not Found'
+                'message'=> 'Data tidak ditemukan'
             ], 404);
         }
 
@@ -40,7 +40,7 @@ class AuthController{
         ]);
 
         return $response->withJson([
-            "message" => "Authentication Success",
+            "message" => "Berhasil Masuk!",
             "data" => [
                 "token" => $token
             ]
@@ -55,25 +55,24 @@ class AuthController{
         $password = password_hash($pw, PASSWORD_DEFAULT);
         $nama= $request->getParsedBody()['nama'];
         $tanggal_lahir= $request->getParsedBody()['tanggal_lahir'];
+        $is_mahasiswa= $request->getParsedBody()['is_mahasiswa'];
         $instansi= $request->getParsedBody()['instansi'];
         $kontak= $request->getParsedBody()['kontak'];
-        $created_at= $request->getParsedBody()['created_at'];
+        $created_at= date('Y-m-d h:i:s');
 
-        $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $created_at];
+        $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $is_mahasiswa, $created_at];
 
-        $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir,instansi, kontak, created_at) VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir,instansi, kontak, is_mahasiswa, created_at) VALUES (?,?,?,?,?,?,?,?)";
         $stmt= $db->prepare($sql);
-         $status = $stmt->execute($data);
-
-      
+        $status = $stmt->execute($data);  
 
         if($status){
             return $response->withJson([
-                "message" => "register sukses",
+                "message" => "Pendaftaran Berhasil",
             ], 201);
         }else{
             return $response->withJson([
-                "message" => "register gagal",
+                "message" => "Terjadi Kesalahan",
                 "data" => $status
             ], 400);
         }
@@ -89,8 +88,6 @@ class AuthController{
         $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
         $query1->execute(["token" => $apiToken[1], ]);
         $user = $query1->fetch(PDO::FETCH_OBJ);
-
-
        
         $query2 = $db->prepare("UPDATE userx SET token=:token WHERE email=:email");
         $status= $query2->execute([
@@ -100,12 +97,12 @@ class AuthController{
 
         if($status){
             return $response->withJson([
-            "message" => "Logout Success",
+            "message" => "Berhasil Keluar!",
            
         ],200);
         }else{
             return $response->withJson([
-            "message" => "Logout Gagal",
+            "message" => "Terjadi Kesalahan",
            
         ],400);
         }
