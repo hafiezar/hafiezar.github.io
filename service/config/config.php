@@ -2,7 +2,8 @@
 if(isset($_SERVER['HTTP_ORIGIN'])){
     $http_origin = $_SERVER['HTTP_ORIGIN'];
     if ($http_origin == "http://ft.unj.ac.id"
-		|| $http_origin == "http://localhost"){
+		|| $http_origin == "http://localhost"
+		|| $http_origin == "https://hafiezar.github.io"){
         header("Access-Control-Allow-Origin: $http_origin");
     }
 	// header("Access-Control-Allow-Origin: *");

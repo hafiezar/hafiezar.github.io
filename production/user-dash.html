@@ -126,11 +126,12 @@
                     <img class="img-responsive" id="foto-profil" src="img/400x400/01.jpg" style="width: 200px; margin: auto; border-radius: 50%;" alt="Default Image">
                 </div>
                 <div class="col-sm-7 g-text-left--md">
-                    <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Username</h1>
-                    <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="nama-instansi">Asal Instansi</p>
-                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email">email_user@itexpo.co.id</p>
-                    <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Profil" data-toggle="modal" data-target="#modal-profil" id="r-po">Edit Profil</a>
-                    <a class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="KTM" data-toggle="modal" data-target="#modal-ktm" id="r-po">Unggah KTM</a>
+                    <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Nama Pengguna</h1>
+                    <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="instansi-user">Asal Instansi</p>
+                    <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email-user">email_user@itexpo.co.id</p>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Profil" data-toggle="modal" data-target="#modal-profil" id="edit-profil">Edit Profil</button>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="KTM" data-toggle="modal" data-target="#modal-ktm" id="unggah-ktm">Unggah KTM</button>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Foto Profil" data-toggle="modal" data-target="#modal-foto" id="unggah-foto">Unggah Foto</button>
                 </div>
                 <div class="col-sm-3 g-text-left--xs g-margin-t-20--xs g-margin-t-0--md">
                     <table style="margin: 0 auto; width: 180px">
@@ -1007,31 +1008,16 @@
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
                     <form class="center-block g-width-500--sm g-width-550--md" id="form-profil">
                         <div class="g-margin-b-30--xs">
-                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Lengkap" name="nama">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nama Lengkap" name="nama" required>
                         </div>
                         <div class="g-margin-b-30--xs">
-                            <input type="email" class="form-control s-form-v4__input" placeholder="* Email" name="email">
+                            <input type="date" style="text-transform: uppercase" class="form-control s-form-v4__input" placeholder="* Tanggal Lahir" name="tanggal_lahir" required>
                         </div>
                         <div class="g-margin-b-30--xs">
-                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nomor Telepon" name="kontak">
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Nomor Telepon" name="kontak" required>
                         </div>
                         <div class="g-margin-b-30--xs">
-                            <select class="form-control s-form-v4__input" name="is_mahasiswa">
-                                <option value="" selected disabled>-- Status --</option>
-                                <option value="1">Mahasiswa</option>
-                                <option value="0">Umum</option>
-                            </select>
-                        </div>
-                        <div class="g-margin-b-30--xs">
-                            <input type="text" class="form-control s-form-v4__input" placeholder="* Instansi/Universitas" name="instansi">
-                        </div>
-                        <div class="row g-margin-b-50--xs">
-                            <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-                                <input type="password" class="form-control s-form-v4__input" placeholder="* Password" name="password">
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="password" class="form-control s-form-v4__input" placeholder="* Konfirmasi Password" name="password_confirm">
-                            </div>
+                            <input type="text" class="form-control s-form-v4__input" placeholder="* Instansi/Universitas" name="instansi" required>
                         </div>
                     </form>
                 </div>
@@ -1053,14 +1039,38 @@
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
                     <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="KTM Image">
                     <hr/>
-                    <form class="center-block g-width-500--sm g-width-550--md" id="form-ktm">
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-ktm" enctype="multipart/form-data">
                         <div class="g-margin-b-30--xs">
-                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah KTM" name="file">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah KTM" name="file_ktm">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" form="form-ktm" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Foto Profil -->
+    <div class="modal fade" id="modal-foto" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah Foto Profil</p>
+                </div>
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
+                    <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="Foto Profil">
+                    <hr/>
+                    <form class="center-block g-width-500--sm g-width-550--md" id="form-foto">
+                        <div class="g-margin-b-30--xs">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah Foto Profil" name="file">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" form="form-foto" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs">Simpan</button>
                 </div>
             </div>
         </div>
@@ -1096,6 +1106,7 @@
     <!--========== END JAVASCRIPTS ==========-->
     <script type="text/javascript" src="js/config.js"></script>
     <script type="text/javascript" src="js/api/auth.js"></script>
+    <script type="text/javascript" src="js/handler/user-dash.js"></script>
     <script type="text/javascript">
         checkAuth('inside');
     </script>

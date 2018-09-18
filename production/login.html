@@ -142,6 +142,8 @@
                                 </div>
                                 <div class="g-text-center--xs">
                                     <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Masuk</button>
+                                    <br/>
+                                    <span class="g-font-size-16--xs g-color--white">Belum punya akun? <a href="login.html#registrasi" style="color: #FFF; text-decoration: underline;">Daftar di sini!</a></span>
                                 </div>
                             </form>
                         </div>
@@ -263,46 +265,43 @@
         <!-- End Clients -->
 
         <!-- Contact -->
-        <div class="s-promo-block-v7 g-bg-position--center g-bg-color--dark-light" style="background: url('img/1920x1080/05.jpg') no-repeat;">
+        <div id="registrasi" class="s-promo-block-v7 g-bg-position--center g-bg-color--dark-light" style="background: url('img/1920x1080/05.jpg') no-repeat;">
             <div class="g-container--sm g-padding-y-80--xs g-padding-y-125--xsm">
                 <div class="g-text-center--xs g-margin-b-60--xs">
                     <h2 class="text-uppercase g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">Registrasi</h2>
                 </div>
                 <form class="center-block g-width-500--sm g-width-550--md" id="form-register">
                     <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nama Lengkap" name="nama">
+                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nama Lengkap" name="nama" required>
                     </div>
                     <div class="g-margin-b-30--xs">
-                        <input type="date" class="form-control s-form-v3__input" placeholder="* Tanggal Lahir" name="tanggal_lahir">
+                        <input type="date" style="text-transform: uppercase" class="form-control s-form-v3__input" placeholder="* Tanggal Lahir" name="tanggal_lahir" required>
                     </div>
                     <div class="g-margin-b-30--xs">
-                        <select class="form-control s-form-v3__input" name="is_mahasiswa">
-                                <option value="" selected disabled>-- Status --</option>
+                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nomor Telepon" name="kontak" required>
+                    </div>
+                    <div class="row g-margin-b-50--xs">
+                        <div class="col-sm-4 g-margin-b-30--xs g-margin-b-0--md">
+                            <select class="form-control s-form-v3__input" name="is_mahasiswa" required>
+                                <option value="" selected disabled>-- STATUS --</option>
                                 <option value="1">Mahasiswa</option>
                                 <option value="0">Umum</option>
                             </select>
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Instansi/Universitas" name="instansi">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nomor Telepon" name="kontak">
-                    </div>
-                    <div class="g-margin-b-30--xs">
-
-                        <input type="email" class="form-control s-form-v3__input" placeholder="* Email" name="email">
-
+                        </div>
+                        <div class="col-sm-8 g-margin-b-30--xs g-margin-b-0--md">
+                            <input type="text" class="form-control s-form-v3__input" placeholder="* Instansi/Universitas" name="instansi" required>
+                        </div>
                     </div>
                     <div class="row g-margin-b-50--xs">
                         <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-                            <input type="password" class="form-control s-form-v3__input" placeholder="* Kata Sandi" name="password">
+                            <input type="email" class="form-control s-form-v3__input" placeholder="* Email" name="email" required>
                         </div>
-                        <div class="col-sm-6">
-                            <input type="password" class="form-control s-form-v3__input" placeholder="* Konfirmasi Kata Sandi" name="password_confirm">
+                        <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
+                            <input type="password" class="form-control s-form-v3__input" placeholder="* Kata Sandi" name="password" required>
                         </div>
                     </div>
                     <div class="g-text-center--xs">
-                        <button type="submit" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50 g-padding-x-70--xs g-margin-b-20--xs">Submit</button>
+                        <button type="submit" id="submit-registrasi" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50 g-padding-x-70--xs g-margin-b-20--xs">Submit</button>
                     </div>
                 </form>
             </div>
@@ -384,6 +383,14 @@
         <script type="text/javascript" src="js/api/auth.js"></script>
         <script type="text/javascript">
             checkAuth('outside');
+
+            $(function(){
+                $("[href='login.html#registrasi']").click(function(){
+                    $('html, body').animate({
+                        scrollTop: $("#registrasi").offset().top
+                    }, 1000);
+                })
+            })
         </script>
 
     </body>
