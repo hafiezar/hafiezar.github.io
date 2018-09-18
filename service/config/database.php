@@ -1,10 +1,12 @@
 <?php
 class Database {
 	private static $host 	    = "localhost";
-	private static $db 		    = "it_expo4";
+
+	private static $db 		    = "itexpo_2018";
+
 	private static $username	= "root";
     private static $password 	= "";
-    private static $driver 	= "mysql";
+    private static $driver 	    = "mysql";
 
 
     public static function connect(){

@@ -6,7 +6,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Megakit - HTML5 Theme</title>
+        <title>IT-Expo Pendidikan Informatika UNJ</title>
         <meta name="keywords" content="HTML5 Theme" />
         <meta name="description" content="Megakit - HTML5 Theme">
         <meta name="author" content="keenthemes.com">
@@ -21,13 +21,14 @@
         <link href="vendor/scrollbar/scrollbar.min.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/swiper/swiper.min.css" rel="stylesheet" type="text/css"/>
         <link href="vendor/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css"/>
-
+        <link rel="stylesheet" href="vendor/swal/sweetalert2.min.css">
+        
         <!-- Theme Styles -->
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/global/global.css" rel="stylesheet" type="text/css"/>
 
         <!-- Favicon -->
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="img/general.png" type="image/x-icon">
         <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     </head>
     <!-- End Head -->
@@ -77,7 +78,9 @@
                             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_events.html">Kegiatan</a></li>
                             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="about.html">Tentang Kami</a></li>
                             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Kontak Kami</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">Login</a></li>
+
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="login.html">Masuk / Daftar</a></li>
+
                         </ul>
                         <!-- End Menu List -->
                     </div>
@@ -94,19 +97,13 @@
                 <!-- Action -->
                 <ul class="list-inline s-header__action s-header__action--rb">
                     <li class="s-header__action-item">
-                        <a class="s-header__action-link" href="#">
-                            <i class="g-padding-r-5--xs ti-facebook"></i>
-                            <span class="g-display-none--xs g-display-inline-block--sm">Facebook</span>
-                        </a>
-                    </li>
-                    <li class="s-header__action-item">
-                        <a class="s-header__action-link" href="#">
+                        <a class="s-header__action-link" href="mailto:it.fest.unj@gmail.com">
                             <i class="g-padding-r-5--xs ti-twitter"></i>
-                            <span class="g-display-none--xs g-display-inline-block--sm">Twitter</span>
+                            <span class="g-display-none--xs g-display-inline-block--sm">it.fest.unj@gmail.com</span>
                         </a>
                     </li>
                     <li class="s-header__action-item">
-                        <a class="s-header__action-link" href="#">
+                        <a class="s-header__action-link" href="https://instagram.com/itexpo_unj">
                             <i class="g-padding-r-5--xs ti-instagram"></i>
                             <span class="g-display-none--xs g-display-inline-block--sm">Instagram</span>
                         </a>
@@ -131,18 +128,18 @@
                     <div class="col-lg-2"></div>
                     <div class="col-lg-4 col-sm-4 g-hor-centered-row__col">
                         <div class="wow fadeInUp" data-wow-duration=".3" data-wow-delay=".1s">
-                            <form class="center-block g-width-350--xs g-bg-color--white-opacity-lightest g-box-shadow__blueviolet-v1 g-padding-x-40--xs g-padding-y-60--xs g-radius--4">
+                            <form id="form-login" class="center-block g-width-350--xs g-bg-color--white-opacity-lightest g-box-shadow__blueviolet-v1 g-padding-x-40--xs g-padding-y-60--xs g-radius--4">
                                 <div class="g-text-center--xs g-margin-b-40--xs">
-                                    <h2 class="g-font-size-30--xs g-color--white">Login</h2>
+                                    <h2 class="g-font-size-30--xs g-color--white">Masuk</h2>
                                 </div>
                                 <div class="g-margin-b-30--xs">
-                                    <input type="email" class="form-control s-form-v3__input" placeholder="* Email">
+                                    <input type="email" class="form-control s-form-v3__input" placeholder="* Email" name="email">
                                 </div>
                                 <div class="g-margin-b-30--xs">
-                                    <input type="password" class="form-control s-form-v3__input" placeholder="* Password">
+                                    <input type="password" class="form-control s-form-v3__input" placeholder="* Kata Sandi" name="password">
                                 </div>
                                 <div class="g-text-center--xs">
-                                    <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Login</button>
+                                    <button type="submit" class="text-uppercase btn-block s-btn s-btn--md s-btn--white-bg g-radius--50 g-padding-x-50--xs g-margin-b-20--xs">Masuk</button>
                                 </div>
                             </form>
                         </div>
@@ -261,28 +258,37 @@
                 <div class="g-text-center--xs g-margin-b-60--xs">
                     <h2 class="text-uppercase g-font-weight--700 g-color--white-opacity g-letter-spacing--2 g-margin-b-25--xs">Registrasi</h2>
                 </div>
-                <form class="center-block g-width-500--sm g-width-550--md">
+                <form class="center-block g-width-500--sm g-width-550--md" id="form-register">
                     <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nama Lengkap">
+                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nama Lengkap" name="nama">
                     </div>
                     <div class="g-margin-b-30--xs">
-                        <input type="email" class="form-control s-form-v3__input" placeholder="* Email">
+                        <input type="date" class="form-control s-form-v3__input" placeholder="* Tanggal Lahir" name="tanggal_lahir">
                     </div>
                     <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Asal Sekolah">
+                        <select class="form-control s-form-v3__input" name="is_mahasiswa">
+                            <option value="" selected disabled>-- Status --</option>
+                            <option value="1">Mahasiswa</option>
+                            <option value="0">Umum</option>
+                        </select>
                     </div>
                     <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nama Sekolah">
+                        <input type="text" class="form-control s-form-v3__input" placeholder="* Instansi/Universitas" name="instansi">
                     </div>
                     <div class="g-margin-b-30--xs">
-                        <input type="text" class="form-control s-form-v3__input" placeholder="* Jurusan">
+                        <input type="text" class="form-control s-form-v3__input" placeholder="* Nomor Telepon" name="kontak">
+                    </div>
+                    <div class="g-margin-b-30--xs">
+
+                        <input type="email" class="form-control s-form-v3__input" placeholder="* Email" name="email">
+
                     </div>
                     <div class="row g-margin-b-50--xs">
                         <div class="col-sm-6 g-margin-b-30--xs g-margin-b-0--md">
-                            <input type="password" class="form-control s-form-v3__input" placeholder="* Password">
+                            <input type="password" class="form-control s-form-v3__input" placeholder="* Kata Sandi" name="password">
                         </div>
                         <div class="col-sm-6">
-                            <input type="password" class="form-control s-form-v3__input" placeholder="* Konfirmasi Password">
+                            <input type="password" class="form-control s-form-v3__input" placeholder="* Konfirmasi Kata Sandi" name="password_confirm">
                         </div>
                     </div>
                     <div class="g-text-center--xs">
@@ -310,16 +316,14 @@
                         </div>
                         <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Twitter</a></li>
-                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Facebook</a></li>
-                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">Instagram</a></li>
-                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="#">YouTube</a></li>
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="mailto:it.fest.unj@gmail.com">it.fest.unj@gmail.com</a></li>
+                                <li><a class="g-font-size-15--xs g-color--white-opacity" href="https://instagram.com/itexpo_unj">Instagram</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
                         </div>
                         <div class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1">
-                            <h3 class="g-font-size-18--xs g-color--white">Kasi Icon IT EXPO</h3>
+                            <img src="img/logo-itexpo-white.png" alt="logo_itexpo_2018" height="150">
                         </div>
                     </div>
                 </div>
@@ -364,7 +368,13 @@
         <script type="text/javascript" src="js/components/swiper.min.js"></script>
         <script type="text/javascript" src="js/components/portfolio-4-col-slider.min.js"></script>
         <script type="text/javascript" src="js/components/wow.min.js"></script>
+        <script src="vendor/swal/sweetalert2.all.min.js"></script>
         <!--========== END JAVASCRIPTS ==========-->
+		<script type="text/javascript" src="js/config.js"></script>
+        <script type="text/javascript" src="js/api/auth.js"></script>
+        <script type="text/javascript">
+            checkAuth('outside');
+        </script>
 
     </body>
     <!-- End Body -->
