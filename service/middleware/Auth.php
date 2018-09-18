@@ -15,7 +15,7 @@ class Auth
 			$response = $next($request, $response, $user);
 			return $response;
 		}else{
-			return $response->withJson(["message" => "Token Salah"]);
+			return $response->withJson(["message" => "Token Salah"],400);
 		}
 	}
 
