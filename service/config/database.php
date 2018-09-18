@@ -1,7 +1,7 @@
 <?php
 class Database {
 	private static $host 	    = "localhost";
-	private static $db 		    = "it_expo2";
+	private static $db 		    = "it_expo4";
 	private static $username	= "root";
     private static $password 	= "";
     private static $driver 	= "mysql";
@@ -10,4 +10,5 @@ class Database {
     public static function connect(){
         return new PDO("mysql:host=".self::$host.";dbname=".self::$db, self::$username, self::$password);
     }
+
 }

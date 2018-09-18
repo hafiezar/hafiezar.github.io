@@ -11,7 +11,7 @@
  Target Server Version : 100133
  File Encoding         : 65001
 
- Date: 18/09/2018 18:19:04
+ Date: 18/09/2018 18:47:19
 */
 
 SET NAMES utf8mb4;
@@ -115,13 +115,13 @@ CREATE TABLE `userx`  (
   `verified_at` datetime(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `email`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of userx
 -- ----------------------------
 INSERT INTO `userx` VALUES (7, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'moctarafendi@gmail.com', '$2y$10$2FV6ZqyiAbWq6TjlPb3CrexYN6bp/n9VVFAWSbI6lJGneJ6T.cgTu', 1, '', 'bW9jdGFyYWZlbmRpQGdtYWlsLmNvbWl0M3hwbzIwMTg=', '', '2018-09-18 06:52:21', '0000-00-00 00:00:00');
-INSERT INTO `userx` VALUES (14, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'aangohan2@gmail.com', '$2y$10$/R/FAwhcg.9OZC.jFZwLC.pWewysfWDxVdp5bhJSmmlO7tUnMtJyW', 1, 'sffdsgdsg', '', '', '2018-09-18 11:30:21', '0000-00-00 00:00:00');
+INSERT INTO `userx` VALUES (18, 'aan', '2018-01-01', 1, 'sma13', '08568056801', 'aangohan2@gmail.com', '$2y$10$Hc3rkwaBh8/.M1Bvu9sfgeIOyX9L40TZvzWRX9C1rbaYLFi0TFvJu', 1, 'sffdsgdsg', '', '', '2018-09-18 01:46:39', '2018-09-18 01:46:54');
 
 -- ----------------------------
 -- Table structure for userx_eventx
@@ -143,11 +143,11 @@ CREATE TABLE `userx_eventx`  (
   `created_at` datetime(0) NOT NULL,
   `paid_at` datetime(0) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of userx_eventx
 -- ----------------------------
-INSERT INTO `userx_eventx` VALUES (10, 7, 1, 0, '', '', '', '', '', '', '', 'not_paid', '2018-09-18 12:36:38', '0000-00-00 00:00:00');
+INSERT INTO `userx_eventx` VALUES (13, 7, 7, 0, '', '', '', '', '', '', '', 'not_paid', '2018-09-18 01:44:14', '0000-00-00 00:00:00');
 
 SET FOREIGN_KEY_CHECKS = 1;
