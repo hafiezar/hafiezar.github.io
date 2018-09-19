@@ -2,7 +2,7 @@ $(function(){
     const getEventsByUser = () => {
         return new Promise((resolve) => {
             $.ajax({
-                url: `${DEV_API}/event/user`,
+                url: `${API}/event/user`,
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer '+localStorage.getItem(KEY),
@@ -114,7 +114,7 @@ $(function(){
         var formData = new FormData($(this)[0]);
         formData.append('eventx_id', $.urlParam('event_id'));
         $.ajax({
-            url: `${DEV_API}/upload/bukti-bayar`,
+            url: `${API}/upload/bukti-bayar`,
             method: 'POST',
             data: formData,
             headers: {
