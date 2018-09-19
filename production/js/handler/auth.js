@@ -42,6 +42,9 @@ $(function(){
         $.ajax({
             url: `${DEV_API}/logout`,
             method: 'POST',
+            headers: {
+                'Authorization': 'Bearer '+localStorage.getItem(KEY),
+            },
             success: function(response){
                 localStorage.removeItem(KEY);
                 window.location = './login.html';

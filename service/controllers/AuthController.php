@@ -162,28 +162,27 @@ class AuthController{
                 // Create the Mailer using your created Transport
                 $mailer = new Swift_Mailer($transport);
                 // Create a message
-                $message = (new Swift_Message('Thank you for Registering UNJ IT EXPO 2018'))
-                  ->setFrom(['itexpo.unj@gmail.com' => 'UNJ IT EXPO 2018 Support'])
+                $message = (new Swift_Message('Thank you for Registering IT EXPO 2018'))
+                  ->setFrom(['itexpo.unj@gmail.com' => 'IT EXPO 2018'])
                   ->setTo([ $email => $nama])
                   // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
-                 ->setBody(
-                            '<html>' .
-                            ' <body>' .
-                            '  Klik link berikut untuk verifikasi ' .
-                            ' <a href="http:'.$hostPublic.'/verifikasi/' . $token . '">Link</a> '.
-                            '  Terima kasih' .
-                            ' </body>' .
-                            '</html>',
-                              'text/html' // Mark the content-type as HTML
+                 ->setBody('<html><body>
+                            Klik link di bawah ini untuk melakukan verifikasi: <br/>
+                            <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
+                            Terima kasih
+                            <br/><br/>
+                            Panitia IT Expo 2018
+                            </body></html>',
+                            'text/html' // Mark the content-type as HTML
                             );
                 // Send the message
                 $result = $mailer->send($message);
                 return $response->withJson([
-                    "message" => "register sukses, lakukan verifikasi",
+                    "message" => "Pendaftaran berhasil! Silakan melakukan verifikasi",
                 ], 201);
             }else{
                 return $response->withJson([
-                    "message" => "register gagal",
+                    "message" => "Pendaftaran gagal!",
                     "data" => $status
                 ], 400);
             }
@@ -235,18 +234,37 @@ class AuthController{
             "email" => $user->email,
             "verified_at" => $verified_at            
         ]);
+        $body = $response->getBody();
         if($status){
-            return $response->withJson([
-            "message" => "Verifikasi Success, silahkan login",
-            
-        ],200);
-        }else{
-            return $response->withJson([
-            "message" => "Verifikasi Gagal",            
-        ],400);
+            $body->write('
+                <div style="font-family: Sans-serif; text-align: center; margin-top: 100px;">
+                    <h1>Verifikasi Berhasil!</h1>
+                    Sedang mengalihkan...
+                    <br/><br/><br/>
+                    <p>&copy; IT Expo 2018 - Universitas Negeri Jakarta</p>
+                </div>
+                <script>
+                    setTimeout(() => {
+                        window.location = "'.Environment::getAppURL().'/login.html'.'"
+                    },1000);
+                </script>
+            ');
+            return $response;
         }
-        
-         
+        $body->write('
+            <div style="font-family: Sans-serif; text-align: center; margin-top: 100px;">
+                <h1>Verifikasi Gagal!</h1>
+                Silakan hubungi administrator.
+                <br/><br/><br/>
+                <p>&copy; IT Expo 2018 - Universitas Negeri Jakarta</p>
+            </div>
+            <script>
+                setTimeout(() => {
+                    window.location = "'.Environment::getAppURL().'/index.html'.'"
+                },1000);
+            </script>
+        ');
+        return $response;
     }
 
     public function uploadKtm($request, $response, $args){     
