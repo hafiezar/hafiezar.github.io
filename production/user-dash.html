@@ -481,7 +481,7 @@
         <div class="g-container--md">
             <!-- Swiper Clients -->
             <div class="s-swiper js__swiper-clients">
-                <div class="swiper-wrapper">
+                <div class="swiper-wrapper hide">
                     <div class="swiper-slide">
                         <div class="wow fadeIn" data-wow-duration=".3" data-wow-delay=".1s">
                             <img class="s-clients-v1" src="img/clients/01-dark.png" alt="Clients Logo">
@@ -588,6 +588,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegWeb" id="reg-web">Registrasi</button>
                 </div>
             </div>
@@ -656,6 +657,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                        <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegJaringan" id="reg-jaringan">Registrasi</button>
                 </div>
             </div>
@@ -703,6 +705,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegMovie" id="reg-movie">Registrasi</button>
                 </div>
             </div>
@@ -764,6 +767,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegPoster" id="reg-poster">Registrasi</button>
                 </div>
             </div>
@@ -811,6 +815,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegEsport" id="reg-esport">Registrasi</button>
                 </div>
             </div>
@@ -876,6 +881,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegUiux" id="reg-uiux">Registrasi</button>
                 </div>
             </div>
@@ -924,6 +930,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegGuru" id="reg-guru">Registrasi</button>
                 </div>
             </div>
@@ -972,6 +979,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegSeminar" id="reg-seminar">Registrasi</button>
                 </div>
             </div>
@@ -1036,8 +1044,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah KTM</p>
                 </div>
-                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="KTM Image">
+                <div class="modal-body g-margin-t-30--xs" style="overflow: hidden; text-align: center">
+                    <img src="img/general.png" id="image-ktm" style="max-height: 150px; width: auto; margin: auto" alt="KTM Image">
                     <hr/>
                     <form class="center-block g-width-500--sm g-width-550--md" id="form-ktm" enctype="multipart/form-data">
                         <div class="g-margin-b-30--xs">
@@ -1061,11 +1069,9 @@
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah Foto Profil</p>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden;">
-                    <img src="img/web-desain-1.gif" style="max-height: 150px; width: auto; margin: auto" alt="Foto Profil">
-                    <hr/>
                     <form class="center-block g-width-500--sm g-width-550--md" id="form-foto">
                         <div class="g-margin-b-30--xs">
-                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah Foto Profil" name="file">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah Foto Profil" name="foto">
                         </div>
                     </form>
                 </div>
