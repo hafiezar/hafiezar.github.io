@@ -10,6 +10,21 @@ require './config/database.php';
 
 $app = new \Slim\App(['settings' => $config]);
 
+function publicHost(){
+	$publicHost = '//localhost:8085/index.php';
+	return $publicHost;
+};
+
+function emailConfig(){
+	$config = ['username'=>'itexpo.unj@gmail.com', 'password'=>'12345expo;'];
+	return $config;
+}
+
+function directory(){
+	$directory = __DIR__ ;
+	return $directory;
+}
+
 
 
 require './controllers/CommonController.php';

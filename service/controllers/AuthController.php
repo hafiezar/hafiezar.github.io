@@ -3,13 +3,6 @@
 use Respect\Validation\Validator as v;
 use Slim\Http\UploadedFile;
 
-//
-//
-// $publicHost di function register ganti dengan host yg dipakai
-//
-//
-//
-
 class AuthController{
     public function login($request, $response, $args){
          $db = Database::connect();       
@@ -74,18 +67,14 @@ class AuthController{
         $db = Database::connect();        
         // Parsing all request
         $email= $request->getParsedBody()['email'];
-        $pw= $request->getParsedBody()['password'];
-        $file_ktm = "";        
+        $pw= $request->getParsedBody()['password'];    
         $nama= $request->getParsedBody()['nama'];
         $tanggal_lahir= $request->getParsedBody()['tanggal_lahir'];
         $instansi= $request->getParsedBody()['instansi'];
         $kontak= $request->getParsedBody()['kontak'];
         //$created_at= $request->getParsedBody()['created_at'];
-       $created_at= date("Y-m-d h:i:sa");
-       $is_mahasiswa = $request->getParsedBody()['is_mahasiswa'];
-       if($is_mahasiswa == 1){
-            $file_ktm = $request->getParsedBody()['file_ktm'];
-       }
+        $created_at= date("Y-m-d h:i:sa");
+        $is_mahasiswa = $request->getParsedBody()['is_mahasiswa'];
         
 
          // Validation
@@ -148,8 +137,8 @@ class AuthController{
             ],400);
          }
         if($statusEmail && $statusPassword && $statusNama && $statusTtl && $statusInstansi && $statusKontak && $statusCreated && $statusIsMahasiswa){
-            $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $is_mahasiswa, $created_at, $file_ktm];
-            $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir, instansi, kontak, is_mahasiswa, created_at, file_ktm) VALUES (?,?,?,?,?,?,?,?,?)";
+            $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $is_mahasiswa, $created_at];
+            $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir, instansi, kontak, is_mahasiswa, created_at) VALUES (?,?,?,?,?,?,?,?)";
             $stmt= $db->prepare($sql);
             $status = $stmt->execute($data);  
              // generate TOKEN with base64 encode for verification           
@@ -163,17 +152,21 @@ class AuthController{
                 ]);
                 //Create email verification
                 // sender setting
+                $emailConfig = emailConfig();
+                $username = $emailConfig['username'];
+                $password = $emailConfig['password'];
+
                 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                  ->setUsername('itexpo.unj@gmail.com')
-                  ->setPassword('12345expo;')
+                  ->setUsername($username)
+                  ->setPassword($password)
                 ;
                 //setting
-                $hostPublic= '//localhost:8085/index.php';
+                $hostPublic= publicHost();
                 // Create the Mailer using your created Transport
                 $mailer = new Swift_Mailer($transport);
                 // Create a message
-                $message = (new Swift_Message('Thx for Registering IT EXPO 2018'))
-                  ->setFrom(['aangohan2@gmail.com' => 'IT EXPO 2018 Support'])
+                $message = (new Swift_Message('Thank you for Registering UNJ IT EXPO 2018'))
+                  ->setFrom([$username => 'UNJ IT EXPO 2018 Support'])
                   ->setTo([ $email => $nama])
                   // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
                  ->setBody(
@@ -269,7 +262,7 @@ class AuthController{
         $user = $query1->fetch(PDO::FETCH_OBJ);
 
         //move to folder
-        $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\ktm';
+        $directory = directory().'\\uploads\\ktm';
 
         $uploadedFiles = $request->getUploadedFiles();
 
@@ -318,7 +311,7 @@ class AuthController{
         $user = $query1->fetch(PDO::FETCH_OBJ);
 
         //move to folder
-        $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\foto';
+        $directory = directory().'\\uploads\\foto';
 
         $uploadedFiles = $request->getUploadedFiles();
 
