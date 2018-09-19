@@ -31,7 +31,20 @@ const getUser = () => {
             },
             success: function(res) {
                 resolve(res);
+            }, error: function(err) {
+                localStorage.removeItem(KEY);
+                notification('error', 'User tidak ditemukan!');
+                window.location = 'login.html';
+                reject(err);
             }
         });
     });
+}
+
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results) {
+        return results[1];
+    }
+    return 0;
 }
