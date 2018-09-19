@@ -262,19 +262,14 @@ class AuthController{
         $directory = Environment::getDir('/ktm');
 
         $uploadedFiles = $request->getUploadedFiles();
-
+        
         // handle single input with single file upload
         $uploadedFile = $uploadedFiles['file_ktm'];     
-        
-
         $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
         $filename = sprintf('%s.%0.8s', $basename, $extension);
-
+        
         $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
-
-        //return $filename;
-
         
         $response->write('uploaded ' . $filename . '<br/>');
 
@@ -287,13 +282,13 @@ class AuthController{
         ]);
         if($status){
             return $response->withJson([
-            "message" => "Upload Success", 
-            "data" => $loc_file_ktm          
-        ],200);
+                "message" => "Upload Success", 
+                "data" => $loc_file_ktm          
+            ],200);
         }else{
             return $response->withJson([
-            "message" => "Upload Gagal",           
-        ],400);
+                "message" => "Upload Gagal",           
+            ],400);
         }     
 
     }
@@ -314,7 +309,6 @@ class AuthController{
 
         // handle single input with single file upload
         $uploadedFile = $uploadedFiles['foto'];     
-        
 
         $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
@@ -322,9 +316,6 @@ class AuthController{
 
         $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
 
-        //return $filename;
-
-        
         $response->write('uploaded ' . $filename . '<br/>');
 
         $loc_file_foto = Environment::getLink('/foto').'/'.$filename;
@@ -351,7 +342,7 @@ class AuthController{
         $db = Database::connect();
         $headerValueArray = $request->getHeader('Authorization');
         $apiToken = explode(' ', $headerValueArray[0]);
-        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
+        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, foto, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
         $query1->execute(["token" => $apiToken[1], ]);
         $user = $query1->fetch(PDO::FETCH_OBJ);
         return $response->withJson($user);

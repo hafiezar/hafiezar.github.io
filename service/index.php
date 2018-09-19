@@ -1,6 +1,9 @@
 <?php
 use \Psr\Http\Message\ServerRequestInterface as Request;
+
 use \Psr\Http\Message\ResponseInterface as Response;       
+
+use \Psr\Http\Message\ResponseInterface as Response;
 
 
 require './vendor/autoload.php';
@@ -17,6 +20,5 @@ require './controllers/ProfileController.php';
 require './middleware/Auth.php';
 
 require './routes.php';
-
 
 $app->run();

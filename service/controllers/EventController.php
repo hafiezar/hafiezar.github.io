@@ -273,6 +273,7 @@ class EventController{
                    
                      //move to folder
                     $directory = Environment::getDir('/file');
+
                     $uploadedFiles = $request->getUploadedFiles();
 
                     // handle single input with single file upload
