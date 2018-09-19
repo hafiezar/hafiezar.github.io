@@ -6,17 +6,9 @@ use Respect\Validation\Rules;
 
 class CommonController{
     public function home($request, $response, $args) {
-      
         $data = [
-            'name' => $args['name'],
-            'age' => 40,
-            
+            'name' => 'Test',
         ];
-        
-        return $response->withJson($data);
-    }
-    public function save($request, $response, $args) {
-        $data = $request->getParsedBody();
         return $response->withJson($data);
     }
     public function getUsers($request, $response, $args){
