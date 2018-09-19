@@ -21,11 +21,19 @@ $(function(){
         $("#form-profil [name='kontak']").val(user.kontak);
         $("#form-profil [name='instansi']").val(user.instansi);
     }
+    const checkKTM = (user) => {
+        $(".need-ktm-for-mahasiswa").hide();
+        if(user.is_mahasiswa && !user.file_ktm){
+            $(".need-ktm-for-mahasiswa").show();
+            $(".need-ktm-for-mahasiswa").next().hide();
+        }
+    }
     const bindProfile = async () => {
         const user = await getUser();
         bindKTM(user);
         bindData(user);
         bindEditProfile(user);
+        checkKTM(user);
     }
     bindProfile()
 
