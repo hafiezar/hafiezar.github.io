@@ -274,7 +274,7 @@ class EventController{
                 if($userx_eventx_id == 2 || $userx_eventx_id == 3){
                    
                      //move to folder
-                    $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\file';
+                    $directory = Environment::getDir('/file');
 
                     $uploadedFiles = $request->getUploadedFiles();
 
