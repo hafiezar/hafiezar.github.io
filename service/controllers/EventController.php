@@ -221,9 +221,7 @@ class EventController{
                 return $response->withJson([
                     "message" => "Anda sudah terdaftar pada event"
                 ], 400);
-            }
-
-            
+            }            
         }
 
 
@@ -293,7 +291,7 @@ class EventController{
                     
                     $response->write('uploaded ' . $filename . '<br/>');
 
-                    $loc_file = $directory.'\\'.$filename;
+                    $loc_file = Environment::getLink('/file').'/'.$filename;
                     $data = [$id_userx_eventx, $loc_file];
                     $sql = "INSERT INTO submitx (userx_eventx_id, file) VALUES (?,?)";
                     $stmt= $db->prepare($sql);
@@ -348,76 +346,105 @@ class EventController{
         }
 
 
-        public function submitBuktiBayar($request, $response, $args){
+        public function uploadBuktiBayar($request, $response, $args){
             
-                //  $buktiBayarValidator = v::stringType();
-                // $statusBuktiBayar = $buktiBayarValidator->validate( $bukti_bayar); 
+                $db = Database::connect();       
+        
+                $headerValueArray = $request->getHeader('Authorization');
+                $apiToken = explode(' ', $headerValueArray[0]);
+                $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+                $query1->execute(["token" => $apiToken[1], ]);
+                $user = $query1->fetch(PDO::FETCH_OBJ);
 
-                //  if(!$statusBuktiBayar){ 
-                //     return $response->withJson([
-                //         "message" => "Format bukti_bayar salah"
-                //     ],400);
-                //  }
+                //move to folder
+                $directory = Environment::getDir('/bukti_bayar');
 
-               
+                $uploadedFiles = $request->getUploadedFiles();
 
-                        // Create the Transport
-                        // $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                        //   ->setUsername('aangohan2@gmail.com')
-                        //   ->setPassword('hanamici')
-                        // ;
+                // handle single input with single file upload
+                $uploadedFile = $uploadedFiles['bukti_bayar'];     
+                
 
-                        // // Create the Mailer using your created Transport
-                        // $mailer = new Swift_Mailer($transport);
+                $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+                $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
+                $filename = sprintf('%s.%0.8s', $basename, $extension);
 
-                        // // Create a message
-                        // $message = (new Swift_Message('Wonderful Subject'))
-                        //   ->setFrom(['aangohan2@gmail.com' => 'John Doe'])
-                        //   ->setTo(['moctarafendi@gmail.com' => 'AMoctar'])
-                        //   ->setBody("<a href='localhost:8085/hello/aan'>Klik disini</a>")
-                        //   ;
+                $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
 
-                        // // Send the message
-                        // $result = $mailer->send($message);
+                //return $filename;
 
-                        // return $result;//pyment status wait for verified
+                
+                $response->write('uploaded ' . $filename . '<br/>');
+
+                $loc_bukti_bayar = Environment::getLink('/bukti_bayar').'/'.$filename;
+                //update db
+                $query2 = $db->prepare("UPDATE userx_eventx SET bukti_bayar=:loc_bukti_bayar, payment_status=:payment_status WHERE userx_id=:userx_id");
+                $status= $query2->execute([
+                    "userx_id" => $user->id,
+                    "loc_bukti_bayar" => $loc_bukti_bayar,
+                    "payment_status"=> "wait_verified"
+                ]);
+                if($status){
+                    return $response->withJson([
+                    "message" => "Upload Success", 
+                    "data" => $loc_bukti_bayar          
+                ],200);
+                }else{
+                    return $response->withJson([
+                    "message" => "Upload Gagal",           
+                ],400);
+                }    
 
         }
 
-         public function toPaid($request, $response, $args){
+        public function isPaid($request, $response, $args){
             
-                //  $buktiBayarValidator = v::stringType();
-                // $statusBuktiBayar = $buktiBayarValidator->validate( $bukti_bayar); 
+                $db = Database::connect();   
+                $id = $args['id'];  
+                $paid_at = date("Y-m-d h:i:sa");
+        
+                $query2 = $db->prepare("UPDATE userx_eventx SET  payment_status=:payment_status , paid_at=:paid_at WHERE id=:id");
+                $status= $query2->execute([
+                    "id" => $id,
+                    "payment_status"=> "paid",
+                    "paid_at" =>$paid_at
+                ]);
+                if($status){
+                    return $response->withJson([
+                    "message" => "Verifikasi sukses", 
+                    "data" => "paid"          
+                ],200);
+                }else{
+                    return $response->withJson([
+                    "message" => "Verifikasi Gagal",           
+                ],400);
+                }  
 
-                //  if(!$statusBuktiBayar){ 
-                //     return $response->withJson([
-                //         "message" => "Format bukti_bayar salah"
-                //     ],400);
-                //  }
+        }
 
-               
+        public function verificationEventPage($request, $response, $args){
+                $db = Database::connect();
+                // // Find event based on user token
+                // $headerValueArray = $request->getHeader('Authorization');
+                // $apiToken = explode(' ', $headerValueArray[0]);
+                // $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+                // $query1->execute(["token" => $apiToken[1], ]);
+                // $user = $query1->fetch(PDO::FETCH_OBJ);
 
-                        // Create the Transport
-                        // $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                        //   ->setUsername('aangohan2@gmail.com')
-                        //   ->setPassword('hanamici')
-                        // ;
-
-                        // // Create the Mailer using your created Transport
-                        // $mailer = new Swift_Mailer($transport);
-
-                        // // Create a message
-                        // $message = (new Swift_Message('Wonderful Subject'))
-                        //   ->setFrom(['aangohan2@gmail.com' => 'John Doe'])
-                        //   ->setTo(['moctarafendi@gmail.com' => 'AMoctar'])
-                        //   ->setBody("<a href='localhost:8085/hello/aan'>Klik disini</a>")
-                        //   ;
-
-                        // // Send the message
-                        // $result = $mailer->send($message);
-
-                        // return $result;//pyment status wait for verified
-
+                
+                $query = $db->prepare("SELECT u.*, ue.*, e.* FROM userx u LEFT JOIN userx_eventx ue ON u.id=ue.userx_id LEFT JOIN eventx e ON ue.eventx_id = e.id WHERE ue.payment_status='wait_verified' ");
+                $status = $query->execute();
+                $user = $query->fetchAll(PDO::FETCH_OBJ);
+                if($user){
+                    return $response->withJson([
+                        "message" => "Data Ditemukan",
+                        "data" => $user
+                    ],200);
+                }else{
+                     return $response->withJson([
+                        "message" => "Data Tidak Ditemukan"
+                    ],400);
+                }       
         }
    
 }
