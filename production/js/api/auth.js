@@ -1,17 +1,9 @@
 $(function(){
-    $.ajax({
-        url: PROD_API,
-        method: 'GET',
-        success: function(response){
-            console.log(response ? 'connected!' : 'error occured!');
-        }
-    })
-
     $('#form-register').submit(function(e){
         e.preventDefault();
         $("#submit-registrasi").html('Loading...');
         $.ajax({
-            url: `${PROD_API}/register`,
+            url: `${DEV_API}/register`,
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
@@ -30,7 +22,7 @@ $(function(){
     $('#form-login').submit(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${PROD_API}/login`,
+            url: `${DEV_API}/login`,
             method: 'POST',
             data: $(this).serialize(),
             success: function(response){
@@ -48,7 +40,7 @@ $(function(){
     $("#logout").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${PROD_API}/logout`,
+            url: `${DEV_API}/logout`,
             method: 'POST',
             success: function(response){
                 localStorage.removeItem(KEY);
