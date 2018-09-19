@@ -272,8 +272,7 @@ class EventController{
                 if($userx_eventx_id == 2 || $userx_eventx_id == 3){
                    
                      //move to folder
-                    $directory = directory().'\\uploads\\file';
-
+                    $directory = Environment::getDir('/file');
                     $uploadedFiles = $request->getUploadedFiles();
 
                     // handle single input with single file upload
@@ -291,7 +290,7 @@ class EventController{
                     
                     $response->write('uploaded ' . $filename . '<br/>');
 
-                    $loc_file = $directory.'\\'.$filename;
+                    $loc_file = Environment::getLink('/file').'/'.$filename;
                     $data = [$id_userx_eventx, $loc_file];
                     $sql = "INSERT INTO submitx (userx_eventx_id, file) VALUES (?,?)";
                     $stmt= $db->prepare($sql);
@@ -357,7 +356,7 @@ class EventController{
                 $user = $query1->fetch(PDO::FETCH_OBJ);
 
                 //move to folder
-                $directory = directory().'\\uploads\\bukti_bayar';
+                $directory = Environment::getDir('/bukti_bayar');
 
                 $uploadedFiles = $request->getUploadedFiles();
 
@@ -376,7 +375,7 @@ class EventController{
                 
                 $response->write('uploaded ' . $filename . '<br/>');
 
-                $loc_bukti_bayar = $directory.'\\'.$filename;
+                $loc_bukti_bayar = Environment::getLink('/bukti_bayar').'/'.$filename;
                 //update db
                 $query2 = $db->prepare("UPDATE userx_eventx SET bukti_bayar=:loc_bukti_bayar, payment_status=:payment_status WHERE userx_id=:userx_id");
                 $status= $query2->execute([

@@ -152,21 +152,18 @@ class AuthController{
                 ]);
                 //Create email verification
                 // sender setting
-                $emailConfig = emailConfig();
-                $username = $emailConfig['username'];
-                $password = $emailConfig['password'];
 
                 $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                  ->setUsername($username)
-                  ->setPassword($password)
+                  ->setUsername('itexpo.unj@gmail.com')
+                  ->setPassword('12345expo;')
                 ;
                 //setting
-                $hostPublic= publicHost();
+                $hostPublic= Environment::publicHost();
                 // Create the Mailer using your created Transport
                 $mailer = new Swift_Mailer($transport);
                 // Create a message
                 $message = (new Swift_Message('Thank you for Registering UNJ IT EXPO 2018'))
-                  ->setFrom([$username => 'UNJ IT EXPO 2018 Support'])
+                  ->setFrom(['itexpo.unj@gmail.com' => 'UNJ IT EXPO 2018 Support'])
                   ->setTo([ $email => $nama])
                   // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
                  ->setBody(
@@ -262,7 +259,7 @@ class AuthController{
         $user = $query1->fetch(PDO::FETCH_OBJ);
 
         //move to folder
-        $directory = directory().'\\uploads\\ktm';
+        $directory = Environment::getDir('/ktm');
 
         $uploadedFiles = $request->getUploadedFiles();
 
@@ -281,7 +278,7 @@ class AuthController{
         
         $response->write('uploaded ' . $filename . '<br/>');
 
-        $loc_file_ktm = $directory.'\\'.$filename;
+        $loc_file_ktm = Environment::getLink('/ktm').'/'.$filename;
         //update db
         $query2 = $db->prepare("UPDATE userx SET file_ktm=:loc_file_ktm WHERE email=:email");
         $status= $query2->execute([
@@ -311,7 +308,7 @@ class AuthController{
         $user = $query1->fetch(PDO::FETCH_OBJ);
 
         //move to folder
-        $directory = directory().'\\uploads\\foto';
+        $directory = Environment::getDir('/foto');
 
         $uploadedFiles = $request->getUploadedFiles();
 
@@ -330,7 +327,7 @@ class AuthController{
         
         $response->write('uploaded ' . $filename . '<br/>');
 
-        $loc_file_foto = $directory.'\\'.$filename;
+        $loc_file_foto = Environment::getLink('/foto').'/'.$filename;
         //update db
         $query2 = $db->prepare("UPDATE userx SET foto=:loc_file_foto WHERE email=:email");
         $status= $query2->execute([
