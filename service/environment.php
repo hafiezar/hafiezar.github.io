@@ -9,4 +9,11 @@ class Environment {
     public static function getLink($subDir){
         return self::$sharedLink.$subDir;
     }
+
+
+    public static function publicHost(){
+		$publicHost = '//localhost:8085/index.php';
+		return $publicHost;
+	}
+
 }
