@@ -269,26 +269,20 @@ class AuthController{
         $user = $query1->fetch(PDO::FETCH_OBJ);
 
         //move to folder
-        $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\ktm';
-
+        $directory = Environment::getDir('/ktm');
         $uploadedFiles = $request->getUploadedFiles();
-
+        
         // handle single input with single file upload
         $uploadedFile = $uploadedFiles['file_ktm'];     
-        
-
         $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
         $filename = sprintf('%s.%0.8s', $basename, $extension);
-
+        
         $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
-
-        //return $filename;
-
         
         $response->write('uploaded ' . $filename . '<br/>');
 
-        $loc_file_ktm = $directory.'\\'.$filename;
+        $loc_file_ktm = Environment::getLink('/ktm').'/'.$filename;
         //update db
         $query2 = $db->prepare("UPDATE userx SET file_ktm=:loc_file_ktm WHERE email=:email");
         $status= $query2->execute([
@@ -297,13 +291,13 @@ class AuthController{
         ]);
         if($status){
             return $response->withJson([
-            "message" => "Upload Success", 
-            "data" => $loc_file_ktm          
-        ],200);
+                "message" => "Upload Success", 
+                "data" => $loc_file_ktm          
+            ],200);
         }else{
             return $response->withJson([
-            "message" => "Upload Gagal",           
-        ],400);
+                "message" => "Upload Gagal",           
+            ],400);
         }     
 
     }
@@ -318,13 +312,12 @@ class AuthController{
         $user = $query1->fetch(PDO::FETCH_OBJ);
 
         //move to folder
-        $directory = 'D:\xampp\htdocs\aan_dev\service\uploads\foto';
+        $directory = Environment::getDir('/foto');
 
         $uploadedFiles = $request->getUploadedFiles();
 
         // handle single input with single file upload
         $uploadedFile = $uploadedFiles['foto'];     
-        
 
         $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
         $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
@@ -332,12 +325,9 @@ class AuthController{
 
         $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
 
-        //return $filename;
-
-        
         $response->write('uploaded ' . $filename . '<br/>');
 
-        $loc_file_foto = $directory.'\\'.$filename;
+        $loc_file_foto = Environment::getLink('/foto').'/'.$filename;
         //update db
         $query2 = $db->prepare("UPDATE userx SET foto=:loc_file_foto WHERE email=:email");
         $status= $query2->execute([
@@ -361,7 +351,7 @@ class AuthController{
         $db = Database::connect();
         $headerValueArray = $request->getHeader('Authorization');
         $apiToken = explode(' ', $headerValueArray[0]);
-        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
+        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, foto, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
         $query1->execute(["token" => $apiToken[1], ]);
         $user = $query1->fetch(PDO::FETCH_OBJ);
         return $response->withJson($user);
