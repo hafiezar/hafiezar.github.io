@@ -37,7 +37,24 @@ $(function(){
         })
     })
 
-    $("#logout").click(function(e){
+    $(document.body).on('click', '#logout', function(e){
+        e.preventDefault();
+        $.ajax({
+            url: `${API}/logout`,
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer '+localStorage.getItem(KEY),
+            },
+            success: function(response){
+                localStorage.removeItem(KEY);
+                window.location = './login.html';
+            }, error: function(err){
+                notification('error', err.responseJSON.message);
+            }
+        })
+    })
+
+    $(document.body).on('click', '#login-logout', function(e){
         e.preventDefault();
         $.ajax({
             url: `${API}/logout`,

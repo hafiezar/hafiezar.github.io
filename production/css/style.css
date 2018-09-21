@@ -131,7 +131,8 @@ i {
 p {
   font-size: 0.9375rem;
   font-weight: 300;
-  color: #656565;
+  /* color: #656565; */
+  color: #000;
   line-height: 1.6;
   margin-top: 0;
   margin-bottom: 1rem;
@@ -1015,6 +1016,25 @@ fieldset[disabled] .s-btn {
 
 .s-plan-v1__price-tag {
   font-size: 1.875rem;
+  line-height: 1.1;
+}
+
+/* Plan v2 */
+.s-plan-v2 {
+  box-shadow: 0.625rem 0.625rem 0.9375rem 0 rgba(31, 31, 31, 0.075);
+}
+
+.s-plan-v2__price-mark, .s-plan-v2__price-tag {
+  color: #13b1cd;
+}
+
+.s-plan-v2__price-mark {
+  font-size: 0.675rem;
+  vertical-align: top;
+}
+
+.s-plan-v2__price-tag {
+  font-size: 1.5rem;
   line-height: 1.1;
 }
 
@@ -2380,3 +2400,6 @@ fieldset[disabled] .s-btn {
   background: #13b1cd;
 }
 
+p small {
+  color: #FFF;
+}

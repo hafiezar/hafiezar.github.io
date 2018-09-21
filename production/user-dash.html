@@ -33,7 +33,7 @@
     <!-- <link href="css/theme/red.css" rel="stylesheet" type="text/css" /> -->
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="img/logo-itexpo-white.png" type="image/x-icon">
+    <link rel="shortcut icon" href="img/general.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
@@ -123,14 +123,14 @@
         <div class="g-container--md g-text-center--xs g-padding-y-150--xs">
             <div class="row">
                 <div class="col-sm-2">
-                    <img class="img-responsive" id="foto-profil" src="img/400x400/01.jpg" style="width: 200px; margin: auto; border-radius: 50%;" alt="Default Image">
+                    <img class="img-responsive" id="foto-profil" src="img/default_profile.png" style="width: 200px; margin: auto; border-radius: 50%;" alt="Default Image">
                 </div>
                 <div class="col-sm-7 g-text-left--md">
-                    <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs" id="nama-user">Nama Pengguna</h1>
+                    <h1 class="text-uppercase g-font-size-26--xs g-font-size-22--md g-font-size-36--lg g-color--white g-letter-spacing--1 g-margin-b-0--xs"><span id="nama-user">Nama Pengguna</span> <small id="status-akun" style="color: #FFF"></small></h1>
                     <p class="text-uppercase g-font-size-18--xs g-font-size-14--md g-font-size-20--lg g-font-weight--300 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="instansi-user">Asal Instansi</p>
                     <p class="g-font-size-18--xs g-font-size-14--md g-font-size-16--lg g-font-weight--100 g-color--white-opacity g-letter-spacing--1 g-margin-b-0--xs" id="email-user">email_user@itexpo.co.id</p>
-                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Profil" data-toggle="modal" data-target="#modal-profil" id="edit-profil">Edit Profil</button>
-                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="KTM" data-toggle="modal" data-target="#modal-ktm" id="unggah-ktm">Unggah KTM</button>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Profil" data-toggle="modal" data-target="#modal-profil" id="edit-profil">Ubah Profil</button>
+                    <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Kartu Pelajar" data-toggle="modal" data-target="#modal-ktm" id="unggah-ktm">Unggah Kartu Pelajar</button>
                     <button class="cbp-lightbox s-btn s-btn--xs s-btn--white-brd g-radius--50 g-margin-t-5--xs" style="padding: 0.25rem 0.75rem" data-title="Foto Profil" data-toggle="modal" data-target="#modal-foto" id="unggah-foto">Unggah Foto</button>
                 </div>
                 <div class="col-sm-3 g-text-left--xs g-margin-t-20--xs g-margin-t-0--md">
@@ -193,7 +193,8 @@
                             expo yang akan menyajikan pameran terhadap karya/produk IT yang diciptakan oleh mahasiswa Pendidikan Informatika UNJ serta dari beberapa perusahan yang bergerak dibidang IT, dan juga ditambah dengan seminar yang akan membahas
                             mengenai informasi IT terkini diikuti dengan tema yang akan diangkat.</p>
                         <p>Belum ada agenda? Lihat kegiatan IT Expo di sini!</p>
-                        <a href="#js__scroll-to-section"><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Kegiatan IT EXPO</button></a>
+                        <!-- <a href="#js__scroll-to-section"><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Kegiatan IT EXPO</button></a> -->
+                        <a href="./files/panduan.pdf"><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Unduh Panduan</button></a>
                     </div>
                 </div>
 
@@ -225,13 +226,14 @@
 
 
             <!-- Kompetisi -->
-            <div class="container g-padding-y-80--xs g-padding-y-125--xsm" id="js__scroll-to-section">
+            <div class="container g-padding-y-80--xs g-padding-y-125--xsm" id="kompetisi-pelajar">
                 <div class="row g-margin-b-30--xs">
                     <div class="col-sm-4">
                         <div class="g-margin-t-20--md g-margin-b-40--xs">
                             <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">IT EXPO</p>
                             <h2 class="g-font-size-32--xs g-font-size-36--md">Kompetisi</h2>
-                            <p>Ayo tantang dirimu dan ikuti kompetisi di IT-Expo!</p>
+                            <h3>Hanya untuk Pelajar!</h3>
+                            <h5>Ayo tantang dirimu dan ikuti kompetisi di IT-Expo!</h5>
                             <h6><label>Pendaftaran Lomba</label><br/>19 September 2018 - 26 Oktober 2018</h6>
                         </div>
                     </div>
@@ -247,7 +249,7 @@
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
                                         <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Web</h3>
-                                        <p class="g-color--white-opacity">Rp.100.000</p>
+                                        <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.100.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
@@ -266,7 +268,8 @@
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
                                         <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Jaringan</h3>
-                                        <p class="g-color--white-opacity">Rp.30.000</p>
+                                        <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.30.000 <small>(Tahap 1)</small>
+                                            <br/>Rp.80.000 <small>(Tahap 2)</small></p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
@@ -285,7 +288,7 @@
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
                                         <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Short Movie</h3>
-                                        <p class="g-color--white-opacity">Rp.100.000</p>
+                                        <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.100.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
@@ -305,7 +308,7 @@
                                 <div class="s-portfolio__caption-hover--cc">
                                     <div class="g-margin-b-25--xs">
                                         <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Poster</h3>
-                                        <p class="g-color--white-opacity">Rp.50.000</p>
+                                        <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.50.000</p>
                                     </div>
                                     <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                         <li>
@@ -344,11 +347,12 @@
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">UI/UX</h3>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>Workshop</li>
-                                <!-- <li>Oleh : Hafiezar</li> -->
+                                <!-- <li>Pembicara: <b></b></li> -->
                             </ul>
                             <div class="g-margin-b-40--xs">
                                 <span class="s-plan-v1__price-mark">Rp.</span>
                                 <span class="s-plan-v1__price-tag">200.000</span>
+                                <small class="">(Pre Order)</small>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
@@ -368,7 +372,7 @@
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Guru TIK</h3>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>Workshop</li>
-                                <!-- <li>Oleh : Hafiezar</li> -->
+                                <!-- <li>Pembicara: <b></b></li> -->
                             </ul>
                             <div class="g-margin-b-40--xs">
                                 <span class="s-plan-v1__price-mark"></span>
@@ -390,13 +394,19 @@
                         <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
                             <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-microphone"></i>
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Teknologi</h3>
-                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-20--xs">
                                 <li>Seminar</li>
-                                <!-- <li>Oleh : Hafiezar</li> -->
+                                <!-- <li>Pembicara: <b></b></li> -->
                             </ul>
-                            <div class="g-margin-b-40--xs">
+                            <div class="g-margin-b-10--xs">
                                 <span class="s-plan-v1__price-mark">Rp.</span>
-                                <span class="s-plan-v1__price-tag">45.000</span>
+                                <span class="s-plan-v1__price-tag" id="price-seminar-po">45.000</span>
+                                <small class="">(Pre Order)</small>
+                            </div>
+                            <div class="g-margin-b-10--xs">
+                                <span class="s-plan-v1__price-mark">Rp.</span>
+                                <span class="s-plan-v1__price-tag" id="price-seminar-ots">50.000</span>
+                                <small class="">(On The Spot)</small>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
@@ -414,13 +424,14 @@
 
 
     <!-- Parallax -->
-    <div class="js__parallax-window" style="background: linear-gradient(
+    <!-- class="js__parallax-window" -->
+    <div style="background: linear-gradient(
         rgba(0, 220, 255, 0.45), 
         rgba(0, 220, 255, 0.45)
       ), url(img/mobile_legends.jpg) repeat; background-size: 300px 150px">
         <div class="container g-text-center--xs g-padding-y-80--xs g-padding-y-125--sm">
             <div class="g-margin-b-80--xs">
-                <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white">e-Sports - Mobile Legends</h2>
+                <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white">E-Sports - Mobile Legends</h2>
                 <div class="s-btn" style="cursor : default; background-color: white ;border-radius: 50px; padding: 10px 30px;">
                     <span class="s-plan-v1__price-mark">Rp.</span>
                     <span class="s-plan-v1__price-tag">200.000</span>
@@ -540,7 +551,7 @@
                         <div class="col-sm-5 g-hor-centered-row__col">
 
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Desain Web</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini diadakan untuk meningkatkan kreativitas generasi muda dalam bidang web dengan menggunakan
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini diadakan untuk meningkatkan kreativitas generasi muda dalam bidang web dengan menggunakan
                                 metode studi kasus.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Technical Meeting</label><br/>27 Oktober 2018</h6>
@@ -555,7 +566,7 @@
                     <p>CP: +6285799503840 (Aris)</p>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah Kartu Pelajar terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegWeb" id="reg-web">Registrasi</button>
                 </div>
             </div>
@@ -594,7 +605,7 @@
                         <div class="col-sm-5 g-hor-centered-row__col">
 
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Jaringan</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini mengujikan kemampuan peserta dalam melakukan analisis, perancangan dan instalasi jaringan
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini mengujikan kemampuan peserta dalam melakukan analisis, perancangan dan instalasi jaringan
                                 dengan standar CCNA R&S, CCNA Security dan LPIC Linux System Administration. Peserta akan diberikan permasalahan untuk diselesaikan menggunakan teknologi dan metode yang tepat serta membangun layanan jaringan sesuai kebutuhan.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Kisi-kisi Penyisihan</label><br/>5 November 2018</h6>
@@ -611,7 +622,7 @@
                     <p>CP: +6281316486786 (Swardi)</p>
                 </div>
                 <div class="modal-footer">
-                        <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
+                        <span class="need-ktm-for-mahasiswa">Anda harus mengunggah Kartu Pelajar terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegJaringan" id="reg-networking">Registrasi</button>
                 </div>
             </div>
@@ -649,7 +660,7 @@
                     <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
                         <div class="col-sm-5 g-hor-centered-row__col">
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Short Movie</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang Film Pendek.</p><h5>Alur Kompetisi</h5>
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang Film Pendek.</p><h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Pengumpulan Film Gelombang I</label><br/>1 - 8 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Pengumpulan Film Gelombang II</label><br/>9 - 15 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Pengumuman</label><br/> 22 November 2018</h6>
@@ -663,7 +674,7 @@
                     <p>CP: +6283113536244 (Dimas)</p>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah Kartu Pelajar terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegMovie" id="reg-movie">Registrasi</button>
                 </div>
             </div>
@@ -747,7 +758,7 @@
                     <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
                         <div class="col-sm-5 g-hor-centered-row__col">
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Desain Poster</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang desain poster.</p>
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang desain poster.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Pengumpulan Karya</label><br/>15 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Pengumuman</label><br/>29 November 2018</h6>
@@ -760,7 +771,7 @@
                     <p>CP: +6289615673563 (Tamia)</p>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
+                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah Kartu Pelajar terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegPoster" id="reg-poster">Registrasi</button>
                 </div>
             </div>
@@ -798,7 +809,7 @@
                     <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
                         <div class="col-sm-5 g-hor-centered-row__col">
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">E-Sport - Mobile Legends</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan untuk menguji kemampuan para atlet muda e-sport Indonesia khusunya didaerah jakarta dan sekitarnya.</p>
+                            <p class="g-font-size-14--sm">Kompetisi ini dilaksanakan untuk menguji kemampuan para atlet muda e-sport Indonesia khusunya didaerah jakarta dan sekitarnya.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Penyisihan</label><br/>19 - 26 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Perempat Final</label><br/>27 November 2018</h6>
@@ -813,7 +824,6 @@
                     <p>CP: +6287738885597 (Aldo)</p>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegEsport" id="reg-esport">Registrasi</button>
                 </div>
             </div>
@@ -898,7 +908,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegUiux" id="reg-uiux">Registrasi</button>
                 </div>
             </div>
@@ -950,7 +959,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegGuru" id="reg-guru">Registrasi</button>
                 </div>
             </div>
@@ -1001,7 +1009,6 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <span class="need-ktm-for-mahasiswa">Anda harus mengunggah KTM terlebih dahulu</span>
                     <button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-font-size-14--xs g-padding-x-20--xs" data-dismiss="modal" data-toggle="modal" data-target="#modalRegSeminar" id="reg-seminar">Registrasi</button>
                 </div>
             </div>
@@ -1058,20 +1065,20 @@
         </div>
     </div>
 
-    <!-- Modal KTM -->
+    <!-- Modal Kartu Pelajar -->
     <div class="modal fade" id="modal-ktm" tabindex="-1" role="dialog" aria-labelledby="modalPosterLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah KTM</p>
+                    <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-0--xs">Unggah Kartu Pelajar</p>
                 </div>
                 <div class="modal-body g-margin-t-30--xs" style="overflow: hidden; text-align: center">
-                    <img src="img/general.png" id="image-ktm" style="max-height: 150px; width: auto; margin: auto" alt="KTM Image">
+                    <img src="img/general.png" id="image-ktm" style="max-height: 150px; width: auto; margin: auto" alt="Kartu Pelajar Image">
                     <hr/>
                     <form class="center-block g-width-500--sm g-width-550--md" id="form-ktm" enctype="multipart/form-data">
                         <div class="g-margin-b-30--xs">
-                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah KTM" name="file_ktm">
+                            <input type="file" class="form-control s-form-v4__input" placeholder="* Unggah Kartu Pelajar" name="file_ktm">
                         </div>
                     </form>
                 </div>

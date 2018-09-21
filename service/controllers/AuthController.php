@@ -74,7 +74,7 @@ class AuthController{
         $kontak= $request->getParsedBody()['kontak'];
         //$created_at= $request->getParsedBody()['created_at'];
         $created_at= date("Y-m-d h:i:sa");
-        $is_mahasiswa = $request->getParsedBody()['is_mahasiswa'];
+        $status_akun = $request->getParsedBody()['status_akun'];
         
 
          // Validation
@@ -123,10 +123,10 @@ class AuthController{
             ],400);
          }
         $isMahasiswaValidator = v::digit()->length(1);
-        $statusIsMahasiswa = $isMahasiswaValidator->validate( $is_mahasiswa);
+        $statusIsMahasiswa = $isMahasiswaValidator->validate( $status_akun);
          if(!$statusKontak){
             return $response->withJson([
-                "message" => "Format is_mahasiswa salah"
+                "message" => "Format status_akun salah"
             ],400);
          }
         $createdValidator = v::date();
@@ -137,8 +137,8 @@ class AuthController{
             ],400);
          }
         if($statusEmail && $statusPassword && $statusNama && $statusTtl && $statusInstansi && $statusKontak && $statusCreated && $statusIsMahasiswa){
-            $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $is_mahasiswa, $created_at];
-            $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir, instansi, kontak, is_mahasiswa, created_at) VALUES (?,?,?,?,?,?,?,?)";
+            $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $status_akun, $created_at];
+            $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir, instansi, kontak, status_akun, created_at) VALUES (?,?,?,?,?,?,?,?)";
             $stmt= $db->prepare($sql);
             $status = $stmt->execute($data);  
              // generate TOKEN with base64 encode for verification           
@@ -150,33 +150,63 @@ class AuthController{
                     "email" => $email,
                     "token" => $token
                 ]);
+
+                // Create the Transport
+                $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
+                  ->setUsername('itexpo.unj@gmail.com')
+                  ->setPassword('12345expo;')
+                  ;
+
+                //setting
+                $hostPublic= Environment::publicHost();
+
+
+                // Create the Mailer using your created Transport
+                $mailer = Swift_Mailer::newInstance($transport);
+
+                // Create a message
+                $message = Swift_Message::newInstance('Thank you for Registering IT EXPO 2018')
+                  ->setFrom(array('itexpo.unj@gmail.com' => 'IT EXPO 2018'))
+                  ->setTo(array($email => $nama))
+                  ->setBody('<html><body>
+                                        Klik link di bawah ini untuk melakukan verifikasi: <br/>
+                                        <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
+                                        Terima kasih
+                                        <br/><br/>
+                                        Panitia IT Expo 2018
+                                        </body></html>',
+                                        'text/html' // Mark the content-type as HTML
+                                        );
+
+                // Send the message
+                $result = $mailer->send($message);
                 //Create email verification
                 // sender setting
 
-                $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                  ->setUsername('itexpo.unj@gmail.com')
-                  ->setPassword('12345expo;')
-                ;
-                //setting
-                $hostPublic= Environment::publicHost();
-                // Create the Mailer using your created Transport
-                $mailer = new Swift_Mailer($transport);
-                // Create a message
-                $message = (new Swift_Message('Thank you for Registering IT EXPO 2018'))
-                  ->setFrom(['itexpo.unj@gmail.com' => 'IT EXPO 2018'])
-                  ->setTo([ $email => $nama])
-                  // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
-                 ->setBody('<html><body>
-                            Klik link di bawah ini untuk melakukan verifikasi: <br/>
-                            <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
-                            Terima kasih
-                            <br/><br/>
-                            Panitia IT Expo 2018
-                            </body></html>',
-                            'text/html' // Mark the content-type as HTML
-                            );
-                // Send the message
-                $result = $mailer->send($message);
+                // $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+                //   ->setUsername('itexpo.unj@gmail.com')
+                //   ->setPassword('12345expo;')
+                // ;
+                // //setting
+                // $hostPublic= Environment::publicHost();
+                // // Create the Mailer using your created Transport
+                // $mailer = new Swift_Mailer($transport);
+                // // Create a message
+                // $message = (new Swift_Message('Thank you for Registering IT EXPO 2018'))
+                //   ->setFrom(['itexpo.unj@gmail.com' => 'IT EXPO 2018'])
+                //   ->setTo([ $email => $nama])
+                //   // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
+                //  ->setBody('<html><body>
+                //             Klik link di bawah ini untuk melakukan verifikasi: <br/>
+                //             <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
+                //             Terima kasih
+                //             <br/><br/>
+                //             Panitia IT Expo 2018
+                //             </body></html>',
+                //             'text/html' // Mark the content-type as HTML
+                //             );
+                // // Send the message
+                // $result = $mailer->send($message);
                 return $response->withJson([
                     "message" => "Pendaftaran berhasil! Silakan melakukan verifikasi",
                 ], 201);
@@ -360,7 +390,7 @@ class AuthController{
         $db = Database::connect();
         $headerValueArray = $request->getHeader('Authorization');
         $apiToken = explode(' ', $headerValueArray[0]);
-        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, foto, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
+        $query1 = $db->prepare("SELECT nama, tanggal_lahir, status_akun, instansi, kontak, email, is_verified, foto, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
         $query1->execute(["token" => $apiToken[1], ]);
         $user = $query1->fetch(PDO::FETCH_OBJ);
         return $response->withJson($user);
