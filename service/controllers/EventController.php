@@ -41,13 +41,17 @@ class EventController{
         $query1->execute(["token" => $apiToken[1], ]);
         $user = $query1->fetch(PDO::FETCH_OBJ);
         //validasi jika sudah mendaftar lomba tidak bisa mendaftar seminar 
-        $cekRegisterEvent = $db->prepare("SELECT * FROM userx_eventx WHERE userx_id=:id AND eventx_id=:eventx");
-        $cekRegisterEvent->execute(["id" => $user->id, "eventx" => $eventx_id]);
+        $cekRegisterEvent = $db->prepare("SELECT * FROM userx_eventx WHERE userx_id=:id AND eventx_id=:eventx AND is_delete=:is_delete");
+        $cekRegisterEvent->execute([
+            "id" => $user->id,
+            "eventx" => $eventx_id,
+            "is_delete" => 0
+        ]);
         $statusRegisterEvent = $cekRegisterEvent->fetch(PDO::FETCH_OBJ);
         if(!$statusRegisterEvent){
             // Parsing Data
             $userx_id= $user->id;
-            $is_mahasiswa = $user->is_mahasiswa;
+            $status_akun = $user->status_akun;
             $ign = "";  
             $is_team = ""; 
             $team_name = "";
@@ -60,13 +64,13 @@ class EventController{
             $registration_code = self::generateRegistrationCode();
 
             if($eventx_id == 1 || $eventx_id == 2 || $eventx_id == 3){ //individu
-                if($is_mahasiswa == 0){
+                if($status_akun == 'umum'){
                     $query2 = $db->prepare("SELECT name, umum_po, umum_ots FROM eventx WHERE id=:eventx_id ");
                     $query2->execute(["eventx_id" => $eventx_id]);
                     $harga = $query2->fetch(PDO::FETCH_OBJ);
                 }
 
-                if($is_mahasiswa == 1){
+                if($status_akun == 'pelajar' || $status_akun == 'mahasiswa'){
                     $query2 = $db->prepare("SELECT name, mahasiswa_po, mahasiswa_ots FROM eventx WHERE id=:eventx_id ");
                     $query2->execute(["eventx_id" => $eventx_id]);
                     $harga = $query2->fetch(PDO::FETCH_OBJ);
@@ -89,12 +93,12 @@ class EventController{
 
                     if($status){
                         return $response->withJson([
-                            "message" => "registrasi event sukses",
+                            "message" => "Registrasi event sukses",
                             "data" => $harga
                         ], 201);
                     }else{
                         return $response->withJson([
-                            "message" => "registrasi event gagal",                            
+                            "message" => "Registrasi event gagal",                            
                         ], 400);
                     }
                 }
@@ -115,12 +119,12 @@ class EventController{
 
                     if($status2){
                         return $response->withJson([
-                            "message" => "registrasi event sukses",
+                            "message" => "Registrasi event sukses",
                             "data" => $harga
                         ], 201);
                     }else{
                         return $response->withJson([
-                            "message" => "registrasi event gagal",                            
+                            "message" => "Registrasi event gagal",                            
                         ], 400);
                     }
 
@@ -131,12 +135,12 @@ class EventController{
             }
 
             if($eventx_id == 4 || $eventx_id == 5){  // tim
-                if($is_mahasiswa == 0){
+                if($status_akun == 'umum'){
                     $query2 = $db->prepare("SELECT name, umum_po, umum_ots FROM eventx WHERE id=:eventx_id ");
                     $query2->execute(["eventx_id" => $eventx_id]);
                     $harga = $query2->fetch(PDO::FETCH_OBJ);
                 }
-                if($is_mahasiswa == 1){
+                if($status_akun == 'pelajar' || $status_akun == 'mahasiswa'){
                     $query2 = $db->prepare("SELECT name, mahasiswa_po, mahasiswa_ots FROM eventx WHERE id=:eventx_id ");
                     $query2->execute(["eventx_id" => $eventx_id]);
                     $harga = $query2->fetch(PDO::FETCH_OBJ);
@@ -175,12 +179,12 @@ class EventController{
 
                 if($status){
                     return $response->withJson([
-                        "message" => "registrasi event sukses",
+                        "message" => "Registrasi event sukses",
                         "data" => $harga
                     ], 201);
                 }else{
                     return $response->withJson([
-                        "message" => "registrasi event gagal",
+                        "message" => "Registrasi event gagal",
                         
                     ], 400);
                 }
@@ -188,13 +192,13 @@ class EventController{
             }
             
             if($eventx_id == 6 || $eventx_id == 7){ //seminar
-                if($is_mahasiswa == 0){
+                if($status_akun == 'umum'){
                     $query2 = $db->prepare("SELECT name, umum_po, umum_ots FROM eventx WHERE id=:eventx_id ");
                     $query2->execute(["eventx_id" => $eventx_id]);
                     $harga = $query2->fetch(PDO::FETCH_OBJ);
                 }
 
-                if($is_mahasiswa == 1){
+                if($status_akun == 'pelajar' || $status_akun == 'mahasiswa'){
                     $query2 = $db->prepare("SELECT name, mahasiswa_po, mahasiswa_ots FROM eventx WHERE id=:eventx_id ");
                     $query2->execute(["eventx_id" => $eventx_id]);
                     $harga = $query2->fetch(PDO::FETCH_OBJ);
@@ -217,12 +221,12 @@ class EventController{
 
                 if($status){
                     return $response->withJson([
-                        "message" => "registrasi event sukses",
+                        "message" => "Registrasi event sukses",
                         "data" =>$harga
                     ], 201);
                 }else{
                     return $response->withJson([
-                        "message" => "registrasi event gagal",
+                        "message" => "Registrasi event gagal",
                     ], 400);
                 }
             }
@@ -234,7 +238,7 @@ class EventController{
         }
     }
 
-    public function getEvent($request, $response, $args){
+    public function getEventUser($request, $response, $args){
             $db = Database::connect();
             // Find event based on user token
             $headerValueArray = $request->getHeader('Authorization');
@@ -271,96 +275,118 @@ class EventController{
             ],200);
     }
 
-    public function submitEvent($request, $response, $args){
+    public function getEvents($request, $response, $args){
             $db = Database::connect();
+            $query = $db->prepare("SELECT * FROM eventx");
+            $status = $query->execute([]);
+            $events = $query->fetchAll(PDO::FETCH_OBJ);
+            return $response->withJson([
+                "message" => count($events) ? "Event Ditemukan" : "Event Kosong",
+                "data" => $events
+            ],200);
+    }
 
-            $headerValueArray = $request->getHeader('Authorization');
-            $apiToken = explode(' ', $headerValueArray[0]);
-            $query1 = $db->prepare("SELECT u.*, ue.id as id_userx_eventx, ue.eventx_id FROM userx u JOIN userx_eventx ue ON u.id = ue.userx_id WHERE u.token=:token");
-            $query1->execute(["token" => $apiToken[1], ]);
-            $user = $query1->fetch(PDO::FETCH_OBJ);
+    public function getEventById($request, $response, $args){
+        $db = Database::connect();
+        $query = $db->prepare("SELECT * FROM eventx WHERE id=:id");
+        $status = $query->execute([
+            "id" => $args['id']
+        ]);
+        $events = $query->fetch(PDO::FETCH_OBJ);
+        return $response->withJson([
+            "message" => count($events) ? "Event Ditemukan" : "Event Kosong",
+            "data" => $events
+        ],200);
+    }
 
-            $userx_eventx_id = $user->eventx_id;
-            $id_userx_eventx = $user->id_userx_eventx;
-            $file = "";
-            $link = "";
+    public function submitEvent($request, $response, $args){
+        $db = Database::connect();
 
+        $headerValueArray = $request->getHeader('Authorization');
+        $apiToken = explode(' ', $headerValueArray[0]);
+        $query1 = $db->prepare("SELECT u.*, ue.id as id_userx_eventx, ue.eventx_id FROM userx u JOIN userx_eventx ue ON u.id = ue.userx_id WHERE u.token=:token");
+        $query1->execute(["token" => $apiToken[1], ]);
+        $user = $query1->fetch(PDO::FETCH_OBJ);
+
+        $userx_eventx_id = $user->eventx_id;
+        $id_userx_eventx = $user->id_userx_eventx;
+        $file = "";
+        $link = "";
+
+        
+
+        if($userx_eventx_id == 2 || $userx_eventx_id == 3){
+            
+                //move to folder
+            $directory = Environment::getDir('/file');
+
+            $uploadedFiles = $request->getUploadedFiles();
+
+            // handle single input with single file upload
+            $uploadedFile = $uploadedFiles['file'];     
             
 
-            if($userx_eventx_id == 2 || $userx_eventx_id == 3){
-                
-                    //move to folder
-                $directory = Environment::getDir('/file');
+            $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
+            $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
+            $filename = sprintf('%s.%0.8s', $basename, $extension);
 
-                $uploadedFiles = $request->getUploadedFiles();
+            $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
 
-                // handle single input with single file upload
-                $uploadedFile = $uploadedFiles['file'];     
-                
+            //return $filename;
 
-                $extension = pathinfo($uploadedFile->getClientFilename(), PATHINFO_EXTENSION);
-                $basename = bin2hex(random_bytes(8)); // see http://php.net/manual/en/function.random-bytes.php
-                $filename = sprintf('%s.%0.8s', $basename, $extension);
+            
+            $response->write('uploaded ' . $filename . '<br/>');
 
-                $uploadedFile->moveTo($directory . DIRECTORY_SEPARATOR . $filename);
-
-                //return $filename;
-
-                
-                $response->write('uploaded ' . $filename . '<br/>');
-
-                $loc_file = Environment::getLink('/file').'/'.$filename;
-                $data = [$id_userx_eventx, $loc_file];
-                $sql = "INSERT INTO submitx (userx_eventx_id, file) VALUES (?,?)";
-                $stmt= $db->prepare($sql);
-                $status = $stmt->execute($data); 
-
-                    if($status){
-                    return $response->withJson([
-                            "message" => "Submit sukses",
-                        ],200);
-
-                    }else{
-                            return $response->withJson([
-                            "message" => "Submit gagal"
-                        ],400);
-                    }   
-
-            }else if($userx_eventx_id == 4){
-                    //move to folder
-
-                $link = $request->getParsedBody()['link'];
-                $linkValidator = v::url();
-                $statusLink = $linkValidator->validate( $link);
-                    if(!$statusLink){
-                    return $response->withJson([
-                        "message" => "Format Url salah"
-                    ],400);
-                    }
-                $data = [$id_userx_eventx, $link];
-                $sql = "INSERT INTO submitx (userx_eventx_id, link) VALUES (?,?)";
-                $stmt= $db->prepare($sql);
-                $status = $stmt->execute($data); 
+            $loc_file = Environment::getLink('/file').'/'.$filename;
+            $data = [$id_userx_eventx, $loc_file];
+            $sql = "INSERT INTO submitx (userx_eventx_id, file) VALUES (?,?)";
+            $stmt= $db->prepare($sql);
+            $status = $stmt->execute($data); 
 
                 if($status){
-                    return $response->withJson([
-                            "message" => "Submit sukses",
-                        ],200);
+                return $response->withJson([
+                        "message" => "Submit sukses",
+                    ],200);
 
-                    }else{
-                            return $response->withJson([
-                            "message" => "Submit gagal"
-                        ],400);
-                    }   
-
-            }else{
+                }else{
                         return $response->withJson([
-                            "message" => "Submit gagal, event tidak memerlukan data submit",
-                            
-                        ],400);
+                        "message" => "Submit gagal"
+                    ],400);
+                }   
 
-            }
+        }else if($userx_eventx_id == 4){
+                //move to folder
 
+            $link = $request->getParsedBody()['link'];
+            $linkValidator = v::url();
+            $statusLink = $linkValidator->validate( $link);
+                if(!$statusLink){
+                return $response->withJson([
+                    "message" => "Format Url salah"
+                ],400);
+                }
+            $data = [$id_userx_eventx, $link];
+            $sql = "INSERT INTO submitx (userx_eventx_id, link) VALUES (?,?)";
+            $stmt= $db->prepare($sql);
+            $status = $stmt->execute($data); 
+
+            if($status){
+                return $response->withJson([
+                        "message" => "Submit sukses",
+                    ],200);
+
+                }else{
+                        return $response->withJson([
+                        "message" => "Submit gagal"
+                    ],400);
+                }   
+
+        }else{
+            return $response->withJson([
+                "message" => "Submit gagal, event tidak memerlukan data submit",
+                
+            ],400);
+        }
     }
 
     public function uploadBuktiBayar($request, $response, $args){
@@ -459,7 +485,7 @@ class EventController{
             }       
     }
 
-     public function softDelete($request, $response, $args){
+     public function cancelEvent($request, $response, $args){
         
             $db = Database::connect();   
              // Get user based on token
@@ -469,19 +495,20 @@ class EventController{
             $query1->execute(["token" => $apiToken[1], ]);
             $user = $query1->fetch(PDO::FETCH_OBJ);
     
-            $query2 = $db->prepare("UPDATE userx_eventx SET  is_delete=:is_delete WHERE userx_id=:id");
+            $query2 = $db->prepare("UPDATE userx_eventx SET  is_delete=:is_delete WHERE userx_id=:id AND eventx_id=:eventx_id");
             $status= $query2->execute([
                 "id" => $user->id,
+                "eventx_id" => $request->getParsedBody()['eventx_id'],
                 "is_delete"=> "1"
             ]);
             if($status){
                 return $response->withJson([
-                "message" => "soft delete sukses",         
-            ],200);
+                    "message" => "Event berhasil dibatalkan!",         
+                ],200);
             }else{
                 return $response->withJson([
-                "message" => "soft delete Gagal",           
-            ],400);
+                    "message" => "Event gagal dibatalkan!",
+                ],400);
             }
         }  
    

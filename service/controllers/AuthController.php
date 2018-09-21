@@ -74,7 +74,7 @@ class AuthController{
         $kontak= $request->getParsedBody()['kontak'];
         //$created_at= $request->getParsedBody()['created_at'];
         $created_at= date("Y-m-d h:i:sa");
-        $is_mahasiswa = $request->getParsedBody()['is_mahasiswa'];
+        $status_akun = $request->getParsedBody()['status_akun'];
         
 
          // Validation
@@ -123,10 +123,10 @@ class AuthController{
             ],400);
          }
         $isMahasiswaValidator = v::digit()->length(1);
-        $statusIsMahasiswa = $isMahasiswaValidator->validate( $is_mahasiswa);
+        $statusIsMahasiswa = $isMahasiswaValidator->validate( $status_akun);
          if(!$statusKontak){
             return $response->withJson([
-                "message" => "Format is_mahasiswa salah"
+                "message" => "Format status_akun salah"
             ],400);
          }
         $createdValidator = v::date();
@@ -137,8 +137,8 @@ class AuthController{
             ],400);
          }
         if($statusEmail && $statusPassword && $statusNama && $statusTtl && $statusInstansi && $statusKontak && $statusCreated && $statusIsMahasiswa){
-            $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $is_mahasiswa, $created_at];
-            $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir, instansi, kontak, is_mahasiswa, created_at) VALUES (?,?,?,?,?,?,?,?)";
+            $data = [$email, $password, $nama, $tanggal_lahir, $instansi, $kontak, $status_akun, $created_at];
+            $sql = "INSERT INTO userx (email, password, nama, tanggal_lahir, instansi, kontak, status_akun, created_at) VALUES (?,?,?,?,?,?,?,?)";
             $stmt= $db->prepare($sql);
             $status = $stmt->execute($data);  
              // generate TOKEN with base64 encode for verification           
@@ -390,7 +390,7 @@ class AuthController{
         $db = Database::connect();
         $headerValueArray = $request->getHeader('Authorization');
         $apiToken = explode(' ', $headerValueArray[0]);
-        $query1 = $db->prepare("SELECT nama, tanggal_lahir, is_mahasiswa, instansi, kontak, email, is_verified, foto, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
+        $query1 = $db->prepare("SELECT nama, tanggal_lahir, status_akun, instansi, kontak, email, is_verified, foto, file_ktm, created_at, verified_at FROM userx WHERE token=:token");
         $query1->execute(["token" => $apiToken[1], ]);
         $user = $query1->fetch(PDO::FETCH_OBJ);
         return $response->withJson($user);

@@ -15,8 +15,9 @@ $(function(){
     };
     const checkStatus = (status, id) => {
         if(status === 'not_paid'){
-            return `<span class="glyphicon glyphicon-remove"></span> Menunggu pembayaran<hr/>
-            <a href='verifikasi.html?event_id=${id}' class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs konfirmasi" style="font-size: 12px;padding: 0.5rem 0.75rem">Unggah Bukti Pembayaran</a>`;
+            return `<span class="glyphicon glyphicon-remove"></span> Menunggu pembayaran
+            <a href='verifikasi.html?event_id=${id}' class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs konfirmasi" style="margin-top: 5px; font-size: 12px;padding: 0.5rem 0.75rem">Unggah Bukti Pembayaran</a>
+            <button data-id=${id} class="text-uppercase s-btn s-btn--sm s-btn--red-bg g-radius--50 g-padding-x-50--xs cancel-event" style="margin-top: 5px; color: #FFF; background: #d10000; font-size: 12px;padding: 0.5rem 0.75rem"><span class="glyphicon glyphicon-remove"></span> Batalkan</button>`;
         }else if(status === 'wait_verified'){
             return '<span class="glyphicon glyphicon-time"></span> Menunggu verifikasi';
         }else if(status === 'paid'){
@@ -52,12 +53,15 @@ $(function(){
         }
         events.forEach((event) => {
             let type = '';
+            let also = '';
             switch(event.eventx_id){
                 case '1':
                     type = 'networking';
+                    also = 'web';
                     break;
                 case '2':
                     type = 'web';
+                    also = 'networking';
                     break;
                 case '3':
                     type = 'poster';
@@ -79,6 +83,9 @@ $(function(){
                     break;
             }
             $(`#reg-${type}`).parent().addClass('hide');
+            if(also){
+                $(`#reg-${also}`).parent().addClass('hide');
+            }
 
             addToList(event);
         });
@@ -114,7 +121,7 @@ $(function(){
         var formData = new FormData($(this)[0]);
         formData.append('eventx_id', $.urlParam('event_id'));
         $.ajax({
-            url: `${API}/upload/bukti-bayar`,
+            url: `${API}/event/bukti-bayar`,
             method: 'POST',
             data: formData,
             headers: {
@@ -122,6 +129,28 @@ $(function(){
             },
             processData: false,
             contentType: false, 
+            success: function(res) {
+                notification('success', res.message);
+                setTimeout(() => {
+                    window.location = 'user-dash.html';
+                }, 1000);
+            }, error: function(err) {
+                notification('error', err.responseJSON.message);
+            }
+        })
+    })
+
+    $(document.body).on("click", ".cancel-event", function(e){
+        e.preventDefault();
+        $.ajax({
+            url: `${API}/event/cancel`,
+            method: 'POST',
+            data: {
+                eventx_id: $(this).data('id')
+            },
+            headers: {
+                'Authorization': 'Bearer '+localStorage.getItem(KEY),
+            },
             success: function(res) {
                 notification('success', res.message);
                 setTimeout(() => {

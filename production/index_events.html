@@ -96,7 +96,7 @@
                                 href="contacts.html">Kontak Kami</a></li>
 
                         <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                                href="login.html">Masuk / Daftar</a></li>
+                                href="login.html" id="login-logout">Masuk / Daftar</a></li>
 
                     </ul>
                     <!-- End Menu List -->
@@ -195,6 +195,7 @@
                             Pendidikan Informatika UNJ serta dari beberapa perusahan yang bergerak dibidang IT, dan
                             juga ditambah dengan seminar yang akan membahas
                             mengenai informasi IT terkini diikuti dengan tema yang akan diangkat.</p>
+                        <a href="./files/panduan.pdf"><button type="button" class="text-uppercase s-btn s-btn--sm s-btn--primary-bg g-radius--50 g-padding-x-50--xs">Unduh Panduan</button></a>
                     </div>
                 </div>
 
@@ -338,7 +339,8 @@
                     <p class="text-uppercase g-font-size-14--xs g-font-weight--700 g-color--primary g-letter-spacing--2 g-margin-b-25--xs">IT
                         EXPO</p>
                     <h2 class="g-font-size-32--xs g-font-size-36--md">Kompetisi</h2>
-                    <p>Ayo tantang dirimu dan ikuti kompetisi di IT-Expo!</p>
+                    <h3>Hanya untuk Pelajar!</h3>
+                    <h5>Ayo tantang dirimu dan ikuti kompetisi di IT-Expo!</h5>
                     <h6><label>Pendaftaran Lomba</label><br/>19 September 2018 - 26 Oktober 2018</h6>
                 </div>
             </div>
@@ -354,7 +356,7 @@
                         <div class="s-portfolio__caption-hover--cc">
                             <div class="g-margin-b-25--xs">
                                 <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Web</h3>
-                                <p class="g-color--white-opacity">Rp.100.000</p>
+                                <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.100.000</p>
                             </div>
                             <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                 <li>
@@ -374,7 +376,8 @@
                         <div class="s-portfolio__caption-hover--cc">
                             <div class="g-margin-b-25--xs">
                                 <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Jaringan</h3>
-                                <p class="g-color--white-opacity">Rp.30.000</p>
+                                <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.30.000 <small>(Tahap 1)</small>
+                                    <br/>Rp.80.000 <small>(Tahap 2)</small></p>
                             </div>
                             <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                 <li>
@@ -394,7 +397,7 @@
                         <div class="s-portfolio__caption-hover--cc">
                             <div class="g-margin-b-25--xs">
                                 <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Short Movie</h3>
-                                <p class="g-color--white-opacity">Rp.100.000</p>
+                                <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.100.000</p>
                             </div>
                             <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                 <li>
@@ -416,7 +419,7 @@
                         <div class="s-portfolio__caption-hover--cc">
                             <div class="g-margin-b-25--xs">
                                 <h3 class="g-font-size-18--xs g-color--white g-margin-b-5--xs">Desain Poster</h3>
-                                <p class="g-color--white-opacity">Rp.50.000</p>
+                                <p class="g-color--white g-font-size-16--xs g-font-weight--700">Rp.50.000</p>
                             </div>
                             <ul class="list-inline g-ul-li-lr-5--xs g-margin-b-0--xs">
                                 <li>
@@ -458,6 +461,7 @@
                             <div class="g-margin-b-40--xs">
                                 <span class="s-plan-v1__price-mark">Rp.</span>
                                 <span class="s-plan-v1__price-tag">200.000</span>
+                                <small class="">(Pre Order)</small>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
@@ -499,13 +503,35 @@
                         <div class="s-plan-v1 g-text-center--xs g-bg-color--white g-padding-y-100--xs">
                             <i class="g-display-block--xs g-font-size-40--xs g-color--primary g-margin-b-30--xs ti-microphone"></i>
                             <h3 class="g-font-size-18--xs g-color--primary g-margin-b-30--xs">Teknologi</h3>
-                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
+                            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-10--xs">
                                 <li>Seminar</li>
                                 <!-- <li>Oleh : Hafiezar</li> -->
                             </ul>
-                            <div class="g-margin-b-40--xs">
-                                <span class="s-plan-v1__price-mark">Rp.</span>
-                                <span class="s-plan-v1__price-tag">45.000</span>
+                            <div class="col-md-6">
+                                <div class="text-center">Pelajar/Mahasiswa</div>
+                                <div class="g-margin-b-10--xs">
+                                    <span class="s-plan-v2__price-mark">Rp.</span>
+                                    <span class="s-plan-v2__price-tag" id="price-seminar-po">40.000</span>
+                                    <small class="">(PO)</small>
+                                </div>
+                                <div class="g-margin-b-10--xs">
+                                    <span class="s-plan-v2__price-mark">Rp.</span>
+                                    <span class="s-plan-v2__price-tag" id="price-seminar-ots">50.000</span>
+                                    <small class="">(OTS)</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-center">Umum</div>
+                                <div class="g-margin-b-10--xs">
+                                    <span class="s-plan-v2__price-mark">Rp.</span>
+                                    <span class="s-plan-v2__price-tag" id="price-seminar-po">45.000</span>
+                                    <small class="">(PO)</small>
+                                </div>
+                                <div class="g-margin-b-20--xs">
+                                    <span class="s-plan-v2__price-mark">Rp.</span>
+                                    <span class="s-plan-v2__price-tag" id="price-seminar-ots">50.000</span>
+                                    <small class="">(OTS)</small>
+                                </div>
                             </div>
                             <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-40--xs">
                                 <li>
@@ -633,7 +659,7 @@
                     <h4 class="s-header__logo-img s-header__logo-img-default" style="color:#13b1cd;">IT-EXPO</h4>
                 </div>
                 <div class="col-xs-6 g-text-right--xs">
-                    <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light">Powered by: UNJ</p>
+                    <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>
                 </div>
             </div>
         </div>
@@ -655,7 +681,7 @@
                         <div class="col-sm-5 g-hor-centered-row__col">
 
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Desain Web</h2>
-                            <p class="g-font-size-16--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini diadakan untuk meningkatkan kreativitas generasi muda dalam bidang web dengan menggunakan
+                            <p class="g-font-size-16--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini diadakan untuk meningkatkan kreativitas generasi muda dalam bidang web dengan menggunakan
                                 metode studi kasus.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Technical Meeting</label><br/>27 Oktober 2018</h6>
@@ -690,7 +716,7 @@
                         <div class="col-sm-5 g-hor-centered-row__col">
 
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Jaringan</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini mengujikan kemampuan peserta dalam melakukan analisis, perancangan dan instalasi jaringan
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini mengujikan kemampuan peserta dalam melakukan analisis, perancangan dan instalasi jaringan
                                 dengan standar CCNA R&S, CCNA Security dan LPIC Linux System Administration. Peserta akan diberikan permasalahan untuk diselesaikan menggunakan teknologi dan metode yang tepat serta membangun layanan jaringan sesuai kebutuhan.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Kisi-kisi Penyisihan</label><br/>5 November 2018</h6>
@@ -726,7 +752,7 @@
                         <div class="col-sm-5 g-hor-centered-row__col">
 
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Short Movie</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang Film Pendek.</p>
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang Film Pendek.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Pengumpulan Film Gelombang I</label><br/>1 - 8 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Pengumpulan Film Gelombang II</label><br/>9 - 15 November 2018</h6>
@@ -759,7 +785,7 @@
                     <div class="row g-hor-centered-row--md g-row-col--5 g-margin-b-50--xs g-margin-b-60--md">
                         <div class="col-sm-5 g-hor-centered-row__col">
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">Desain Poster</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang desain poster.</p>
+                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi <b>siswa/i SMA/SMK sederajat</b> se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan guna mengembangkan para kreatif muda Indonesia khususnya pulau Jawa di bidang desain poster.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Pengumpulan Karya</label><br/>15 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Pengumuman</label><br/>29 November 2018</h6>
@@ -791,7 +817,7 @@
                         <div class="col-sm-5 g-hor-centered-row__col">
 
                             <h2 class="g-font-size-32--xs g-font-size-36--sm g-margin-b-25--xs">E-Sports - Mobile Legends</h2>
-                            <p class="g-font-size-14--sm">Sebuah kompetisi bagi siswa/i SMA/SMK sederajat se-pulau Jawa yang merupakan bagian dari rangkaian kegiatan IT EXPO UNJ 2018. Kompetisi ini dilaksanakan untuk menguji kemampuan para atlet muda e-sport Indonesia khusunya didaerah jakarta dan sekitarnya.</p>
+                            <p class="g-font-size-14--sm">Kompetisi ini dilaksanakan untuk menguji kemampuan para atlet muda e-sport Indonesia khusunya didaerah jakarta dan sekitarnya.</p>
                             <h5>Alur Kompetisi</h5>
                             <h6 class="g-font-size-14--xs"><label>Penyisihan</label><br/>19 - 26 November 2018</h6>
                             <h6 class="g-font-size-14--xs"><label>Perempat Final</label><br/>27 November 2018</h6>
