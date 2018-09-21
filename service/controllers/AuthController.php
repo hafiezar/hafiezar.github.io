@@ -150,33 +150,63 @@ class AuthController{
                     "email" => $email,
                     "token" => $token
                 ]);
+
+                // Create the Transport
+                $transport = Swift_SmtpTransport::newInstance('smtp.gmail.com', 465, 'ssl')
+                  ->setUsername('itexpo.unj@gmail.com')
+                  ->setPassword('12345expo;')
+                  ;
+
+                //setting
+                $hostPublic= Environment::publicHost();
+
+
+                // Create the Mailer using your created Transport
+                $mailer = Swift_Mailer::newInstance($transport);
+
+                // Create a message
+                $message = Swift_Message::newInstance('Thank you for Registering IT EXPO 2018')
+                  ->setFrom(array('itexpo.unj@gmail.com' => 'IT EXPO 2018'))
+                  ->setTo(array($email => $nama))
+                  ->setBody('<html><body>
+                                        Klik link di bawah ini untuk melakukan verifikasi: <br/>
+                                        <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
+                                        Terima kasih
+                                        <br/><br/>
+                                        Panitia IT Expo 2018
+                                        </body></html>',
+                                        'text/html' // Mark the content-type as HTML
+                                        );
+
+                // Send the message
+                $result = $mailer->send($message);
                 //Create email verification
                 // sender setting
 
-                $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-                  ->setUsername('itexpo.unj@gmail.com')
-                  ->setPassword('12345expo;')
-                ;
-                //setting
-                $hostPublic= Environment::publicHost();
-                // Create the Mailer using your created Transport
-                $mailer = new Swift_Mailer($transport);
-                // Create a message
-                $message = (new Swift_Message('Thank you for Registering IT EXPO 2018'))
-                  ->setFrom(['itexpo.unj@gmail.com' => 'IT EXPO 2018'])
-                  ->setTo([ $email => $nama])
-                  // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
-                 ->setBody('<html><body>
-                            Klik link di bawah ini untuk melakukan verifikasi: <br/>
-                            <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
-                            Terima kasih
-                            <br/><br/>
-                            Panitia IT Expo 2018
-                            </body></html>',
-                            'text/html' // Mark the content-type as HTML
-                            );
-                // Send the message
-                $result = $mailer->send($message);
+                // $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
+                //   ->setUsername('itexpo.unj@gmail.com')
+                //   ->setPassword('12345expo;')
+                // ;
+                // //setting
+                // $hostPublic= Environment::publicHost();
+                // // Create the Mailer using your created Transport
+                // $mailer = new Swift_Mailer($transport);
+                // // Create a message
+                // $message = (new Swift_Message('Thank you for Registering IT EXPO 2018'))
+                //   ->setFrom(['itexpo.unj@gmail.com' => 'IT EXPO 2018'])
+                //   ->setTo([ $email => $nama])
+                //   // ->setBody('<a href='localhost:8085/hello/aan'>Klik disini untuk verifikasi</a>', 'text/html')
+                //  ->setBody('<html><body>
+                //             Klik link di bawah ini untuk melakukan verifikasi: <br/>
+                //             <p><a href='.$hostPublic.'/verifikasi/'.$token.'>Verifikasi Akun Saya</a></p>
+                //             Terima kasih
+                //             <br/><br/>
+                //             Panitia IT Expo 2018
+                //             </body></html>',
+                //             'text/html' // Mark the content-type as HTML
+                //             );
+                // // Send the message
+                // $result = $mailer->send($message);
                 return $response->withJson([
                     "message" => "Pendaftaran berhasil! Silakan melakukan verifikasi",
                 ], 201);
