@@ -81,30 +81,53 @@ class EventController{
                     ],400);
                 }
 
-                $data = [$userx_id, $eventx_id, $registration_code, $is_team, $ign, $created_at, $payment_status]; 
-                $sql = "INSERT INTO userx_eventx (userx_id, eventx_id, registration_code, is_team, ign, created_at, payment_status) VALUES (?,?,?,?,?,?,?)";
-                $stmt= $db->prepare($sql);
-                $status = $stmt->execute($data); 
+                if($eventx_id ==3){
+                    $data = [$userx_id, $eventx_id, $registration_code, $is_team, $ign, $created_at, $payment_status]; 
+                    $sql = "INSERT INTO userx_eventx (userx_id, eventx_id, registration_code, is_team, ign, created_at, payment_status) VALUES (?,?,?,?,?,?,?)";
+                    $stmt= $db->prepare($sql);
+                    $status = $stmt->execute($data);
+
+                    if($status){
+                        return $response->withJson([
+                            "message" => "registrasi event sukses",
+                            "data" => $harga
+                        ], 201);
+                    }else{
+                        return $response->withJson([
+                            "message" => "registrasi event gagal",                            
+                        ], 400);
+                    }
+                }
 
                 if($eventx_id ==1 || $eventx_id ==2){
+                    $data = [$userx_id, $eventx_id, $registration_code, $is_team, $ign, $created_at, $payment_status]; 
+                    $sql = "INSERT INTO userx_eventx (userx_id, eventx_id, registration_code, is_team, ign, created_at, payment_status) VALUES (?,?,?,?,?,?,?)";
+                    $stmt= $db->prepare($sql);
+                    $status = $stmt->execute($data);
+
                     $payment_status = "paid";
                     $seminar_id = 6;
-                    $data2 = [$userx_id, $seminar_id, $registration_code, $is_team, $ign, $created_at, $payment_status, $created_at]; 
+                    $registration_code2 = self::generateRegistrationCode();
+                    $data2 = [$userx_id, $seminar_id, $registration_code2, $is_team, $ign, $created_at, $payment_status, $created_at]; 
                     $sql2 = "INSERT INTO userx_eventx (userx_id, eventx_id, registration_code, is_team, ign, created_at, payment_status, paid_at) VALUES (?,?,?,?,?,?,?,?)";
                     $stmt2= $db->prepare($sql2);
                     $status2 = $stmt2->execute($data2);
+
+                    if($status2){
+                        return $response->withJson([
+                            "message" => "registrasi event sukses",
+                            "data" => $harga
+                        ], 201);
+                    }else{
+                        return $response->withJson([
+                            "message" => "registrasi event gagal",                            
+                        ], 400);
+                    }
+
+                                        
                 }              
 
-                if($status){
-                    return $response->withJson([
-                        "message" => "registrasi event sukses",
-                        "data" => $harga
-                    ], 201);
-                }else{
-                    return $response->withJson([
-                        "message" => "registrasi event gagal",                            
-                    ], 400);
-                }
+                
             }
 
             if($eventx_id == 4 || $eventx_id == 5){  // tim
@@ -223,13 +246,14 @@ class EventController{
             $id = $user->id;
             $query = $db->prepare("SELECT * FROM userx_eventx u 
                 JOIN eventx e ON u.eventx_id = e.id
-                WHERE u.userx_id=:id");
+                WHERE u.userx_id=:id AND u.is_delete =:is_delete");
             $status = $query->execute([
                 "id" => $id,
+                "is_delete" => "0"
             ]);
             $events = $query->fetchAll(PDO::FETCH_OBJ);
 
-            // Push Details
+           // Push Details
             foreach($events as $key => $val){
                 $query = $db->prepare("SELECT * FROM eventx_detail WHERE eventx_id=:id");
                 $query->execute([
@@ -238,6 +262,8 @@ class EventController{
                 $details = $query->fetchAll(PDO::FETCH_OBJ);
                 $val->details = $details;
             }
+
+
 
             return $response->withJson([
                 "message" => count($events) ? "Event Ditemukan" : "Event Kosong",
@@ -432,5 +458,31 @@ class EventController{
                 ],400);
             }       
     }
+
+     public function softDelete($request, $response, $args){
+        
+            $db = Database::connect();   
+             // Get user based on token
+            $headerValueArray = $request->getHeader('Authorization');
+            $apiToken = explode(' ', $headerValueArray[0]);
+            $query1 = $db->prepare("SELECT * FROM userx WHERE token=:token");
+            $query1->execute(["token" => $apiToken[1], ]);
+            $user = $query1->fetch(PDO::FETCH_OBJ);
+    
+            $query2 = $db->prepare("UPDATE userx_eventx SET  is_delete=:is_delete WHERE userx_id=:id");
+            $status= $query2->execute([
+                "id" => $user->id,
+                "is_delete"=> "1"
+            ]);
+            if($status){
+                return $response->withJson([
+                "message" => "soft delete sukses",         
+            ],200);
+            }else{
+                return $response->withJson([
+                "message" => "soft delete Gagal",           
+            ],400);
+            }
+        }  
    
 }
