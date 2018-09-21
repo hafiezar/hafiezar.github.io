@@ -84,7 +84,16 @@ class EventController{
                 $data = [$userx_id, $eventx_id, $registration_code, $is_team, $ign, $created_at, $payment_status]; 
                 $sql = "INSERT INTO userx_eventx (userx_id, eventx_id, registration_code, is_team, ign, created_at, payment_status) VALUES (?,?,?,?,?,?,?)";
                 $stmt= $db->prepare($sql);
-                $status = $stmt->execute($data);               
+                $status = $stmt->execute($data); 
+
+                if($eventx_id ==1 || $eventx_id ==2){
+                    $payment_status = "paid";
+                    $seminar_id = 6;
+                    $data2 = [$userx_id, $seminar_id, $registration_code, $is_team, $ign, $created_at, $payment_status, $created_at]; 
+                    $sql2 = "INSERT INTO userx_eventx (userx_id, eventx_id, registration_code, is_team, ign, created_at, payment_status, paid_at) VALUES (?,?,?,?,?,?,?,?)";
+                    $stmt2= $db->prepare($sql2);
+                    $status2 = $stmt2->execute($data2);
+                }              
 
                 if($status){
                     return $response->withJson([
