@@ -81,7 +81,7 @@
                             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="about.html">Tentang Kami</a></li>
                             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="contacts.html">Kontak Kami</a></li>
 
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="login.html">Masuk / Daftar</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="login.html" id="login-logout">Masuk / Daftar</a></li>
 
                         </ul>
                         <!-- End Menu List -->
@@ -237,10 +237,11 @@
                     </div>
                     <div class="row g-margin-b-50--xs">
                         <div class="col-sm-4 g-margin-b-30--xs g-margin-b-0--md">
-                            <select class="form-control s-form-v3__input" name="is_mahasiswa" required>
+                            <select class="form-control s-form-v3__input" name="status_akun" required>
                                 <option value="" selected disabled>-- STATUS --</option>
-                                <option value="1">Mahasiswa</option>
-                                <option value="0">Umum</option>
+                                <option value="pelajar">Pelajar</option>
+                                <option value="mahasiswa">Mahasiswa</option>
+                                <option value="umum">Umum</option>
                             </select>
                         </div>
                         <div class="col-sm-8 g-margin-b-30--xs g-margin-b-0--md">
@@ -301,7 +302,7 @@
                         <h4 class="s-header__logo-img s-header__logo-img-default" style="color:#13b1cd;">IT-EXPO</h4>
                     </div>
                     <div class="col-xs-6 g-text-right--xs">
-                        <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light">Powered by: UNJ</p>
+                        <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light">Powered by: <a href="http://www.keenthemes.com/">KeenThemes.com</a></p>
                     </div>
                 </div>
             </div>
