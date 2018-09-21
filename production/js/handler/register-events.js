@@ -2,7 +2,7 @@ $(function(){
     $("#register-jaringan").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: { eventx_id: 1 },
             headers: {
@@ -21,7 +21,7 @@ $(function(){
     $("#register-web").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: { eventx_id: 2 },
             headers: {
@@ -40,7 +40,7 @@ $(function(){
     $("#register-poster").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: { eventx_id: 3 },
             headers: {
@@ -59,7 +59,7 @@ $(function(){
     $("#register-movie").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: $("#form-register-movie").serialize(),
             headers: {
@@ -78,7 +78,7 @@ $(function(){
     $("#register-uiux").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: { eventx_id: 7 },
             headers: {
@@ -97,7 +97,7 @@ $(function(){
     $("#register-seminar").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: { eventx_id: 6 },
             headers: {
@@ -116,7 +116,7 @@ $(function(){
     $("#register-esports").click(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/event/register`,
+            url: `${API}/event/register`,
             method: 'POST',
             data: $("#form-register-esports").serialize(),
             headers: {

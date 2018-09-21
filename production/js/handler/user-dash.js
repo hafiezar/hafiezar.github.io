@@ -40,7 +40,7 @@ $(function(){
     $("#form-profil").submit(function(e){
         e.preventDefault();
         $.ajax({
-            url: `${DEV_API}/edit/profile`,
+            url: `${API}/edit/profile`,
             method: 'POST',
             data: $(this).serialize(),
             headers: {
@@ -61,7 +61,7 @@ $(function(){
         e.preventDefault();
         var formData = new FormData($(this)[0]);
         $.ajax({
-            url: `${DEV_API}/upload/ktm`,
+            url: `${API}/upload/ktm`,
             method: 'POST',
             data: formData,
             headers: {
@@ -84,7 +84,7 @@ $(function(){
         e.preventDefault();
         var formData = new FormData($(this)[0]);
         $.ajax({
-            url: `${DEV_API}/upload/foto`,
+            url: `${API}/upload/foto`,
             method: 'POST',
             data: formData,
             headers: {

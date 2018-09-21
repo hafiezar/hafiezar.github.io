@@ -12,6 +12,7 @@ $app->post('/event/submit', 'EventController::submitEvent')->add( new Auth() );
 $app->get('/event/verification', 'EventController::verificationEventPage')->add( new Auth() );
 $app->get('/event/paid/{id}', 'EventController::isPaid')->add( new Auth() );
 $app->post('/upload/bukti-bayar', 'EventController::uploadBuktiBayar')->add( new Auth() );
+$app->post('/soft_delete', 'EventController::softDelete')->add( new Auth() );
 
 $app->post('/upload/ktm', 'AuthController::uploadKtm')->add( new Auth() );
 $app->post('/upload/foto', 'AuthController::uploadFoto')->add( new Auth() );

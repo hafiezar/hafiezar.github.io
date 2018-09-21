@@ -1,5 +1,6 @@
 const PROD_API = 'http://103.8.12.212:33722';
 const DEV_API = 'http://localhost/hafiezar.github.io/service';
+const API = 'http://localhost/hafiezar.github.io/service';
 const KEY = 'cmluZHUgZG90YSAy';
 
 const notification = (type, text) => {
@@ -24,7 +25,7 @@ const checkAuth = (scope) => {
 const getUser = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `${DEV_API}/users`,
+            url: `${API}/users`,
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer '+localStorage.getItem(KEY),
